@@ -1,0 +1,103 @@
+{
+    "individuals": [
+        {
+            "name": "john_doe",
+            "account": {
+                "acc_name": "acc_john_doe",
+                "owner": "john_doe",
+                "bank": "bank_of_america",
+                "balance": 1000
+            }
+        },
+        {
+            "name": "jane_smith",
+            "account": {
+                "acc_name": "acc_jane_smith",
+                "owner": "jane_smith",
+                "bank": "wells_fargo",
+                "balance": 1050
+            }
+        },
+        {
+            "name": "bob_johnson",
+            "account": {
+                "acc_name": "acc_bob_johnson",
+                "owner": "bob_johnson",
+                "bank": "banks_of_america",
+                "balance": 1025
+            }
+        },
+        {
+            "name": "alice_wilson",
+            "account": {
+                "acc_name": "acc_alice_wilson",
+                "owner": "alice_wilson",
+                "bank": "bofa_bank",
+                "balance": 1080
+            }
+        },
+        {
+            "name": "mike_davis",
+            "account": {
+                "acc_name": "acc_mike_davis",
+                "owner": "mike_davis",
+                "bank": "citibank",
+                "balance": 1100
+            }
+        },
+        {
+            "name": "amy_garcia",
+            "account": {
+                "acc_name": "acc_amy_garcia",
+                "owner": "amy_garcia",
+                "bank": "bank_of_england",
+                "balance": 1035
+            }
+        },
+        {
+            "name": "richard_white",
+            "account": {
+                "acc_name": "acc_richard_white",
+                "owner": "richard_white",
+                "bank": "barclaycard",
+                "balance": 1040
+            }
+        },
+        {
+            "name": "pamela_brown",
+            "account": {
+                "acc_name": "acc_pamela_brown",
+                "owner": "pamela_brown",
+                "bank": "hsbc_bank",
+                "balance": 1065
+            }
+        },
+        {
+            "name": "lucy_hall",
+            "account": {
+                "acc_name": "acc_lucy_hall",
+                "owner": "lucy_hall",
+                "bank": "scotiabank",
+                "balance": 1090
+            }
+        },
+        {
+            "name": "david_lee",
+            "account": {
+                "acc_name": "acc_david_lee",
+                "owner": "david_lee",
+                "bank": "capital_one",
+                "balance": 1015
+            }
+        },
+        {
+            "name": "emily_park",
+            "account": {
+                "acc_name": "acc_emily_park",
+                "owner": "emily_park",
+                "bank": "pnc_bank",
+                "balance": 1120
+            }
+        }
+    ]
+}
