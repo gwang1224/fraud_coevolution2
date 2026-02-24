@@ -1,0 +1,94 @@
+{
+    "fraudsters": [
+        {
+            "name": "fraudster1",
+            "account": {
+                "acc_name": "acc_fraudster1",
+                "owner": "fraudster1",
+                "bank": "bankofamerica",
+                "balance": 1000
+            }
+        },
+        {
+            "name": "fraudster2",
+            "account": {
+                "acc_name": "acc_fraudster2",
+                "owner": "fraudster2",
+                "bank": "wellsfargo",
+                "balance": 900
+            }
+        },
+        {
+            "name": "fraudster3",
+            "account": {
+                "acc_name": "acc_fraudster3",
+                "owner": "fraudster3",
+                "bank": "CHASE",
+                "balance": 1100
+            }
+        },
+        {
+            "name": "fraudster4",
+            "account": {
+                "acc_name": "acc_fraudster4",
+                "owner": "fraudster4",
+                "bank": "bankofamerica",
+                "balance": 1000
+            }
+        },
+        {
+            "name": "fraudster5",
+            "account": {
+                "acc_name": "acc_fraudster5",
+                "owner": "fraudster5",
+                "bank": "wellsfargo",
+                "balance": 900
+            }
+        },
+        {
+            "name": "fraudster6",
+            "account": {
+                "acc_name": "acc_fraudster6",
+                "owner": "fraudster6",
+                "bank": "CHASE",
+                "balance": 1100
+            }
+        },
+        {
+            "name": "fraudster7",
+            "account": {
+                "acc_name": "acc_fraudster7",
+                "owner": "fraudster7",
+                "bank": "bankofamerica",
+                "balance": 1000
+            }
+        },
+        {
+            "name": "fraudster8",
+            "account": {
+                "acc_name": "acc_fraudster8",
+                "owner": "fraudster8",
+                "bank": "wellsfargo",
+                "balance": 900
+            }
+        },
+        {
+            "name": "fraudster9",
+            "account": {
+                "acc_name": "acc_fraudster9",
+                "owner": "fraudster9",
+                "bank": "CHASE",
+                "balance": 1100
+            }
+        },
+        {
+            "name": "fraudster10",
+            "account": {
+                "acc_name": "acc_fraudster10",
+                "owner": "fraudster10",
+                "bank": "bankofamerica",
+                "balance": 1000
+            }
+        }
+    ]
+}
