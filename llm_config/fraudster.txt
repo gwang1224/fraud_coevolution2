@@ -1,0 +1,63 @@
+Create a structured JSON dictionary for a fraudster in a FAST-payment fraud simulation.
+
+You must generate:
+
+- 1 fraudster entity (can be an individual, business, organization, or other realistic fraudster type)
+- 1 account per fraudster
+
+Requirements:
+
+1. Fraudster:
+   - Each must have:
+     - "name" (lowercase, snake_case, no spaces)
+     - "entity_type" (string: one of "individual", "business", "organization", "merchant", "criminal_network", "shell_company", "fraud_ring", "money_laundering_operation", or other realistic fraudster type)
+     - The name MUST be unique and not match any existing fraudster names
+   - CRITICAL: Generate diverse fraudster types. Vary between individuals, businesses, organizations, criminal networks, shell companies, etc. Do NOT generate only individuals.
+   - The name MUST match the entity_type:
+     * For "individual": Use person names (e.g., john_smith, maria_garcia, robert_jones)
+     * For "business": Use business/company names (e.g., global_trading_llc, premium_services_inc, digital_solutions_corp, quick_cash_merchant)
+     * For "merchant": Use merchant/store names (e.g., luxury_goods_emporium, discount_electronics_store, online_marketplace_pro)
+     * For "organization": Use organization names (e.g., international_finance_group, global_operations_network, strategic_alliance_corp)
+     * For "criminal_network": Use network/group names (e.g., shadow_operations_network, underground_finance_ring, illicit_transfer_syndicate)
+     * For "shell_company": Use company names that sound legitimate (e.g., offshore_holdings_ltd, international_assets_corp, global_investments_llc)
+     * For "fraud_ring": Use ring/group names (e.g., organized_fraud_collective, payment_scam_ring, identity_theft_network)
+     * For "money_laundering_operation": Use operation names (e.g., asset_cleaning_services, fund_processing_operation, financial_restructuring_group)
+
+2. Accounts:
+   - Each must have:
+     - "name" (format: acc_<fraudster_name>)
+     - "owner" (must match fraudster name exactly)
+     - "bank" (realistic bank name in lowercase snake_case)
+     - "balance" (number between 1000 and 50000)
+
+Examples by entity type:
+- Individual: {"name": "john_smith", "entity_type": "individual"}
+- Business: {"name": "global_trading_llc", "entity_type": "business"}
+- Merchant: {"name": "luxury_goods_emporium", "entity_type": "merchant"}
+- Organization: {"name": "international_finance_group", "entity_type": "organization"}
+- Criminal Network: {"name": "shadow_operations_network", "entity_type": "criminal_network"}
+- Shell Company: {"name": "offshore_holdings_ltd", "entity_type": "shell_company"}
+- Fraud Ring: {"name": "organized_fraud_collective", "entity_type": "fraud_ring"}
+
+Constraints:
+- Names must be lowercase snake_case.
+- The fraudster name must be completely unique (not used before).
+- Entity types must be realistic and appropriate for fraud scenarios.
+- Names MUST be appropriate for the entity_type (business names for businesses, person names for individuals, etc.).
+- All accounts must reference valid fraudster entities.
+- Do NOT include markdown.
+- Do NOT include explanations.
+- Output valid JSON only.
+
+Output format:
+
+{
+    "name": "...", 
+    "entity_type": "business",
+    "account": {
+        "acc_name": "acc_...",
+        "owner": "...",
+        "bank": "...",
+        "balance": 1000
+    }
+}

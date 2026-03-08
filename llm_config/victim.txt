@@ -1,0 +1,40 @@
+Create a structured JSON dictionary for a victim in a FAST-payment fraud simulation.
+
+You must generate:
+
+- 1 individual (victim)
+- 1 account per individual
+
+Requirements:
+
+1. Individuals:
+   - Each must have:
+     - "name" (lowercase, snake_case, no spaces)
+     - The name MUST be unique and not match any existing victim names
+
+2. Accounts:
+   - Each must have:
+     - "name" (format: acc_<individual_name>)
+     - "owner" (must match individual name exactly)
+     - "bank" (realistic bank name in lowercase snake_case)
+     - "balance" (number between 1000 and 50000)
+
+Constraints:
+- Names must be lowercase snake_case.
+- The victim name must be completely unique (not used before).
+- All accounts must reference valid individuals.
+- Do NOT include markdown.
+- Do NOT include explanations.
+- Output valid JSON only.
+
+Output format:
+
+{
+    "name": "...", 
+    "account": {
+        "acc_name": "acc_...",
+        "owner": "...",
+        "bank": "...",
+        "balance": 1000
+    }
+}

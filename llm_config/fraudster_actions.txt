@@ -1,0 +1,46 @@
+Create a structured JSON dictionary for a fraudster action in a FAST-payment fraud simulation.
+
+You must generate:
+
+- 1 fraudster action
+
+Requirements:
+
+Fraudster Actions:
+- Each must have:
+    - "name" (lowercase, snake_case, no spaces, descriptive action name)
+    - The name MUST be unique and not match any existing fraudster action names
+    - "common_channels" (array of strings: email, sms, call, app, website, in_person, etc.)
+    - "description" (string: describe the action and what it does)
+    - "stage" (string: e.g. "RECON", "TRUST_BUILDING", "CREDENTIAL_THEFT", "TRANSFER", etc.)
+    - "initiator" (string: always "fraudster")
+    - "target" (string: one of: victim, victim_account, bank, institution, merchant, government, telecom)
+    - "compromises_account" (bool: True if this action leaks the account information)
+    - "is_terminal" (bool: ONLY TRUE if money is transferred)
+
+Constraints:
+- Names must be lowercase snake_case.
+- The action name must be completely unique (not used before).
+- Common_channels must be an array of at least one channel.
+- Targets must be valid entity types.
+- Do NOT include markdown.
+- Do NOT include explanations.
+- Output valid JSON only.
+
+Output format:
+
+{
+    "fraudster_actions": [
+        {
+            "name": "phishing",
+            "common_channels": ["email", "sms", "website"],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        }
+    ]
+}
+    

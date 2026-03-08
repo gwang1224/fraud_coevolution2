@@ -9,8 +9,10 @@ import json
 import random
 from typing import Dict, List, Optional
 from dataclasses import dataclass
-from neo4j import GraphDatabase
 import requests
+from pypdf import PdfReader
+from pathlib import Path
+
 
 
 @dataclass
@@ -29,78 +31,227 @@ class Account:
     bank: str
     balance: float
 
-SYS_PROMPT = """
-You are designing a structured graph database for a FAST-payment fraud simulation.
-You must return valid JSON only.
-Do not include explanations or commentary.
-"""
-
-
 class OllamaClient:
     """Client for interacting with Ollama LLM"""
     
-    def __init__(self, base_url: str = "http://localhost:11434", model: str = "llama3.2"):
+    def __init__(self, base_url: str, model: str, prompt_dir: str, guidelines_path: str = "data/guidelines.json"):
         self.base_url = base_url
         self.model = model
+        self.prompt_dir = Path(prompt_dir)
+        self.guidelines_path = guidelines_path
+        self.guidelines = self._load_guidelines()
+        self.prompts = {
+            "victim": self._load("victim.txt"),
+            "fraudster": self._load("fraudster.txt"),
+            "fraudster_actions": self._load("fraudster_actions.txt"),
+            "victim_actions": self._load("victim_actions.txt")
+        }
     
-    def generate_victims(self) -> Dict:
+    def _load(self, filename):
+        with open(self.prompt_dir / filename, "r") as f:
+            return f.read()
+    
+    def _load_guidelines(self) -> Dict:
+        """Load guidelines from JSON file"""
+        try:
+            with open(self.guidelines_path, "r") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print(f"Warning: Guidelines file not found at {self.guidelines_path}")
+            return {}
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse guidelines file {self.guidelines_path}")
+            return {}
+        except Exception as e:
+            print(f"Warning: Error loading guidelines: {e}")
+            return {}
+    
+    def _format_guidelines_for_fraudster_actions(self) -> str:
+        """Format guidelines relevant to fraudster actions"""
+        if not self.guidelines:
+            return ""
+        
+        sections = []
+        
+        if "fraud_lifecycle" in self.guidelines:
+            sections.append("Fraud Lifecycle:\n" + "\n".join(f"  - {item}" for item in self.guidelines["fraud_lifecycle"]))
+        
+        if "fraud_techniques" in self.guidelines:
+            sections.append("\nFraud Techniques:\n" + "\n".join(f"  - {item}" for item in self.guidelines["fraud_techniques"]))
+        
+        if "payment_manipulation_patterns" in self.guidelines:
+            sections.append("\nPayment Manipulation Patterns:\n" + "\n".join(f"  - {item}" for item in self.guidelines["payment_manipulation_patterns"]))
+        
+        if "money_movement_patterns" in self.guidelines:
+            sections.append("\nMoney Movement Patterns:\n" + "\n".join(f"  - {item}" for item in self.guidelines["money_movement_patterns"]))
+        
+        if "design_rules_for_fraud_simulation" in self.guidelines:
+            sections.append("\nDesign Rules for Fraud Simulation:\n" + "\n".join(f"  - {item}" for item in self.guidelines["design_rules_for_fraud_simulation"]))
+        
+        if sections:
+            return "\n\nBackground Information (Use these guidelines to inform your action generation):\n" + "\n".join(sections) + "\n"
+        return ""
+    
+    def _format_guidelines_for_victim_actions(self) -> str:
+        """Format guidelines relevant to victim actions"""
+        if not self.guidelines:
+            return ""
+        
+        sections = []
+        
+        if "fraud_lifecycle" in self.guidelines:
+            sections.append("Fraud Lifecycle:\n" + "\n".join(f"  - {item}" for item in self.guidelines["fraud_lifecycle"]))
+        
+        if "victim_behaviors" in self.guidelines:
+            sections.append("\nVictim Behaviors:\n" + "\n".join(f"  - {item}" for item in self.guidelines["victim_behaviors"]))
+        
+        if "payment_manipulation_patterns" in self.guidelines:
+            sections.append("\nPayment Manipulation Patterns:\n" + "\n".join(f"  - {item}" for item in self.guidelines["payment_manipulation_patterns"]))
+        
+        if "case_study_insights" in self.guidelines:
+            sections.append("\nCase Study Insights:\n" + "\n".join(f"  - {item}" for item in self.guidelines["case_study_insights"]))
+        
+        if "design_rules_for_fraud_simulation" in self.guidelines:
+            sections.append("\nDesign Rules for Fraud Simulation:\n" + "\n".join(f"  - {item}" for item in self.guidelines["design_rules_for_fraud_simulation"]))
+        
+        if sections:
+            return "\n\nBackground Information (Use these guidelines to inform your action generation):\n" + "\n".join(sections) + "\n"
+        return ""
+    
+    def load_existing_victims(self, filepath: str = "data/victims.json") -> List[str]:
         """
-        Use LLM to generate victims and accounts
-        Returns a dictionary with 'individuals' and 'accounts' lists
+        Load existing victim names from victims.json to check for uniqueness
+        
+        Args:
+            filepath: Path to victims.json file
+        
+        Returns:
+            List of existing victim names
         """
+        existing_names = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "victims" in data:
+                    existing_names = [victim.get("name", "") for victim in data["victims"] if victim.get("name")]
+        except FileNotFoundError:
+            # File doesn't exist yet, no existing victims
+            pass
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse {filepath}, assuming no existing victims")
+        except Exception as e:
+            print(f"Warning: Error loading existing victims: {e}")
+        
+        return existing_names
 
-        prompt = """
-        Create a structured nested JSON dictionary for a FAST-payment fraud simulation.
-
-        You must generate:
-
-        - 10 individuals (victims)
-        - 1 account per individual
-
-        Requirements:
-
-        1. Individuals:
-           - Each must have:
-             - "name" (lowercase, snake_case, no spaces)
-
-        2. Accounts:
-           - Each must have:
-             - "name" (format: acc_<individual_name>)
-             - "owner" (must match individual name exactly)
-             - "bank" (realistic bank name in lowercase snake_case)
-             - "balance" (must be close to avg_balance value)
-
-        Constraints:
-        - Names must be lowercase snake_case.
-        - All accounts must reference valid individuals.
-        - Do NOT include markdown.
-        - Do NOT include explanations.
-        - Output valid JSON only.
-
-        Output format:
-
-        {
-          "victims": [
-            {"name": "...", 
-                "account": {
-                    "acc_name" : "acc_...",
-                    "owner": "...",
-                    "bank": "...",
-                    "balance": 1000
-                }
-            }
-        }
+    def load_existing_fraudsters(self, filepath: str = "data/fraudsters.json") -> List[str]:
         """
+        Load existing fraudster names from fraudsters.json to check for uniqueness
+        
+        Args:
+            filepath: Path to fraudsters.json file
+        
+        Returns:
+            List of existing fraudster names
+        """
+        existing_names = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "fraudsters" in data:
+                    existing_names = [fraudster.get("name", "") for fraudster in data["fraudsters"] if fraudster.get("name")]
+        except FileNotFoundError:
+            # File doesn't exist yet, no existing fraudsters
+            pass
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse {filepath}, assuming no existing fraudsters")
+        except Exception as e:
+            print(f"Warning: Error loading existing fraudsters: {e}")
+        
+        return existing_names
+
+    def load_existing_fraudster_actions(self, filepath: str = "data/fraudster_actions.json") -> List[str]:
+        """
+        Load existing fraudster action names from fraudster_actions.json to check for uniqueness
+        
+        Args:
+            filepath: Path to fraudster_actions.json file
+        
+        Returns:
+            List of existing fraudster action names
+        """
+        existing_names = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "fraudster_actions" in data:
+                    existing_names = [action.get("name", "") for action in data["fraudster_actions"] if action.get("name")]
+        except FileNotFoundError:
+            # File doesn't exist yet, no existing actions
+            pass
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse {filepath}, assuming no existing fraudster actions")
+        except Exception as e:
+            print(f"Warning: Error loading existing fraudster actions: {e}")
+        
+        return existing_names
+
+    def load_existing_victim_actions(self, filepath: str = "data/victim_actions.json") -> List[str]:
+        """
+        Load existing victim action names from victim_actions.json to check for uniqueness
+        
+        Args:
+            filepath: Path to victim_actions.json file
+        
+        Returns:
+            List of existing victim action names
+        """
+        existing_names = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "victim_actions" in data:
+                    existing_names = [action.get("name", "") for action in data["victim_actions"] if action.get("name")]
+        except FileNotFoundError:
+            # File doesn't exist yet, no existing actions
+            pass
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse {filepath}, assuming no existing victim actions")
+        except Exception as e:
+            print(f"Warning: Error loading existing victim actions: {e}")
+        
+        return existing_names
+
+    def generate_single_victim(self, existing_names: List[str] = None) -> Optional[Dict]:
+        """
+        Use LLM to generate a single victim and account
+        Checks against existing names to ensure uniqueness
+        
+        Args:
+            existing_names: List of existing victim names to avoid duplicates
+        
+        Returns:
+            Dictionary with 'name' and 'account' keys, or None if generation fails
+        """
+        if existing_names is None:
+            existing_names = []
+        
+        # Build prompt with existing names to avoid duplicates
+        base_prompt = self.prompts.get("victim")
+        
+        if existing_names:
+            names_list = ", ".join(existing_names[:50])  # Limit to first 50 to avoid prompt being too long
+            uniqueness_constraint = f"\n\nIMPORTANT: Do NOT use any of these existing names: {names_list}\nGenerate a completely unique name that is not in this list."
+            prompt = base_prompt + uniqueness_constraint
+        else:
+            prompt = base_prompt
         
         try:
-            # Combine system prompt and user prompt
-            full_prompt = f"{SYS_PROMPT}\n\n{prompt}"
-            
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
                     "model": self.model,
-                    "prompt": full_prompt,
+                    "prompt": prompt,
                     "stream": False,
                     "format": "json"
                 },
@@ -112,9 +263,7 @@ class OllamaClient:
             # Extract JSON from response
             if "response" in result:
                 content = result["response"].strip()
-                # Remove markdown code blocks if present
                 if content.startswith("```"):
-                    # Find the JSON part
                     parts = content.split("```")
                     for part in parts:
                         part = part.strip()
@@ -125,242 +274,467 @@ class OllamaClient:
                             break
                 
                 parsed = json.loads(content)
-                # Validate structure
-                if "victims" in parsed:
-                    with open("victims.json", "w") as f:
-                        json.dump(parsed, f, indent=4)
-                    print(f"Victims data saved to victims.json") 
+                if "name" in parsed and "account" in parsed:
+                    # Double-check uniqueness
+                    victim_name = parsed.get("name", "").lower().strip()
+                    if victim_name in [name.lower().strip() for name in existing_names]:
+                        print(f"Warning: Generated duplicate name '{victim_name}', will regenerate")
+                        return None
                     return parsed
                 else:
-                    raise ValueError("Response missing 'individuals' or 'accounts' keys")
+                    raise ValueError("Response missing 'name' or 'account' keys")
             else:
                 raise ValueError("Unexpected response format from Ollama")
                 
         except Exception as e:
-            print(f"Error generating victims with Ollama: {e}")
-        
-    def generate_fraudsters(self) -> Dict:
-        """
-        Use LLM to generate fraudsters and accounts
-        Returns a dictionary with 'individuals' and 'accounts' lists
-        """
-
-        prompt = """
-        Create a structured nested JSON dictionary for a FAST-payment fraud simulation.
-
-        You must generate:
-
-        - 10 individuals (fraudsters)
-        - 1 account per fraudster
-
-        Requirements:
-
-        1. Fraudster:
-           - Each must have:
-             - "name" (lowercase, snake_case, no spaces)
-
-        2. Accounts:
-           - Each must have:
-             - "name" (format: acc_<individual_name>)
-             - "owner" (must match individual name exactly)
-             - "bank" (realistic bank name in lowercase snake_case)
-             - "balance" (must be close to avg_balance value)
-
-        Constraints:
-        - Names must be lowercase snake_case.
-        - All accounts must reference valid individuals.
-        - Do NOT include markdown.
-        - Do NOT include explanations.
-        - Output valid JSON only.
-
-        Output format:
-
-        {
-          "fraudsters": [
-            {"name": "...", 
-                "account": {
-                    "acc_name" : "acc_...",
-                    "owner": "...",
-                    "bank": "...",
-                    "balance": 1000
-                }
-            }
-        }
-        """
-        
-        try:
-            # Combine system prompt and user prompt
-            full_prompt = f"{SYS_PROMPT}\n\n{prompt}"
-            
-            response = requests.post(
-                f"{self.base_url}/api/generate",
-                json={
-                    "model": self.model,
-                    "prompt": full_prompt,
-                    "stream": False,
-                    "format": "json"
-                },
-                timeout=60
-            )
-            response.raise_for_status()
-            result = response.json()
-            
-            # Extract JSON from response
-            if "response" in result:
-                content = result["response"].strip()
-                # Remove markdown code blocks if present
-                if content.startswith("```"):
-                    # Find the JSON part
-                    parts = content.split("```")
-                    for part in parts:
-                        part = part.strip()
-                        if part.startswith("json"):
-                            part = part[4:].strip()
-                        if part.startswith("{") and part.endswith("}"):
-                            content = part
-                            break
-                
-                parsed = json.loads(content)
-                # Validate structure
-                if "fraudsters" in parsed:
-                    with open("fraudsters.json", "w") as f:
-                        json.dump(parsed, f, indent=4)
-                    print(f"Fraudsters data saved to fraudsters.json") 
-                    return parsed
-                else:
-                    raise ValueError("Response missing 'individuals' or 'accounts' keys")
-            else:
-                raise ValueError("Unexpected response format from Ollama")
-                
-        except Exception as e:
-            print(f"Error generating victims with Ollama: {e}")
-
-
-    def generate_actions(self) -> Dict:
-        """
-        Use LLM to generate fraudster and victim actions
-        Returns a dictionary with 'fraudster_actions' and 'victim_actions' lists
-        """
-        prompt = """
-        Create a structured nested JSON dictionary for a FAST-payment fraud simulation.
-
-        You must generate:
-
-        - 10 fraudster actions (e.g., phishing, impersonation, sim_swap, credential_theft, etc.)
-        - 10 victim actions (e.g., submit_sensitive_information, transfer_money, provide_credentials, authorize_transaction, etc.)
-
-        Requirements:
-
-        1. Fraudster Actions:
-           - Each must have:
-             - "name" (lowercase, snake_case, no spaces, descriptive action name)
-             - "common_channels" (array of strings: email, sms, call, app, website, in_person, etc.)
-             - "description" (string: describe the action and what it does)
-             - "stage" (string: e.g. "RECON", "TRUST_BUILDING", "CREDENTIAL_THEFT", "TRANSFER", etc.)
-             - "initiator" (string: always "fraudster")
-             - "target" (string: one of: victim, victim_account, bank, institution, merchant, government, telecom)
-             - "compromises_account" (bool: True if this action leaks the account information)
-             - "is_terminal" (bool: ONLY TRUE if money is transferred)
-
-        2. Victim Actions:
-           - Each must have:
-             - "name" (lowercase, snake_case, no spaces, descriptive action name)
-             - "common_channels" (array of strings: email, sms, call, app, website, in_person, etc.)
-             - "description" (string: describe the action and what it does)
-             - "stage" (string: e.g. "RECON", "TRUST_BUILDING", "CREDENTIAL_THEFT", "TRANSFER", etc.)
-             - "initiator" (string: always "victim")
-             - "target" (string: one of: fraudster, fraudster_account, bank, institution, merchant, government, telecom, victim_account)
-             - "compromises_account" (bool: True if this action leaks the account information)
-             - "is_terminal" (bool: ONLY TRUE if money is transferred)
-
-        Constraints:
-        - Names must be lowercase snake_case.
-        - Common_channels must be an array of at least one channel.
-        - Targets must be valid entity types.
-        - Do NOT include markdown.
-        - Do NOT include explanations.
-        - Output valid JSON only.
-
-        Output format:
-
-        {
-          "fraudster_actions": [
-            {
-              "name": "phishing",
-              "common_channels": ["email", "sms", "website"],
-              "initiator": "fraudster",
-              "target": "victim"
-            }
-          ],
-          "victim_actions": [
-            {
-              "name": "submit_sensitive_information",
-              "common_channels": ["email", "website"],
-              "initiator": "victim",
-              "target": "fraudster"
-            }
-          ]
-        }
-        """
-        
-        try:
-            print("Start generating actions...")
-            # Combine system prompt and user prompt
-            full_prompt = f"{SYS_PROMPT}\n\n{prompt}"
-            
-            response = requests.post(
-                f"{self.base_url}/api/generate",
-                json={
-                    "model": self.model,
-                    "prompt": full_prompt,
-                    "stream": False,
-                    "format": "json"
-                },
-            )
-            response.raise_for_status()
-            result = response.json()
-            
-            # Extract JSON from response
-            if "response" in result:
-                content = result["response"].strip()
-                # Remove markdown code blocks if present
-                if content.startswith("```"):
-                    # Find the JSON part
-                    parts = content.split("```")
-                    for part in parts:
-                        part = part.strip()
-                        if part.startswith("json"):
-                            part = part[4:].strip()
-                        if part.startswith("{") and part.endswith("}"):
-                            content = part
-                            break
-                
-                parsed = json.loads(content)
-                # Validate structure
-                if "fraudster_actions" in parsed and "victim_actions" in parsed:
-                    with open("actions.json", "w") as f:
-                        json.dump(parsed, f, indent=4)
-                    print(f"Actions data saved to actions.json")
-                    print(f"  - Generated {len(parsed.get('fraudster_actions', []))} fraudster actions")
-                    print(f"  - Generated {len(parsed.get('victim_actions', []))} victim actions")
-                    return parsed
-                else:
-                    raise ValueError("Response missing 'fraudster_actions' or 'victim_actions' keys")
-            else:
-                raise ValueError("Unexpected response format from Ollama")
-                
-        except Exception as e:
-            print(f"Error generating actions with Ollama: {e}")
+            print(f"Error generating victim with Ollama: {e}")
             return None
+
+    def generate_victim_database(self, num_victims=50, filepath: str = "data/victims.json"):
+        """
+        Generate multiple unique victims and save to file
+        
+        Args:
+            num_victims: Number of victims to generate
+            filepath: Path to save victims.json file
+        """
+        # Load existing victims to check for uniqueness
+        existing_names = self.load_existing_victims(filepath)
+        print(f"Found {len(existing_names)} existing victims")
+        
+        # Load existing victims data if file exists
+        existing_victims = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "victims" in data:
+                    existing_victims = data["victims"]
+        except FileNotFoundError:
+            pass
+        
+        victims = existing_victims.copy()
+        max_attempts = 10 
+        
+        for i in range(num_victims):
+            print(f"Generating victim {i+1}/{num_victims}...")
+            attempts = 0
+            new_victim = None
+            
+            while attempts < max_attempts:
+                new_victim = self.generate_single_victim(existing_names)
+                if new_victim:
+                    victim_name = new_victim.get("name", "").lower().strip()
+                    new_victim["id"] = i
+                    if victim_name not in [v.get("name", "").lower().strip() for v in victims]:
+                        victims.append(new_victim)
+                        existing_names.append(victim_name)
+                        print(f"  ✓ Generated unique victim: {victim_name}")
+                        break
+                    else:
+                        print(f"  ✗ Duplicate detected: {victim_name}, retrying...")
+                        attempts += 1
+                else:
+                    attempts += 1
+            
+            if not new_victim or attempts >= max_attempts:
+                print(f"  ✗ Failed to generate unique victim after {max_attempts} attempts")
+        
+        # Save all victims to file
+        output = {"victims": victims}
+        with open(filepath, "w") as f:
+            json.dump(output, f, indent=4)
+        
+        print(f"\n✓ Saved {len(victims)} total victims to {filepath}")
+        print(f"  - New victims generated: {num_victims}")
+        print(f"  - Total unique victims: {len(victims)}")
+            
+    def generate_single_fraudster(self, existing_names: List[str] = None) -> Optional[Dict]:
+        """
+        Use LLM to generate a single fraudster and account
+        Checks against existing names to ensure uniqueness
+        
+        Args:
+            existing_names: List of existing fraudster names to avoid duplicates
+        
+        Returns:
+            Dictionary with 'name' and 'account' keys, or None if generation fails
+        """
+        if existing_names is None:
+            existing_names = []
+        
+        # Build prompt with existing names to avoid duplicates
+        base_prompt = self.prompts.get("fraudster")
+        
+        # Add instruction to vary entity types and generate appropriate names
+        diversity_instruction = "\n\nCRITICAL INSTRUCTION: You MUST generate diverse entity types. Randomly choose from: individual, business, merchant, organization, criminal_network, shell_company, fraud_ring, money_laundering_operation. Do NOT always generate individuals. Generate business names (like 'global_trading_llc', 'premium_services_inc') for businesses, organization names for organizations, person names for individuals, etc. The name format MUST match the entity_type."
+        
+        if existing_names:
+            names_list = ", ".join(existing_names[:50])  # Limit to first 50 to avoid prompt being too long
+            uniqueness_constraint = f"\n\nIMPORTANT: Do NOT use any of these existing names: {names_list}\nGenerate a completely unique name that is not in this list."
+            prompt = base_prompt + diversity_instruction + uniqueness_constraint
+        else:
+            prompt = base_prompt + diversity_instruction
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": self.model,
+                    "prompt": prompt,
+                    "stream": False,
+                    "format": "json"
+                },
+                timeout=60
+            )
+            response.raise_for_status()
+            result = response.json()
+            
+            # Extract JSON from response
+            if "response" in result:
+                content = result["response"].strip()
+                if content.startswith("```"):
+                    parts = content.split("```")
+                    for part in parts:
+                        part = part.strip()
+                        if part.startswith("json"):
+                            part = part[4:].strip()
+                        if part.startswith("{") and part.endswith("}"):
+                            content = part
+                            break
+                
+                parsed = json.loads(content)
+                if "name" in parsed and "account" in parsed:
+                    # Double-check uniqueness
+                    fraudster_name = parsed.get("name", "").lower().strip()
+                    if fraudster_name in [name.lower().strip() for name in existing_names]:
+                        print(f"Warning: Generated duplicate name '{fraudster_name}', will regenerate")
+                        return None
+                    # Ensure entity_type is present, default to "individual" if missing
+                    if "entity_type" not in parsed:
+                        parsed["entity_type"] = "individual"
+                    return parsed
+                else:
+                    raise ValueError("Response missing 'name' or 'account' keys")
+            else:
+                raise ValueError("Unexpected response format from Ollama")
+                
+        except Exception as e:
+            print(f"Error generating fraudster with Ollama: {e}")
+            return None
+
+    def generate_fraudster_database(self, num_fraudsters=50, filepath: str = "data/fraudsters.json"):
+        """
+        Generate multiple unique fraudsters and save to file
+        
+        Args:
+            num_fraudsters: Number of fraudsters to generate
+            filepath: Path to save fraudsters.json file
+        """
+        # Load existing fraudsters to check for uniqueness
+        existing_names = self.load_existing_fraudsters(filepath)
+        print(f"Found {len(existing_names)} existing fraudsters")
+        
+        # Load existing fraudsters data if file exists
+        existing_fraudsters = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "fraudsters" in data:
+                    existing_fraudsters = data["fraudsters"]
+        except FileNotFoundError:
+            pass
+        
+        fraudsters = existing_fraudsters.copy()  # Start with existing fraudsters
+        max_attempts = 10  # Maximum attempts to generate a unique fraudster
+        
+        for i in range(num_fraudsters):
+            print(f"Generating fraudster {i+1}/{num_fraudsters}...")
+            attempts = 0
+            new_fraudster = None
+            
+            while attempts < max_attempts:
+                new_fraudster = self.generate_single_fraudster(existing_names)
+                if new_fraudster:
+                    fraudster_name = new_fraudster.get("name", "").lower().strip()
+                    entity_type = new_fraudster.get("entity_type", "individual")
+                    new_fraudster["id"] = i
+                    if fraudster_name not in [f.get("name", "").lower().strip() for f in fraudsters]:
+                        fraudsters.append(new_fraudster)
+                        existing_names.append(fraudster_name)
+                        print(f"  ✓ Generated unique fraudster: {fraudster_name} (type: {entity_type})")
+                        break
+                    else:
+                        print(f"  ✗ Duplicate detected: {fraudster_name}, retrying...")
+                        attempts += 1
+                else:
+                    attempts += 1
+            
+            if not new_fraudster or attempts >= max_attempts:
+                print(f"  ✗ Failed to generate unique fraudster after {max_attempts} attempts")
+        
+        # Save all fraudsters to file
+        output = {"fraudsters": fraudsters}
+        with open(filepath, "w") as f:
+            json.dump(output, f, indent=4)
+        
+        # Count entity types for summary
+        entity_type_counts = {}
+        for f in fraudsters:
+            entity_type = f.get("entity_type", "individual")
+            entity_type_counts[entity_type] = entity_type_counts.get(entity_type, 0) + 1
+        
+        print(f"\n✓ Saved {len(fraudsters)} total fraudsters to {filepath}")
+        print(f"  - New fraudsters generated: {num_fraudsters}")
+        print(f"  - Total unique fraudsters: {len(fraudsters)}")
+        print(f"  - Entity type distribution: {entity_type_counts}")
+
+    def generate_fraudster_actions_database(self, num_actions=25, filepath: str = "data/fraudster_actions.json") -> List[Dict]:
+        """
+        Use LLM to generate fraudster actions with uniqueness checking
+        Returns a list of fraudster actions
+        
+        Args:
+            num_actions: Number of fraudster actions to generate
+            filepath: Path to save fraudster_actions.json file
+        
+        Returns:
+            List of fraudster action dictionaries
+        """
+        # Load existing actions to check for uniqueness
+        existing_names = self.load_existing_fraudster_actions(filepath)
+        print(f"Found {len(existing_names)} existing fraudster actions")
+        
+        # Load existing actions data if file exists
+        existing_actions = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "fraudster_actions" in data:
+                    existing_actions = data["fraudster_actions"]
+        except FileNotFoundError:
+            pass
+        
+        actions = existing_actions.copy()
+        base_prompt = self.prompts.get("fraudster_actions")
+        guidelines_context = self._format_guidelines_for_fraudster_actions()
+        max_attempts = 10
+        
+        print(f"\nGenerating {num_actions} unique fraudster actions...")
+        
+        for i in range(num_actions):
+            print(f"  Generating fraudster action {i+1}/{num_actions}...")
+            attempts = 0
+            
+            while attempts < max_attempts:
+                prompt_parts = [base_prompt]
+                
+                if guidelines_context:
+                    prompt_parts.append(guidelines_context)
+                
+                if existing_names:
+                    names_list = ", ".join(existing_names[:30])
+                    uniqueness_constraint = f"\n\nIMPORTANT: Do NOT use any of these existing fraudster action names: {names_list}\nGenerate a completely unique action name that is not in this list."
+                    prompt_parts.append(uniqueness_constraint)
+                
+                prompt = "\n".join(prompt_parts)
+                
+                try:
+                    response = requests.post(
+                        f"{self.base_url}/api/generate",
+                        json={
+                            "model": self.model,
+                            "prompt": prompt,
+                            "stream": False,
+                            "format": "json"
+                        },
+                        timeout=60
+                    )
+                    response.raise_for_status()
+                    result = response.json()
+                    
+                    if "response" in result:
+                        content = result["response"].strip()
+                        if content.startswith("```"):
+                            parts = content.split("```")
+                            for part in parts:
+                                part = part.strip()
+                                if part.startswith("json"):
+                                    part = part[4:].strip()
+                                if part.startswith("{") and part.endswith("}"):
+                                    content = part
+                                    break
+                        
+                        parsed = json.loads(content)
+                        # Handle different response formats
+                        new_action = None
+                        if "fraudster_actions" in parsed and len(parsed["fraudster_actions"]) > 0:
+                            new_action = parsed["fraudster_actions"][0]
+                        elif "name" in parsed:  # Single action format
+                            new_action = parsed
+                        
+                        if new_action:
+                            action_name = new_action.get("name", "").lower().strip()
+                            
+                            if action_name not in [a.get("name", "").lower().strip() for a in actions]:
+                                actions.append(new_action)
+                                existing_names.append(action_name)
+                                print(f"    ✓ Generated unique fraudster action: {action_name}")
+                                break
+                            else:
+                                print(f"    ✗ Duplicate detected: {action_name}, retrying...")
+                                attempts += 1
+                        else:
+                            attempts += 1
+                    else:
+                        attempts += 1
+                except Exception as e:
+                    print(f"    ✗ Error: {e}")
+                    attempts += 1
+            
+            if attempts >= max_attempts:
+                print(f"    ✗ Failed to generate unique fraudster action after {max_attempts} attempts")
+        
+        # Save all actions to file
+        output = {"fraudster_actions": actions}
+        with open(filepath, "w") as f:
+            json.dump(output, f, indent=4)
+        
+        print(f"\n Saved {len(actions)} total fraudster actions to {filepath}")
+        print(f"  - New actions generated: {num_actions}")
+        print(f"  - Total unique fraudster actions: {len(actions)}")
+        
+        return actions
+
+    def generate_victim_actions_database(self, num_actions=25, filepath: str = "data/victim_actions.json") -> List[Dict]:
+        """
+        Use LLM to generate victim actions with uniqueness checking
+        Returns a list of victim actions
+        
+        Args:
+            num_actions: Number of victim actions to generate
+            filepath: Path to save victim_actions.json file
+        
+        Returns:
+            List of victim action dictionaries
+        """
+        # Load existing actions to check for uniqueness
+        existing_names = self.load_existing_victim_actions(filepath)
+        print(f"Found {len(existing_names)} existing victim actions")
+        
+        # Load existing actions data if file exists
+        existing_actions = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "victim_actions" in data:
+                    existing_actions = data["victim_actions"]
+        except FileNotFoundError:
+            pass
+        
+        actions = existing_actions.copy()
+        base_prompt = self.prompts.get("victim_actions")
+        guidelines_context = self._format_guidelines_for_victim_actions()
+        max_attempts = 10
+        
+        print(f"\nGenerating {num_actions} unique victim actions...")
+        
+        for i in range(num_actions):
+            print(f"  Generating victim action {i+1}/{num_actions}...")
+            attempts = 0
+            
+            while attempts < max_attempts:
+                # Build prompt with guidelines and existing names
+                prompt_parts = [base_prompt]
+                
+                if guidelines_context:
+                    prompt_parts.append(guidelines_context)
+                
+                if existing_names:
+                    names_list = ", ".join(existing_names[:30])
+                    uniqueness_constraint = f"\n\nIMPORTANT: Do NOT use any of these existing victim action names: {names_list}\nGenerate a completely unique action name that is not in this list."
+                    prompt_parts.append(uniqueness_constraint)
+                
+                prompt = "\n".join(prompt_parts)
+                
+                try:
+                    response = requests.post(
+                        f"{self.base_url}/api/generate",
+                        json={
+                            "model": self.model,
+                            "prompt": prompt,
+                            "stream": False,
+                            "format": "json"
+                        },
+                        timeout=60
+                    )
+                    response.raise_for_status()
+                    result = response.json()
+                    
+                    if "response" in result:
+                        content = result["response"].strip()
+                        if content.startswith("```"):
+                            parts = content.split("```")
+                            for part in parts:
+                                part = part.strip()
+                                if part.startswith("json"):
+                                    part = part[4:].strip()
+                                if part.startswith("{") and part.endswith("}"):
+                                    content = part
+                                    break
+                        
+                        parsed = json.loads(content)
+                        # Handle different response formats
+                        new_action = None
+                        if "victim_actions" in parsed and len(parsed["victim_actions"]) > 0:
+                            new_action = parsed["victim_actions"][0]
+                        elif "name" in parsed:  # Single action format
+                            new_action = parsed
+                        
+                        if new_action:
+                            action_name = new_action.get("name", "").lower().strip()
+                            
+                            # Check uniqueness
+                            if action_name not in [a.get("name", "").lower().strip() for a in actions]:
+                                actions.append(new_action)
+                                existing_names.append(action_name)
+                                print(f"    ✓ Generated unique victim action: {action_name}")
+                                break
+                            else:
+                                print(f"    ✗ Duplicate detected: {action_name}, retrying...")
+                                attempts += 1
+                        else:
+                            attempts += 1
+                    else:
+                        attempts += 1
+                except Exception as e:
+                    print(f"    ✗ Error: {e}")
+                    attempts += 1
+            
+            if attempts >= max_attempts:
+                print(f"    ✗ Failed to generate unique victim action after {max_attempts} attempts")
+        
+        # Save all actions to file
+        output = {"victim_actions": actions}
+        with open(filepath, "w") as f:
+            json.dump(output, f, indent=4)
+        
+        print(f"\n Saved {len(actions)} total victim actions to {filepath}")
+        print(f"  - New actions generated: {num_actions}")
+        print(f"  - Total unique victim actions: {len(actions)}")
+        
+        return actions
 
     
     
 
 def main():
     """Main function to run the environment builder"""
-    ollama_client = OllamaClient()
-    victims_data = ollama_client.generate_actions()
-    # print(victims_data)
+    client = OllamaClient("http://localhost:11434", "llama3.2", "/Users/gracewang/Documents/fraud_coevolution2/llm_config")
+    
+    client.generate_victim_database()
+    client.generate_fraudster_database()
+    client.generate_fraudster_actions_database()
+    client.generate_victim_actions_database()
 
 if __name__ == "__main__":
     main()

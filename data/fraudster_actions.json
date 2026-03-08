@@ -1,0 +1,355 @@
+{
+    "fraudster_actions": [
+        {
+            "name": "phishing_attack",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "fraudsters collect victim information through phishing, data breaches, social media, or malware",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "spearmail_exploitation",
+            "common_channels": [
+                "email"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "social_engineering_impersonation",
+            "common_channels": [
+                "email",
+                "sms",
+                "app",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "spear_email_spoofing",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "unsolicited_contact",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "Fraudsters initiate unsolicited contact with potential victims, often through phishing emails or SMS messages.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "smishing",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "electronic_identity_thief",
+            "common_channels": [
+                "email",
+                "app",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "sim_swap_attack",
+            "common_channels": [
+                "sms",
+                "phone",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim_account",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "email_trickery",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "payment_link_vulnerability",
+            "common_channels": [
+                "email",
+                "sms",
+                "app",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "credential_jacking",
+            "common_channels": [
+                "email",
+                "sms",
+                "app"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "spear_mail_scam",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": " pretexted_communication",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "Uses fake communication to trick victims into revealing sensitive information.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "credential_steal_by_impersonation",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "spear_email_deception",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "social_engineering_ploy",
+            "common_channels": [
+                "email",
+                "sms",
+                "call",
+                "app",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "spear_phishing",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "fake_bank_notice",
+            "common_channels": [
+                "website",
+                "email"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "pharming",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "social_engineer_trickery",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "credential_jockeying",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "phish_email",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "email_spear_ploy",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "...",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": " pretexted_contact",
+            "common_channels": [
+                "email",
+                "sms",
+                "call",
+                "app",
+                "website",
+                "in_person"
+            ],
+            "description": "Attackers use social engineering tactics to build trust with the victim.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "smishing_attack",
+            "common_channels": [
+                "sms",
+                "website"
+            ],
+            "description": "Smishing attack where fraudsters use SMS to trick victims into revealing sensitive information.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        }
+    ]
+}

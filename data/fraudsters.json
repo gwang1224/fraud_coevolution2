@@ -1,94 +1,554 @@
 {
     "fraudsters": [
         {
-            "name": "fraudster1",
+            "name": "james_brown",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster1",
-                "owner": "fraudster1",
-                "bank": "bankofamerica",
-                "balance": 1000
-            }
+                "acc_name": "acc_james_brown",
+                "owner": "james_brown",
+                "bank": "wells_fargo_bank",
+                "balance": 23411
+            },
+            "id": 0
         },
         {
-            "name": "fraudster2",
+            "name": "alexis_mendez",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster2",
-                "owner": "fraudster2",
-                "bank": "wellsfargo",
-                "balance": 900
-            }
+                "acc_name": "acc_alexis_mendez",
+                "owner": "alexis_mendez",
+                "bank": "firstamerican_bank",
+                "balance": 14321
+            },
+            "id": 1
         },
         {
-            "name": "fraudster3",
+            "name": "global_finance_systems_ltd",
+            "entity_type": "business",
             "account": {
-                "acc_name": "acc_fraudster3",
-                "owner": "fraudster3",
-                "bank": "CHASE",
-                "balance": 1100
-            }
+                "acc_name": "acc_global_finance_systems_ltd",
+                "owner": "global_finance_systems_ltd",
+                "bank": "firstnationalbankofamerica",
+                "balance": 23819
+            },
+            "id": 2
         },
         {
-            "name": "fraudster4",
+            "name": "nancy_davis",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster4",
-                "owner": "fraudster4",
-                "bank": "bankofamerica",
-                "balance": 1000
-            }
+                "acc_name": "acc_nancy_davis",
+                "owner": "nancy_davis",
+                "bank": "firststatebank_us",
+                "balance": 23451
+            },
+            "id": 3
         },
         {
-            "name": "fraudster5",
+            "name": "quentin_hall",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster5",
-                "owner": "fraudster5",
-                "bank": "wellsfargo",
-                "balance": 900
-            }
+                "acc_name": "acc_quentin_hall",
+                "owner": "quentin_hall",
+                "bank": "southwest_bancorporation",
+                "balance": 42813
+            },
+            "id": 4
         },
         {
-            "name": "fraudster6",
+            "name": "sophia_watson",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster6",
-                "owner": "fraudster6",
-                "bank": "CHASE",
-                "balance": 1100
-            }
+                "acc_name": "acc_sophia_watson",
+                "owner": "sophia_watson",
+                "bank": "wells_fargo_banking_corp",
+                "balance": 23078
+            },
+            "id": 5
         },
         {
-            "name": "fraudster7",
+            "name": "victoria_jensen",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster7",
-                "owner": "fraudster7",
-                "bank": "bankofamerica",
-                "balance": 1000
-            }
+                "acc_name": "acc_victoria_jensen",
+                "owner": "victoria_jensen",
+                "bank": "citibank_usa",
+                "balance": 43210
+            },
+            "id": 6
         },
         {
-            "name": "fraudster8",
+            "name": "daniela_rodriguez",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster8",
-                "owner": "fraudster8",
-                "bank": "wellsfargo",
-                "balance": 900
-            }
+                "acc_name": "acc_daniela_rodriguez",
+                "owner": "daniela_rodriguez",
+                "bank": "bank_ofamerica",
+                "balance": 42000
+            },
+            "id": 7
         },
         {
-            "name": "fraudster9",
+            "name": "david_parker",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster9",
-                "owner": "fraudster9",
-                "bank": "CHASE",
-                "balance": 1100
-            }
+                "acc_name": "acc_david_parker",
+                "owner": "david_parker",
+                "bank": "central_bank_of_america",
+                "balance": 23542
+            },
+            "id": 8
         },
         {
-            "name": "fraudster10",
+            "name": "cristian_lopez",
+            "entity_type": "individual",
             "account": {
-                "acc_name": "acc_fraudster10",
-                "owner": "fraudster10",
-                "bank": "bankofamerica",
-                "balance": 1000
-            }
+                "acc_name": "acc_cristian_lopez",
+                "owner": "cristian_lopez",
+                "bank": "wells_fargo_banking_service",
+                "balance": 25000
+            },
+            "id": 9
+        },
+        {
+            "name": "elena_andres",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_elena_andres",
+                "owner": "elena_andres",
+                "bank": "us_central_bank",
+                "balance": 24591
+            },
+            "id": 10
+        },
+        {
+            "name": "marlon_diaz",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_marlon_diaz",
+                "owner": "marlon_diaz",
+                "bank": "first_city_bank_of_america",
+                "balance": 42043
+            },
+            "id": 11
+        },
+        {
+            "name": "carlos_garcia",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_carlos_garcia",
+                "owner": "carlos_garcia",
+                "bank": "southwest_banking_corp",
+                "balance": 42131
+            },
+            "id": 12
+        },
+        {
+            "name": "giovanni_benetti",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_giovanni_benetti",
+                "owner": "giovanni_benetti",
+                "bank": "first_national_bank_of_america",
+                "balance": 12344
+            },
+            "id": 13
+        },
+        {
+            "name": "jessica_richards",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_jessica_richards",
+                "owner": "jessica_richards",
+                "bank": "firstnationalbank_ofamerica",
+                "balance": 23129
+            },
+            "id": 14
+        },
+        {
+            "name": "kayla_wilson",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_kayla_wilson",
+                "owner": "kayla_wilson",
+                "bank": "firstnationalbank",
+                "balance": 23456
+            },
+            "id": 15
+        },
+        {
+            "name": "evelyn_harrison",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_evelynharrison",
+                "owner": "evelyn_harrison",
+                "bank": "first_savings_and_loan_corp",
+                "balance": 24513
+            },
+            "id": 16
+        },
+        {
+            "name": "alberto_gonzalez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_alberto_gonzalez",
+                "owner": "alberto_gonzalez",
+                "bank": "us_bank_co",
+                "balance": 14143
+            },
+            "id": 17
+        },
+        {
+            "name": "reginald_ferguson",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_reginaldferguson",
+                "owner": "reginald_ferguson",
+                "bank": "meridian_bank_acct_12345",
+                "balance": 20000
+            },
+            "id": 18
+        },
+        {
+            "name": "victor_leonard",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_victor_leonard",
+                "owner": "victor_leonard",
+                "bank": "bank_of_canada_finance",
+                "balance": 23000
+            },
+            "id": 19
+        },
+        {
+            "name": "karen_sanchez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_karen_sanchez",
+                "owner": "karen_sanchez",
+                "bank": "springfield_bancorp",
+                "balance": 12039
+            },
+            "id": 20
+        },
+        {
+            "name": "amanda_white",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_amandawhite",
+                "owner": "amandawhite",
+                "bank": "first_state_bank",
+                "balance": 21481
+            },
+            "id": 21
+        },
+        {
+            "name": "renato_diaz",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_renato_diaz",
+                "owner": "renato_diaz",
+                "bank": "firstnationalbank",
+                "balance": 42831
+            },
+            "id": 22
+        },
+        {
+            "name": "joseph_morgan",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_josephmorgan",
+                "owner": "joseph_morgan",
+                "bank": "first_national_bank_of_america",
+                "balance": 24042
+            },
+            "id": 23
+        },
+        {
+            "name": "erick_garcia",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_erick_garcia",
+                "owner": "erick_garcia",
+                "bank": "south_central_bank",
+                "balance": 23074
+            },
+            "id": 24
+        },
+        {
+            "name": "valerie_hall",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_valeriehall",
+                "owner": "valerie_hall",
+                "bank": "wells_fargo_bank",
+                "balance": 40000
+            },
+            "id": 25
+        },
+        {
+            "name": "michael_taylor",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_michael_taylor",
+                "owner": "michael_taylor",
+                "bank": "springfield_bank",
+                "balance": 35000
+            },
+            "id": 26
+        },
+        {
+            "name": "ramiro_valdez",
+            "entity_type": "criminal_network",
+            "account": {
+                "acc_name": "acc_ramiro_valdez",
+                "owner": "ramiro_valdez",
+                "bank": "westpac_banking_corporate",
+                "balance": 12341
+            },
+            "id": 27
+        },
+        {
+            "name": "antonio_reyes",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_antonioReyes",
+                "owner": "antonio_reyes",
+                "bank": "first_city_bank",
+                "balance": 30000
+            },
+            "id": 28
+        },
+        {
+            "name": "pierre_de_la_salle",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_pierre_de_la_salle",
+                "owner": "pierre_de_la_salle",
+                "bank": "banque_francaise_du_nord",
+                "balance": 21947
+            },
+            "id": 29
+        },
+        {
+            "name": "frank_kim",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_frankskim",
+                "owner": "frank_kim",
+                "bank": "citibankamerica",
+                "balance": 23491
+            },
+            "id": 30
+        },
+        {
+            "name": "santiago_ramos",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_santiago_ramos",
+                "owner": "santiago_ramos",
+                "bank": "community_bank_of_america",
+                "balance": 43011
+            },
+            "id": 31
+        },
+        {
+            "name": "global_trading_llc",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_global_trading_llc",
+                "owner": "global_trading_llc",
+                "bank": "bank_of_europe",
+                "balance": 20000
+            },
+            "id": 32
+        },
+        {
+            "name": "lucas_williams",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_lucas_williams",
+                "owner": "lucas_williams",
+                "bank": "westpac_banking_systems",
+                "balance": 14321
+            },
+            "id": 33
+        },
+        {
+            "name": "julian_fowler",
+            "entity_type": "criminal_network",
+            "account": {
+                "acc_name": "acc_julian_fowler",
+                "owner": "julian_fowler",
+                "bank": "bank_of_illinois",
+                "balance": 12000
+            },
+            "id": 34
+        },
+        {
+            "name": "elizabet_garcia",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_elizabetgarcia",
+                "owner": "elizabet_garcia",
+                "bank": "community_first_bank",
+                "balance": 23587
+            },
+            "id": 35
+        },
+        {
+            "name": "jessica_martinez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_jessica_martinez",
+                "owner": "jessica_martinez",
+                "bank": "wells_fargo_bank_of_america",
+                "balance": 42164
+            },
+            "id": 36
+        },
+        {
+            "name": "sabrina_reed",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_sabrina_reed",
+                "owner": "sabrina_reed",
+                "bank": "usbank_account",
+                "balance": 24043
+            },
+            "id": 37
+        },
+        {
+            "name": "jovan_rodriguez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_jovan_rodriguez",
+                "owner": "jovan_rodriguez",
+                "bank": "southwest_bank",
+                "balance": 41212
+            },
+            "id": 38
+        },
+        {
+            "name": "francisco_delgado",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_francisco_delgado",
+                "owner": "francisco_delgado",
+                "bank": "bank_of_cambodia",
+                "balance": 21985
+            },
+            "id": 39
+        },
+        {
+            "name": "global_marketing_co",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_global_marketing_co",
+                "owner": "global_marketing_co",
+                "bank": "first_west_bank",
+                "balance": 25000
+            },
+            "id": 40
+        },
+        {
+            "name": "cristobal_sanchez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_cristobal_sanchez",
+                "owner": "cristobal_sanchez",
+                "bank": "pacific bank corp",
+                "balance": 23456
+            },
+            "id": 41
+        },
+        {
+            "name": "gustavo_perez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_gustavo_perez",
+                "owner": "gustavo_perez",
+                "bank": "banca_nacional_de_chile_s_a",
+                "balance": 23053
+            },
+            "id": 42
+        },
+        {
+            "name": "yolanda_stevens",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_yolandastevens",
+                "owner": "yolanda_stevens",
+                "bank": "firstnationalbank_usd",
+                "balance": 40000
+            },
+            "id": 43
+        },
+        {
+            "name": "ivan_kolesnikov",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_ivan_kolesnikov",
+                "owner": "ivan_kolesnikov",
+                "bank": "continental_bank_of_america",
+                "balance": 42310
+            },
+            "id": 44
+        },
+        {
+            "name": "tomas_hernandez",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_tomas_hernandez",
+                "owner": "tomas_hernandez",
+                "bank": "citizens_bank_of_kansas_city",
+                "balance": 24585
+            },
+            "id": 45
+        },
+        {
+            "name": "miles_wilson",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_miles_wilson",
+                "owner": "miles_wilson",
+                "bank": "suntrust_bank",
+                "balance": 24991
+            },
+            "id": 46
+        },
+        {
+            "name": "marcelo_garcia",
+            "entity_type": "business",
+            "account": {
+                "acc_name": "acc_marcelo_garcia",
+                "owner": "marcelo_garcia",
+                "bank": "southwest_finance_bank",
+                "balance": 23087
+            },
+            "id": 47
+        },
+        {
+            "name": "felipe_sanchez",
+            "entity_type": "criminal_network",
+            "account": {
+                "acc_name": "acc_felipe_sanchez",
+                "owner": "felipe_sanchez",
+                "bank": "southwestern_bancorporation",
+                "balance": 27581
+            },
+            "id": 48
+        },
+        {
+            "name": "jean_pierre_soubiron",
+            "entity_type": "individual",
+            "account": {
+                "acc_name": "acc_jean_pierre_soubiron",
+                "owner": "jean_pierre_soubiron",
+                "bank": "federal_bank_of_new_york",
+                "balance": 23519
+            },
+            "id": 49
         }
     ]
 }

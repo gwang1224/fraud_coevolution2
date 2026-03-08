@@ -3,8 +3,9 @@ import json
 import os
 import random
 import requests
+from datetime import datetime
 from dotenv import load_dotenv
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 
 load_dotenv()
@@ -315,7 +316,7 @@ Choose the action name (exact match) that best advances towards successfully tra
 Consider the action history to avoid repeating actions.
 Return ONLY the action name, no explanation or additional text.
 """
-        print(prompt)
+        # print(prompt)
         try:
             response = requests.post(
                 "http://localhost:11434/api/generate",
@@ -531,21 +532,114 @@ Return ONLY the action name, no explanation or additional text.
         
         return state.history
 
+    def generate_multiple_sequences(self, count: int, max_steps: int = 10) -> List[Dict]:
+        """
+        Generate multiple sequences and return them as a list of dictionaries
+        
+        Args:
+            count: Number of sequences to generate
+            max_steps: Maximum steps per sequence
+        
+        Returns:
+            List of sequence dictionaries with metadata
+        """
+        sequences = []
+        
+        for i in range(count):
+            print(f"\n{'='*60}")
+            print(f"Generating sequence {i+1}/{count}")
+            print(f"{'='*60}")
+            
+            try:
+                sequence = self.generate_sequence(max_steps=max_steps)
+                
+                # Convert Action objects to dictionaries
+                sequence_dict = [
+                    {
+                        "entity1": action.entity1,
+                        "action": action.action,
+                        "entity2": action.entity2,
+                        "channel": action.channel
+                    }
+                    for action in sequence
+                ]
+                
+                # Determine if sequence was successful (has transfer action)
+                successful = any("transfer" in action.action.lower() for action in sequence)
+                
+                sequences.append({
+                    "sequence_id": i + 1,
+                    "timestamp": datetime.now().isoformat(),
+                    "actions": sequence_dict,
+                    "action_count": len(sequence),
+                    "successful": successful
+                })
+                
+                print(f"✓ Sequence {i+1} completed: {len(sequence)} actions")
+                
+            except Exception as e:
+                print(f"✗ Error generating sequence {i+1}: {e}")
+                sequences.append({
+                    "sequence_id": i + 1,
+                    "timestamp": datetime.now().isoformat(),
+                    "actions": [],
+                    "action_count": 0,
+                    "successful": False,
+                    "error": str(e)
+                })
+        
+        return sequences
+
+    def save_sequences_to_file(self, sequences: List[Dict], filename: str = "sequences.json") -> None:
+        """
+        Save sequences to a JSON file with metadata
+        
+        Args:
+            sequences: List of sequence dictionaries
+            filename: Output filename
+        """
+        output = {
+            "metadata": {
+                "total_sequences": len(sequences),
+                "generated_at": datetime.now().isoformat(),
+                "successful_sequences": sum(1 for s in sequences if s.get("successful", False)),
+                "total_actions": sum(s.get("action_count", 0) for s in sequences),
+                "average_actions_per_sequence": sum(s.get("action_count", 0) for s in sequences) / len(sequences) if sequences else 0
+            },
+            "sequences": sequences
+        }
+        
+        with open(filename, "w") as f:
+            json.dump(output, f, indent=2)
+        
+        print(f"\n✓ Saved {len(sequences)} sequences to {filename}")
+        print(f"  - Successful: {output['metadata']['successful_sequences']}")
+        print(f"  - Total actions: {output['metadata']['total_actions']}")
+        print(f"  - Average actions per sequence: {output['metadata']['average_actions_per_sequence']:.2f}")
+
     
-
-
 
 def main():
     SequenceBuilder = Neo4jSequenceBuilder()
-
-    # Generate a fraud sequence
-    sequence = SequenceBuilder.generate_sequence()
     
-    print(f"\n=== Generated Sequence ({len(sequence)} actions) ===")
-    for i, action in enumerate(sequence, 1):
-        print(f"{i}. {action.entity1} -> {action.action} -> {action.entity2} via {action.channel}")
+    try:
+        # Generate 100 sequences
+        print("Generating 100 fraud sequences...")
+        sequences = SequenceBuilder.generate_multiple_sequences(count=100, max_steps=10)
+        
+        # Save to file
+        SequenceBuilder.save_sequences_to_file(sequences, filename="sequences_100.json")
+        
+        # Optionally, print summary of first sequence
+        if sequences and sequences[0].get("actions"):
+            print(f"\n=== First Sequence Preview ({sequences[0]['action_count']} actions) ===")
+            for i, action in enumerate(sequences[0]["actions"][:5], 1):  # Show first 5
+                print(f"{i}. {action['entity1']} -> {action['action']} -> {action['entity2']} via {action['channel']}")
+            if sequences[0]['action_count'] > 5:
+                print(f"... and {sequences[0]['action_count'] - 5} more actions")
     
-    SequenceBuilder.close()
+    finally:
+        SequenceBuilder.close()
 
 if __name__ == "__main__":
     main()
