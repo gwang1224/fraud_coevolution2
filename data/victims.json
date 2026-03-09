@@ -1,506 +1,255 @@
 {
     "victims": [
         {
-            "name": "sarah_smith",
+            "name": "victim_1",
             "account": {
-                "acc_name": "acc_sarah_smith",
-                "owner": "sarah_smith",
-                "bank": "bank_of_america",
-                "balance": 25000
+                "acc_name": "acc_victim_1",
+                "owner": "victim_1",
+                "bank": "bbva_frb",
+                "balance": 30000
             },
             "id": 0
         },
         {
-            "name": "nicholas_baker",
+            "name": "victims_frank",
             "account": {
-                "acc_name": "acc_nicholas_baker",
-                "owner": "nicholas_baker",
+                "acc_name": "acc_victimsfrank",
+                "owner": "victims_frank",
                 "bank": "firstnationalbank",
-                "balance": 25000
+                "balance": 40000
             },
             "id": 1
         },
         {
-            "name": "george_ferguson",
+            "name": "jessie_parks",
             "account": {
-                "acc_name": "acc_george_ferguson",
-                "owner": "george_ferguson",
-                "bank": "usbankinc",
-                "balance": 35000
+                "acc_name": "acc_jessieparks",
+                "owner": "jessie_parks",
+                "bank": "bancenorthamerica",
+                "balance": 12321
             },
             "id": 2
         },
         {
-            "name": "michael_blackburn",
+            "name": "donna_johnson",
             "account": {
-                "acc_name": "acc_michael_blackburn",
-                "owner": "michael_blackburn",
-                "bank": "citibank-us",
-                "balance": 24310
+                "acc_name": "acc_donna_johnson",
+                "owner": "donna_johnson",
+                "bank": "bank_of_america",
+                "balance": 30000
             },
             "id": 3
         },
         {
-            "name": "franklyn_fletcher",
+            "name": "emily_smith",
             "account": {
-                "acc_name": "acc_francis_fletcher",
-                "owner": "franklyn_fletcher",
-                "bank": "firstnationalbankofamerica",
-                "balance": 24011
+                "acc_name": "acc_emily_smith",
+                "owner": "emily_smith",
+                "bank": "fidelity",
+                "balance": 14210
             },
             "id": 4
         },
         {
-            "name": "kayla_grimes",
+            "name": "amy_brown",
             "account": {
-                "acc_name": "acc_kayla_grimes",
-                "owner": "kayla_grimes",
-                "bank": "bankofamericausdollar",
-                "balance": 21981
+                "acc_name": "acc_amy_brown",
+                "owner": "amy_brown",
+                "bank": "central_bank",
+                "balance": 30000
             },
             "id": 5
         },
         {
-            "name": "joseph_garcia",
+            "name": "kayla_hamilton",
             "account": {
-                "acc_name": "acc_joseph_garcia",
-                "owner": "joseph_garcia",
-                "bank": "firstnationalbank",
-                "balance": 21914
+                "acc_name": "acc_kayla_hamilton",
+                "owner": "kayla_hamilton",
+                "bank": "firstmeridianbank",
+                "balance": 42111
             },
             "id": 6
         },
         {
-            "name": "kyle_harris",
+            "name": "natalie_wilson",
             "account": {
-                "acc_name": "acc_kyleharris",
-                "owner": "kyle_harris",
-                "bank": "boston_pension_fund",
-                "balance": 40000
+                "acc_natalie_wilson": {
+                    "owner": "natalie_wilson",
+                    "bank": "firstmerchantserviceinc",
+                    "balance": 27022
+                }
             },
             "id": 7
         },
         {
-            "name": "peter_chen",
+            "name": "taylor_morris",
             "account": {
-                "acc_name": "acc_peter_chen",
-                "owner": "peter_chen",
-                "bank": "southwest_bank",
-                "balance": 12321
+                "acc_name": "acc_taylor_morris",
+                "owner": "taylor_morris",
+                "bank": "bank_of_america",
+                "balance": 12345
             },
             "id": 8
         },
         {
-            "name": "samantha_king",
+            "name": "erin_tate",
             "account": {
-                "acc_name": "acc_samanthaking",
-                "owner": "samantha_king",
-                "bank": "wellsfargo",
-                "balance": 12321
+                "acc_name": "acc_erin_tate",
+                "owner": "erin_tate",
+                "bank": "boston_pacific_bancorp",
+                "balance": 21016
             },
             "id": 9
         },
         {
-            "name": "julian_benson",
+            "name": "samantha_white",
             "account": {
-                "acc_name": "acc_julian_benson",
-                "owner": "julian_benson",
-                "bank": "hsbc",
-                "balance": 43000
+                "acc_name": "acc_samanthawhite",
+                "owner": "samantha white",
+                "bank": "community bank corporation",
+                "balance": 25000
             },
             "id": 10
         },
         {
-            "name": "cody_walker",
+            "name": "zoe_kelly",
             "account": {
-                "acc_name": "acc_codywalker",
-                "owner": "cody_walker",
-                "bank": "bancetrust",
-                "balance": 21000
+                "acc_name": "acc_zoe_kelly",
+                "owner": "zoe_kelly",
+                "bank": "firstnationalbank",
+                "balance": 27000
             },
             "id": 11
         },
         {
-            "name": "natalie_thompson",
+            "name": "maya_cameron",
             "account": {
-                "acc_name": "acc_nataliethompson",
-                "owner": "natalie_thompson",
-                "bank": "wells_fargo",
-                "balance": 42510
+                "acc_name": "acc_maya_cameron",
+                "owner": "maya_cameron",
+                "bank": "bank_of_america",
+                "balance": 30000
             },
             "id": 12
         },
         {
-            "name": "sophia_fisher",
+            "name": "megan_chen",
             "account": {
-                "acc_name": "acc_sophia_fisher",
-                "owner": "sophia_fisher",
-                "bank": "wellsfargo",
-                "balance": 21987
+                "acc_name": "acc_megan_chen",
+                "owner": "megan_chen",
+                "bank": "hawaiianamericanbank",
+                "balance": 23032
             },
             "id": 13
         },
         {
-            "name": "brendan_simpson",
+            "name": "maddison_rice",
             "account": {
-                "acc_name": "acc_brendansimpson",
-                "owner": "brendan_simpson",
-                "bank": "firstwestbank",
-                "balance": 23542
+                "acc_name": "acc_maddison_rice",
+                "owner": "maddison_rice",
+                "bank": "firstmeridianbank",
+                "balance": 12310
             },
             "id": 14
         },
         {
-            "name": "logan_wilson",
+            "name": "alexandra_black",
             "account": {
-                "acc_name": "acc_logan_wilson",
-                "owner": "logan_wilson",
-                "bank": "centurybank",
-                "balance": 41623
+                "acc_name": "acc_alexandra_black",
+                "owner": "alexandra_black",
+                "bank": "springfield_state_bank",
+                "balance": 25000
             },
             "id": 15
         },
         {
-            "name": "carol_harper",
+            "name": "jessie_gibson",
             "account": {
-                "acc_name": "acc_carolharper",
-                "owner": "carol_harper",
-                "bank": "pnc_bank",
-                "balance": 30000
+                "acc_name": "acc_jessiegibson",
+                "owner": "jessie_gibson",
+                "bank": "wellsfargo",
+                "balance": 12000
             },
             "id": 16
         },
         {
-            "name": "marcellus_davis",
+            "name": "sarah_turner",
             "account": {
-                "acc_name": "acc_marcellusdavis",
-                "owner": "marcellus_davis",
-                "bank": "firstfinancialbank",
-                "balance": 30000
+                "acc_name": "acc_sarah_turner",
+                "owner": "sarah_turner",
+                "bank": "bank_of_america",
+                "balance": 12000
             },
             "id": 17
         },
         {
-            "name": "shelby_walker",
+            "name": "laura_fowler",
             "account": {
-                "acc_shelbywalker": {
-                    "owner": "shelby_walker",
-                    "bank": "firststate_bank",
-                    "balance": 30000
-                }
+                "acc_name": "acc_laura_fowler",
+                "owner": "laura_fowler",
+                "bank": "first national bank",
+                "balance": 12344
             },
             "id": 18
         },
         {
-            "name": "william_taylor",
+            "name": "keely_henderson",
             "account": {
-                "acc_name": "acc_william_taylor",
-                "owner": "william_taylor",
-                "bank": "bank_ofamerica",
-                "balance": 24067
+                "acc_name": "acc_keelyhenderson",
+                "owner": "keely_henderson",
+                "bank": "firstbank",
+                "balance": 20000
             },
             "id": 19
         },
         {
-            "name": "sharon_morgan",
+            "name": "danielle_williams",
             "account": {
-                "acc_name": "acc_sharonmorgan",
-                "owner": "sharon_morgan",
-                "bank": "wellsfargo",
-                "balance": 30000
+                "acc_name": "acc_danielle_williams",
+                "owner": "danielle_williams",
+                "bank": "firstbank",
+                "balance": 24310
             },
             "id": 20
         },
         {
-            "name": "rachel_perry",
+            "name": "kaitlyn_bennett",
             "account": {
-                "acc_name": "acc_rachel_perry",
-                "owner": "rachel_perry",
-                "bank": "bank_of_america",
-                "balance": 21000
+                "acc_name": "acc_kaitlynbennett",
+                "owner": "kaitlyn_bennett",
+                "bank": "charlotte_bank",
+                "balance": 23542
             },
             "id": 21
         },
         {
-            "name": "susan_chen",
+            "name": "sophia_jones",
             "account": {
-                "acc_susan_chen": {
-                    "owner": "susan_chen",
-                    "bank": "firstnationalbank",
-                    "balance": 30000
-                }
+                "acc_name": "acc_sophia_jones",
+                "owner": "sophia_jones",
+                "bank": "firstnationalbank",
+                "balance": 21900
             },
             "id": 22
         },
         {
-            "name": "david_kim",
+            "name": "kiera_sanders",
             "account": {
-                "acc_name": "acc_david_kim",
-                "owner": "david_kim",
-                "bank": "pnc_bank",
-                "balance": 23017
+                "acc_name": "acc_kiera_sanders",
+                "owner": "kiera_sanders",
+                "bank": "uscentralbank",
+                "balance": 40000
             },
             "id": 23
         },
         {
-            "name": "natalie_owens",
+            "name": "jade_davis",
             "account": {
-                "acc_name": "acc_natalie_owens",
-                "owner": "natalie_owens",
-                "bank": "capital_one",
-                "balance": 20000
+                "acc_name": "acc_jade_davis",
+                "owner": "jade_davis",
+                "bank": "wellsfargo",
+                "balance": 23000
             },
             "id": 24
-        },
-        {
-            "name": "eric_garcia",
-            "account": {
-                "acc_name": "acc_eric_garcia",
-                "owner": "eric_garcia",
-                "bank": "wellsfargo",
-                "balance": 23000
-            },
-            "id": 25
-        },
-        {
-            "name": "megan_jackson",
-            "account": {
-                "acc_name": "acc_meganchaston",
-                "owner": "megan_jackson",
-                "bank": "citibankglobal",
-                "balance": 24683
-            },
-            "id": 26
-        },
-        {
-            "name": "charles_sutton",
-            "account": {
-                "acc_name": "acc_charles_sutton",
-                "owner": "charles_sutton",
-                "bank": "wellsfargo",
-                "balance": 25000
-            },
-            "id": 27
-        },
-        {
-            "name": "daphne_brown",
-            "account": {
-                "acc_name": "acc_daphne_brown",
-                "owner": "daphne_brown",
-                "bank": "bank_of_america",
-                "balance": 25000
-            },
-            "id": 28
-        },
-        {
-            "name": "lauryn_hall",
-            "account": {
-                "acc_name": "acc_laurynhall",
-                "owner": "lauryn_hall",
-                "bank": "statebankofamerica",
-                "balance": 27000
-            },
-            "id": 29
-        },
-        {
-            "name": "leonardo_flores",
-            "account": {
-                "acc_name": "acc_leonardo_flores",
-                "owner": "leonardo_flores",
-                "bank": "first nacional bank",
-                "balance": 27000
-            },
-            "id": 30
-        },
-        {
-            "name": "maya_reed",
-            "account": {
-                "acc_name": "acc_maya_reed",
-                "owner": "maya_reed",
-                "bank": "wellsfargo",
-                "balance": 23456
-            },
-            "id": 31
-        },
-        {
-            "name": "alex_anderson",
-            "account": {
-                "acc_name": "acc_alexanderson",
-                "owner": "alex_anderson",
-                "bank": "wells_fargo",
-                "balance": 40000
-            },
-            "id": 32
-        },
-        {
-            "name": "kevin_burns",
-            "account": {
-                "acc_name": "acc_kevinburns",
-                "owner": "kevin_burns",
-                "bank": "bank_of_america",
-                "balance": 27000
-            },
-            "id": 33
-        },
-        {
-            "name": "keenan_grant",
-            "account": {
-                "acc_name": "acc_keengrant",
-                "owner": "keenan_grant",
-                "bank": "wellsfargo",
-                "balance": 42000
-            },
-            "id": 34
-        },
-        {
-            "name": "taylor_rodriguez",
-            "account": {
-                "acc_name": "acc_taylor_rodriguez",
-                "owner": "taylor_rodriguez",
-                "bank": "santander_banca",
-                "balance": 23000
-            },
-            "id": 35
-        },
-        {
-            "name": "kaitlyn_chavez",
-            "account": {
-                "acc_name": "acc_kaitlynchavez",
-                "owner": "kaitlyn_chavez",
-                "bank": "pacific national bank",
-                "balance": 21391
-            },
-            "id": 36
-        },
-        {
-            "name": "adam_sanchez",
-            "account": {
-                "acc_name": "acc_adam_sanchez",
-                "owner": "adam_sanchez",
-                "bank": "firstmerchantservices",
-                "balance": 12300
-            },
-            "id": 37
-        },
-        {
-            "name": "tobias_pritchard",
-            "account": {
-                "acc_name": "acc_tobias_pritchard",
-                "owner": "tobias_pritchard",
-                "bank": "sean_morris",
-                "balance": 27511
-            },
-            "id": 38
-        },
-        {
-            "name": "isaiah_west",
-            "account": {
-                "acc_name": "acc_isaiah_west",
-                "owner": "isaiah_west",
-                "bank": "firstmeridianbank",
-                "balance": 24367
-            },
-            "id": 39
-        },
-        {
-            "name": "trevor_fleming",
-            "account": {
-                "acc_name": "acc_trevor_fleming",
-                "owner": "trevor_fleming",
-                "bank": "centurybankus",
-                "balance": 40000
-            },
-            "id": 40
-        },
-        {
-            "name": "margaret_watson",
-            "account": {
-                "acc_name": "acc_margaretwatson",
-                "owner": "margaret_watson",
-                "bank": "firstnationalbank",
-                "balance": 23451
-            },
-            "id": 41
-        },
-        {
-            "name": "tobias_garcia",
-            "account": {
-                "acc_name": "acc_tobiasgarcia",
-                "owner": "tobias_garcia",
-                "bank": "bank_of_america",
-                "balance": 28000
-            },
-            "id": 42
-        },
-        {
-            "name": "mario_garcia",
-            "account": {
-                "acc_name": "acc_mario_garcia",
-                "owner": "mario_garcia",
-                "bank": "bank_of_america",
-                "balance": 24000
-            },
-            "id": 43
-        },
-        {
-            "name": "jessica_gonzalez",
-            "account": {
-                "acc_name": "acc_jessicagonzalez",
-                "owner": "jessica_gonzalez",
-                "bank": "firstnationalbank",
-                "balance": 24993
-            },
-            "id": 44
-        },
-        {
-            "name": "william_jenkins",
-            "account": {
-                "acc_name": "acc_william_jenkins",
-                "owner": "william_jenkins",
-                "bank": "firstnationalbank",
-                "balance": 24087
-            },
-            "id": 45
-        },
-        {
-            "name": "david_morgan",
-            "account": {
-                "acc_name": "acc_david_morgan",
-                "owner": "david_morgan",
-                "bank": "wells_fargo_bank",
-                "balance": 24034
-            },
-            "id": 46
-        },
-        {
-            "name": "isaiah_hall",
-            "account": {
-                "acc_name": "acc_isaiahhall",
-                "owner": "isaiah_hall",
-                "bank": "usfirstfinancialservices",
-                "balance": 21942
-            },
-            "id": 47
-        },
-        {
-            "name": "jessica_harrison",
-            "account": {
-                "acc_name": "acc_jessicaharrison",
-                "owner": "jessica_harrison",
-                "bank": "wellsfargo",
-                "balance": 3200
-            },
-            "id": 48
-        },
-        {
-            "name": "victoria_jenkins",
-            "account": {
-                "acc_name": "acc_victoriajenkins",
-                "owner": "victoria_jenkins",
-                "bank": "wellsfargo",
-                "balance": 23014
-            },
-            "id": 49
         }
     ]
 }

@@ -2,6 +2,8 @@ from neo4j import GraphDatabase
 import json
 import os
 from dotenv import load_dotenv
+from pathlib import Path
+
 
 load_dotenv()
 
@@ -10,9 +12,11 @@ NEO4J_USERNAME = os.getenv("NEO4J_USERNAME")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 
 class Neo4jApp:
-    def __init__(self, uri, user, password):
+    def __init__(self, uri, user, password, database_path):
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
-        self.driver.verify_connectivity() # Ensures a working connection
+        self.driver.verify_connectivity()
+        self.db_path = Path(database_path)
+
 
     def close(self):
         """Close the driver connection when done."""
@@ -24,7 +28,7 @@ class Neo4jApp:
         nodes_deleted_count = self.driver.execute_query(query)
         print(f"Deleted {nodes_deleted_count} nodes.")
 
-    def add_entity_acc_nodes(self, file: str):
+    def add_entity_acc_nodes(self, file_name: str):
         """
         Add victim accounts to the graph database
         
@@ -32,8 +36,8 @@ class Neo4jApp:
         :param label: label of the node
         :type label: str
         """
-        label = "victims" if "victim" in file.lower() else "fraudsters"
-        with open(file, 'r') as file:
+        label = "victims" if "victim" in file_name.lower() else "fraudsters"
+        with open(self.db_path / file_name, 'r') as file:
             data = json.load(file)
             for person in data[label]:
                 query = f"""
@@ -60,15 +64,13 @@ class Neo4jApp:
                 print(result)
                 print(f"Created Person: {result[0]['name']}, Created Account: {result[0]['acc_name']}")
     
-    def add_actions_nodes(self, file):
-        with open(file, 'r') as file:
-            data = json.load(file)
-            victim_actions = data["victim_actions"]
-            fraudster_actions = data["fraudster_actions"]
+    def add_fraudster_actions_nodes(self, file_name):
+        with open(self.db_path / file_name, 'r') as file:
+            data = json.load(file)['fraudster_actions']
             
             total_actions = 0
 
-            for faction in fraudster_actions:
+            for faction in data:
                 query = """
                     CREATE (a:action {action: $action, channels: $channels, description: $description, stage: $stage, initiator: $initiator, target: $target, compromises_account: $compromises_account, is_terminal: $is_terminal})
                     WITH a
@@ -90,7 +92,15 @@ class Neo4jApp:
                 )
                 total_actions += 1
 
-            for vaction in victim_actions:
+            print("Total actions added to graph: " + str(total_actions))
+
+    def add_victim_actions_nodes(self, file_name):
+        with open(self.db_path / file_name, 'r') as file:
+            data = json.load(file)["victim_actions"]
+            
+            total_actions = 0
+
+            for vaction in data:
                 query = """
                     CREATE (a:action {action: $action, channels: $channels, description: $description, stage: $stage, initiator: $initiator, target: $target, is_terminal: $is_terminal})
                     WITH a
@@ -117,11 +127,12 @@ class Neo4jApp:
             
     
 def main():
-    neo4j = Neo4jApp(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD)
+    neo4j = Neo4jApp(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, "data/")
     neo4j.delete_all_nodes()
     neo4j.add_entity_acc_nodes("victims.json")
     neo4j.add_entity_acc_nodes("fraudsters.json")
-    neo4j.add_actions_nodes("actions.json")
+    neo4j.add_fraudster_actions_nodes("fraudster_actions.json")
+    neo4j.add_victim_actions_nodes("victim_actions.json")
 
 
 if __name__ == "__main__":

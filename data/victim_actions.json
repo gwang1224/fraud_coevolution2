@@ -6,285 +6,219 @@
                 "email",
                 "website"
             ],
-            "description": "The victim submits sensitive personal or financial information to a scammer claiming to be from their bank or institution.",
+            "description": "The victim provides sensitive information such as login credentials or OTP codes to a scammer claiming to be from the bank.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
             "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "report_phishing_email",
+            "common_channels": [
+                "email"
+            ],
+            "description": "Report phishing email to the bank's security team.",
+            "stage": "RECON",
+            "initiator": "victim",
+            "target": "bank",
             "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "provide_unverified_identity_document",
+            "name": "enter_malicious_webpage",
             "common_channels": [
                 "email",
                 "website"
             ],
-            "description": "The victim provides their identity documents to a person claiming to be from the bank.",
-            "stage": "TRUST_BUILDING",
+            "description": "The victim opens or interacts with a fraudulent webpage controlled by the attacker, which may attempt to capture login credentials or other sensitive information.",
+            "stage": "RECON",
             "initiator": "victim",
             "target": "fraudster",
             "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "share_confidential_banking_details",
+            "name": "reveal_payment_details",
+            "common_channels": [
+                "email",
+                "website"
+            ],
+            "description": "The victim shares payment details such as card numbers, account numbers, or payment credentials with a scammer posing as a trusted party.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "provide_otp_authentication",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "The victim provides a one-time password (OTP) or authentication code sent by their bank to someone impersonating a legitimate service representative.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "share_account_credentials",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "A victim shares their account login credentials with an individual claiming to be from the bank.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "click_on_insecure_link",
+            "common_channels": [
+                "email",
+                "sms",
+                "website",
+                "app"
+            ],
+            "description": "Clicking on a suspicious link to gain access to personal information.",
+            "stage": "RECON",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "accept_unsolicited_payment_request",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "The victim accepts a payment request sent by a fraudster through a fast payment app or messaging channel without verifying its legitimacy.",
+            "stage": "RECON",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "validate_bank_staff_claim",
+            "common_channels": [
+                "email",
+                "call"
+            ],
+            "description": "The victim trusts and confirms the identity of a scammer who claims to be a bank employee, making them more likely to share sensitive account information.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "submit_vulnerable_account_details",
+            "common_channels": [
+                "email",
+                "app"
+            ],
+            "description": "Victim submits sensitive account information to unknown sender",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "expose_vulnerabilities",
             "common_channels": [
                 "email",
                 "app",
                 "website"
             ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster_account",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "reveal_vulnerable_account_info",
-            "common_channels": [
-                "email",
-                "app"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "submit_financial_aid_request",
-            "common_channels": [
-                "email",
-                "app"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "expose_account_credentials",
-            "common_channels": [
-                "email",
-                "call",
-                "app"
-            ],
-            "description": "The victim exposes their account credentials to the fraudster through a phone call or email.",
+            "description": "The victim unknowingly reveals personal habits, account usage details, or other exploitable information that helps the fraudster plan further attacks.",
             "stage": "RECON",
             "initiator": "victim",
             "target": "fraudster",
-            "compromises_account": true,
+            "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "enter_weak_password",
+            "name": "use_trusted_service_to_send_funds",
             "common_channels": [
                 "email",
-                "sms",
-                "app"
-            ],
-            "description": "The victim enters a weak password for an online account, making it easier for the fraudster to access.",
-            "stage": "RECON",
-            "initiator": "victim",
-            "target": "fraudster_account",
-            "compromises_account": true,
-            "is_terminal": false
-        },
-        {
-            "name": "enter_prepaid_card_pin",
-            "common_channels": [
-                "sms",
                 "website"
             ],
-            "description": "...",
+            "description": "The victim uses a legitimate payment service to send money to an account controlled by the fraudster, believing the transaction is legitimate.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
-            "target": "fraudster_account",
-            "compromises_account": false,
+            "target": "fraudster",
+            "compromises_account": true,
             "is_terminal": false
         },
         {
-            "name": "report_unfamiliar_payment_requests",
+            "name": "make_unverified_payment",
             "common_channels": [
                 "email",
+                "sms",
                 "call"
             ],
-            "description": "...",
+            "description": "The victim sends money to an account without verifying the recipient's identity or legitimacy.",
             "stage": "RECON",
             "initiator": "victim",
-            "target": "merchant",
+            "target": "fraudster_account",
             "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "enter_malicious_login_page",
-            "common_channels": [
-                "email",
-                "sms",
-                "app"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "use_insecure_network_for_phone_calls",
-            "common_channels": [
-                "call",
-                "in_person"
-            ],
-            "description": "A victim uses an insecure network to make or receive phone calls, potentially allowing fraudsters to intercept sensitive information.",
-            "stage": "RECON",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "validate_otp_with_fraudster",
-            "common_channels": [
-                "email",
-                "call"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "reveal_account_security_questions",
-            "common_channels": [
-                "email",
-                "sms",
-                "website"
-            ],
-            "description": "The victim receives an email with account security questions and answers, making it easier for the fraudster to access their account.",
-            "stage": "RECON",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "reveal_account_credentials",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": true,
-            "is_terminal": false
-        },
-        {
-            "name": "click_on_phishing_link",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "click_on_malicious_payment_request",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "enter_unverified_login_page",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "make_impulsive_payment",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "utilize_insecure_email_channels",
-            "common_channels": [
-                "email",
-                "website"
-            ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
-            "initiator": "victim",
-            "target": "fraudster",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "provide_banking_account_details_to_stranger",
+            "name": "initiate_unsolicited_transfer",
             "common_channels": [
                 "email",
                 "sms"
             ],
-            "description": "Victim provides their banking account information to an unknown individual claiming to be a bank representative.",
+            "description": "The victim initiates a transfer after being persuaded by a fraudster, believing the payment is required or urgent.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
-            "target": "fraudster",
+            "target": "fraudster_account",
             "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "fill_out_unsecured_contact_form",
+            "name": "reveal_banking_credentials",
             "common_channels": [
                 "email",
                 "website"
             ],
-            "description": "...",
+            "description": "The victim provides banking login information such as usernames, passwords, or authentication details to the fraudster.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
             "target": "fraudster",
-            "compromises_account": false,
+            "compromises_account": true,
             "is_terminal": false
         },
         {
-            "name": "submit_account_access_request",
+            "name": "expose_account_balance",
+            "common_channels": [
+                "email",
+                "call"
+            ],
+            "description": "The victim reveals the amount of money available in their account, giving the fraudster information about potential targets for fraud.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "validate_bank_staff_claimed_information",
             "common_channels": [
                 "email",
                 "website"
             ],
-            "description": "...",
+            "description": "The victim confirms or repeats account information to someone pretending to be bank staff, believing the interaction is legitimate.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
             "target": "fraudster",
@@ -292,12 +226,94 @@
             "is_terminal": false
         },
         {
-            "name": "disclose_identity_documents",
+            "name": "submit_private_financial_data",
+            "common_channels": [
+                "email",
+                "app",
+                "website"
+            ],
+            "description": "Providing personal and financial information to a suspicious individual claiming to be from the victim's bank.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "remit_vulnerable_info",
+            "common_channels": [
+                "email",
+                "app",
+                "website"
+            ],
+            "description": "The victim sends personal or financial information through an insecure channel to someone who is actually a fraudster.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "initiate_urgent_payment_request",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "A scammer convinces the victim to initiate a payment to resolve an urgent matter.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "enter_unverified_merchant_details",
+            "common_channels": [
+                "app",
+                "website"
+            ],
+            "description": "The victim enters payment or merchant details for a seller whose identity has not been verified and may be fraudulent.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "allow_unverified_transaction",
+            "common_channels": [
+                "call",
+                "app",
+                "website"
+            ],
+            "description": "The victim approves or allows a transaction without confirming that the request is legitimate.",
+            "stage": "CREDENTIAL_THEFT",
+            "initiator": "victim",
+            "target": "fraudster_account",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "reveal_account_passwords",
             "common_channels": [
                 "email",
                 "sms"
             ],
-            "description": "...",
+            "description": "The victim discloses account passwords or login credentials to a fraudster impersonating a trusted entity.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "victim",
+            "target": "fraudster",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "provide_fraudster_with_bank_staff_contact_info",
+            "common_channels": [
+                "email",
+                "call"
+            ],
+            "description": "The victim shares contact details for legitimate bank staff or departments, which the fraudster may use for impersonation or further scams.",
             "stage": "TRUST_BUILDING",
             "initiator": "victim",
             "target": "fraudster",
@@ -305,31 +321,37 @@
             "is_terminal": false
         },
         {
-            "name": "fill_unverified_bank_statement",
+            "name": "attempt_unsolicited_login",
             "common_channels": [
                 "email",
-                "website"
+                "sms"
             ],
-            "description": "...",
-            "stage": "TRUST_BUILDING",
+            "description": "The victim attempts to log in through a link or prompt sent by the fraudster, which may direct them to a fake authentication page.",
+            "stage": "RECON",
             "initiator": "victim",
             "target": "fraudster",
             "compromises_account": false,
             "is_terminal": false
         },
         {
-            "name": "initiate_unauthorized_transfer",
-            "common_channels": [
-                "email",
-                "sms",
-                "app"
-            ],
-            "description": "The victim initiates an unauthorized transfer using information obtained from a trusted source.",
+            "name": "initiate_fast_transfer_to_fraudster_account",
+            "common_channels": ["app", "website"],
+            "description": "The victim initiates a fast payment to an account controlled by the fraudster, believing it to be legitimate.",
             "stage": "TRANSFER",
             "initiator": "victim",
             "target": "fraudster_account",
-            "compromises_account": false,
-            "is_terminal": false
+            "compromises_account": true,
+            "is_terminal": true
+        },
+        {
+            "name": "transfer_funds_to_safe_account_requested_by_caller",
+            "common_channels": ["call", "app"],
+            "description": "The victim transfers funds to a so-called safe account as instructed by a caller impersonating the bank or government.",
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "fraudster_account",
+            "compromises_account": true,
+            "is_terminal": true
         }
     ]
 }

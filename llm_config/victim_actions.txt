@@ -15,7 +15,7 @@ Victim Actions:
     - "stage" (string: e.g. "RECON", "TRUST_BUILDING", "CREDENTIAL_THEFT", "TRANSFER", etc.)
     - "initiator" (string: always "victim")
     - "target" (string: one of: fraudster, fraudster_account, bank, institution, merchant, government, telecom, victim_account)
-    - "compromises_account" (bool: True if this action leaks the account information)
+    - "compromises_account" (bool: True if this action leaks victim's account information)
     - "is_terminal" (bool: ONLY TRUE if money is transferred)
 
 Constraints:

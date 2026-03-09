@@ -10,7 +10,6 @@ import random
 from typing import Dict, List, Optional
 from dataclasses import dataclass
 import requests
-from pypdf import PdfReader
 from pathlib import Path
 
 
@@ -290,7 +289,7 @@ class OllamaClient:
             print(f"Error generating victim with Ollama: {e}")
             return None
 
-    def generate_victim_database(self, num_victims=50, filepath: str = "data/victims.json"):
+    def generate_victim_database(self, num_victims=25, filepath: str = "data/victims.json"):
         """
         Generate multiple unique victims and save to file
         
@@ -422,7 +421,7 @@ class OllamaClient:
             print(f"Error generating fraudster with Ollama: {e}")
             return None
 
-    def generate_fraudster_database(self, num_fraudsters=50, filepath: str = "data/fraudsters.json"):
+    def generate_fraudster_database(self, num_fraudsters=25, filepath: str = "data/fraudsters.json"):
         """
         Generate multiple unique fraudsters and save to file
         
@@ -733,8 +732,8 @@ def main():
     
     client.generate_victim_database()
     client.generate_fraudster_database()
-    client.generate_fraudster_actions_database()
-    client.generate_victim_actions_database()
+    # client.generate_fraudster_actions_database()
+    # client.generate_victim_actions_database()
 
 if __name__ == "__main__":
     main()

@@ -1,142 +1,31 @@
 {
     "fraudster_actions": [
         {
-            "name": "phishing_attack",
+            "name": "phishing",
             "common_channels": [
                 "email",
                 "sms",
                 "website"
             ],
-            "description": "fraudsters collect victim information through phishing, data breaches, social media, or malware",
+            "description": "A fraudster collects victim information through phishing, data breaches, social media, or malware.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
-            "compromises_account": false,
+            "compromises_account": true,
             "is_terminal": false
         },
         {
-            "name": "spearmail_exploitation",
-            "common_channels": [
-                "email"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "social_engineering_impersonation",
-            "common_channels": [
-                "email",
-                "sms",
-                "app",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "spear_email_spoofing",
-            "common_channels": [
-                "email",
-                "sms",
-                "call"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "unsolicited_contact",
-            "common_channels": [
-                "email",
-                "sms"
-            ],
-            "description": "Fraudsters initiate unsolicited contact with potential victims, often through phishing emails or SMS messages.",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "smishing",
+            "name": "email_trap",
             "common_channels": [
                 "email",
                 "sms",
                 "website"
             ],
-            "description": "...",
+            "description": "The fraudster sends deceptive emails or messages designed to lure the victim into clicking a malicious link or revealing sensitive account information.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "electronic_identity_thief",
-            "common_channels": [
-                "email",
-                "app",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "sim_swap_attack",
-            "common_channels": [
-                "sms",
-                "phone",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim_account",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "email_trickery",
-            "common_channels": [
-                "email",
-                "sms",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "payment_link_vulnerability",
-            "common_channels": [
-                "email",
-                "sms",
-                "app",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
+            "compromises_account": true,
             "is_terminal": false
         },
         {
@@ -146,48 +35,21 @@
                 "sms",
                 "app"
             ],
-            "description": "...",
+            "description": "The fraudster steals the victim’s login credentials or authentication data through phishing, malware, or other deceptive means.",
             "stage": "RECON",
             "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
+            "target": "victim_account",
+            "compromises_account": true,
             "is_terminal": false
         },
         {
-            "name": "spear_mail_scam",
+            "name": "social_engineering",
             "common_channels": [
-                "email",
-                "sms",
-                "website"
+                "call",
+                "website",
+                "app"
             ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": " pretexted_communication",
-            "common_channels": [
-                "email",
-                "sms"
-            ],
-            "description": "Uses fake communication to trick victims into revealing sensitive information.",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "credential_steal_by_impersonation",
-            "common_channels": [
-                "email",
-                "sms",
-                "call"
-            ],
-            "description": "...",
+            "description": "The fraudster manipulates the victim through deception, urgency, or impersonation to obtain sensitive information or induce a risky action.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -195,21 +57,7 @@
             "is_terminal": false
         },
         {
-            "name": "spear_email_deception",
-            "common_channels": [
-                "email",
-                "sms",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "social_engineering_ploy",
+            "name": "account_impersonation",
             "common_channels": [
                 "email",
                 "sms",
@@ -217,7 +65,160 @@
                 "app",
                 "website"
             ],
-            "description": "...",
+            "description": "Fraudster impersonates the victim's bank or institution to gain access to their account information.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim_account",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "payment_link_redirect",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "Redirects payment links to fraudulent accounts.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "victim_info_exploitation",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "The fraudster uses personal or account-related information about the victim to make scams more convincing and improve the chances of account compromise.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "password_promise",
+            "common_channels": [
+                "email",
+                "sms",
+                "call"
+            ],
+            "description": "The fraudster persuades the victim to share or reset account passwords by making false promises or posing as a trusted party.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "credential_snatch",
+            "common_channels": [
+                "email",
+                "sms",
+                "call",
+                "app"
+            ],
+            "description": "The fraudster captures the victim’s account credentials directly through a scam interaction, fake interface, or malicious communication channel.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "data_spoofing",
+            "common_channels": [
+                "website",
+                "sms",
+                "app"
+            ],
+            "description": "The fraudster falsifies or manipulates information shown to the victim in order to appear legitimate and encourage disclosure of sensitive data.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "account_takeover_impersonation",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "Attackers use social engineering to impersonate bank employees and gain access to victim's accounts.",
+            "stage": "TRUST_BUILDING",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "social_engineering_attack",
+            "common_channels": [
+                "email",
+                "sms",
+                "website",
+                "call"
+            ],
+            "description": "The fraudster conducts a targeted manipulation attempt to pressure the victim into sharing account information, authentication codes, or sending money.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "identity_fraud_scheme",
+            "common_channels": [
+                "app",
+                "website",
+                "in_person"
+            ],
+            "description": "The fraudster uses stolen or fabricated identity information to impersonate the victim and gain access to accounts or financial services.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim_account",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "unauthorized_account_takeover",
+            "common_channels": [
+                "email",
+                "sms"
+            ],
+            "description": "The fraudster gains control of the victim’s account without permission by using stolen credentials, intercepted authentication factors, or identity data.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim_account",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "phishing_attack",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "The fraudster sends phishing messages that trick the victim into visiting a fake site or disclosing sensitive account information.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "transaction_malicious_link_click",
+            "common_channels": [
+                "email",
+                "sms",
+                "website"
+            ],
+            "description": "Victim clicks on malicious link embedded in email or SMS, which leads to a fake payment page where they enter their login credentials.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -231,7 +232,7 @@
                 "sms",
                 "website"
             ],
-            "description": "...",
+            "description": "The fraudster sends a highly targeted phishing message tailored to the victim in order to steal credentials or other sensitive information.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -239,12 +240,12 @@
             "is_terminal": false
         },
         {
-            "name": "fake_bank_notice",
+            "name": "account_impersonation_spear",
             "common_channels": [
-                "website",
-                "email"
+                "email",
+                "sms"
             ],
-            "description": "...",
+            "description": "The fraudster uses targeted impersonation of a bank, merchant, or trusted contact to convince the victim to reveal account information.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -252,13 +253,13 @@
             "is_terminal": false
         },
         {
-            "name": "pharming",
+            "name": "victims_info_promise",
             "common_channels": [
                 "email",
                 "sms",
                 "website"
             ],
-            "description": "...",
+            "description": "The fraudster offers false assistance, rewards, or protection in order to persuade the victim to disclose personal or financial information.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -266,13 +267,26 @@
             "is_terminal": false
         },
         {
-            "name": "social_engineer_trickery",
+            "name": "account_reconnaissance",
             "common_channels": [
                 "email",
+                "sms"
+            ],
+            "description": "The fraudster gathers preliminary information about the victim’s account, behavior, or banking relationships to prepare for a later scam or takeover attempt.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "unverified_payment_request",
+            "common_channels": [
                 "sms",
+                "app",
                 "website"
             ],
-            "description": "...",
+            "description": "The fraudster sends a payment request through a fast payment channel without legitimate justification, hoping the victim will approve it.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -280,58 +294,28 @@
             "is_terminal": false
         },
         {
-            "name": "credential_jockeying",
-            "common_channels": [
-                "email",
-                "sms",
-                "call"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "phish_email",
-            "common_channels": [
-                "email",
-                "sms",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": "email_spear_ploy",
-            "common_channels": [
-                "email",
-                "sms",
-                "website"
-            ],
-            "description": "...",
-            "stage": "RECON",
-            "initiator": "fraudster",
-            "target": "victim",
-            "compromises_account": false,
-            "is_terminal": false
-        },
-        {
-            "name": " pretexted_contact",
+            "name": "account_compromise",
             "common_channels": [
                 "email",
                 "sms",
                 "call",
                 "app",
-                "website",
-                "in_person"
+                "website"
             ],
-            "description": "Attackers use social engineering tactics to build trust with the victim.",
+            "description": "The fraudster obtains access to the victim’s account or sensitive account information, enabling unauthorized actions or future transfers.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim_account",
+            "compromises_account": true,
+            "is_terminal": false
+        },
+        {
+            "name": "false_identity_creation",
+            "common_channels": [
+                "app",
+                "website"
+            ],
+            "description": "The fraudster creates a fake identity, company, or profile to appear trustworthy and support later fraud or account manipulation.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
@@ -339,17 +323,61 @@
             "is_terminal": false
         },
         {
-            "name": "smishing_attack",
+            "name": "victims_data_exploitation",
             "common_channels": [
+                "email",
                 "sms",
                 "website"
             ],
-            "description": "Smishing attack where fraudsters use SMS to trick victims into revealing sensitive information.",
+            "description": "Fraudsters use victim data to steal personal info.",
             "stage": "RECON",
             "initiator": "fraudster",
             "target": "victim",
             "compromises_account": false,
             "is_terminal": false
-        }
+        },
+        {
+            "name": "malware_drop",
+            "common_channels": [
+                "app",
+                "website"
+            ],
+            "description": "The fraudster delivers or installs malware on the victim’s device to capture credentials, monitor activity, or enable unauthorized access to financial accounts.",
+            "stage": "RECON",
+            "initiator": "fraudster",
+            "target": "victim",
+            "compromises_account": false,
+            "is_terminal": false
+        },
+        {
+            "name": "initiate_fast_transfer_to_fraudster_account",
+            "common_channels": ["app", "website"],
+            "description": "The victim initiates a fast payment to an account controlled by the fraudster, believing it to be legitimate.",
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "fraudster_account",
+            "compromises_account": false,
+            "is_terminal": true
+          },
+          {
+            "name": "transfer_funds_to_safe_account_requested_by_caller",
+            "common_channels": ["call", "app"],
+            "description": "The victim transfers funds to a so-called safe account as instructed by a caller impersonating the bank or government.",
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "fraudster_account",
+            "compromises_account": false,
+            "is_terminal": true
+          },
+          {
+            "name": "chain_fast_transfers_through_mule_merchants",
+            "common_channels": ["app", "website"],
+            "description": "Fraudsters rapidly move stolen funds through multiple mule merchant accounts to obfuscate the money trail.",
+            "stage": "TRANSFER",
+            "initiator": "fraudster",
+            "target": "merchant",
+            "compromises_account": false,
+            "is_terminal": true
+          }
     ]
 }

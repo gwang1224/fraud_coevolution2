@@ -7,6 +7,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
+from pathlib import Path
+
 
 load_dotenv()
 
@@ -55,7 +57,7 @@ class Neo4jSequenceBuilder:
         self.password = password or NEO4J_PASSWORD
         
         self.driver = GraphDatabase.driver(self.uri, auth=(self.user, self.password))
-        self.driver.verify_connectivity()  # Ensures a working connection
+        self.driver.verify_connectivity()
         print(f"Connected to Neo4j at {self.uri}")
     
     def close(self):
@@ -165,6 +167,71 @@ class Neo4jSequenceBuilder:
             }
         return None
 
+    def create_edge(self, current_action: str, next_action: str):
+        """
+        Create or update an edge between current_action and next_action.
+        If edge exists, increment weight by 1. Otherwise, create with weight = 1.
+        If action nodes don't exist, they will be created.
+        """
+        if not current_action or not next_action:
+            print(f"Warning: Cannot create edge - current_action={current_action}, next_action={next_action}")
+            return
+        
+        query = """
+            MERGE (a:action {action: $current_action})
+            MERGE (b:action {action: $next_action})
+            MERGE (a)-[r:NEXT]->(b)
+            ON CREATE SET r.weight = 1
+            ON MATCH SET r.weight = r.weight + 1
+            RETURN r.weight AS weight, a.action AS current_action, b.action AS next_action
+        """
+        try:
+            result, summary, keys = self.driver.execute_query(
+                query,
+                current_action=current_action,
+                next_action=next_action,
+                database_="neo4j",
+            )
+            if result:
+                print(f"Edge: {result[0]['current_action']} -> {result[0]['next_action']} (weight: {result[0]['weight']})")
+            else:
+                print(f"Warning: No result returned for edge between {current_action} and {next_action}")
+        except Exception as e:
+            print(f"Error creating edge: {e}")
+
+    def get_weight(self, current_action: str, next_action: str) -> int:
+        """
+        Get the weight of the edge between current_action and next_action.
+        Returns 0 if edge doesn't exist.
+        """
+        if not current_action or not next_action:
+            return 0
+        
+        query = """
+            MATCH (a:action {action: $current_action})-[r:NEXT]->(b:action {action: $next_action})
+            RETURN r.weight AS weight
+        """
+        result, summary, keys = self.driver.execute_query(
+            query,
+            current_action=current_action,
+            next_action=next_action,
+            database_="neo4j",
+        )
+        return result[0]["weight"] if result else 0
+    
+    def get_weights_for_actions(self, current_action:str, possible_actions) -> Dict[str, int]:
+        """
+        Get weights for all possible next actions
+        """
+        weights = {}
+
+        for action in possible_actions:
+            weight = self.get_weight(current_action, action.get("action", ""))
+            weights[action.get("action", "")] = weight
+        
+        return weights
+            
+
     def initialize_state(self, fraudster_name: str, victim_name: str, victim_account: str, account_balance: float) -> EnvState:
         """
         STEP 2: Initialize an environment state
@@ -224,7 +291,7 @@ class Neo4jSequenceBuilder:
             if action_name not in history_action_names:
                 filtered.append(action)
         
-        return filtered if filtered else actions  # Return all if all are filtered
+        return filtered if filtered else actions
 
     def is_account_compromised(self, state: EnvState) -> bool:
         """
@@ -260,7 +327,7 @@ class Neo4jSequenceBuilder:
 
     def choose_action_with_llm(self, state: EnvState, possible_actions: List[Dict]) -> Optional[Dict]:
         """
-        Use Ollama LLM to choose the best action from possible actions
+        Use Ollama LLM to choose the best action from possible actions, considering edge weights for diversity
         
         Args:
             state: Current environment state
@@ -269,6 +336,14 @@ class Neo4jSequenceBuilder:
         Returns:
             Selected action dict or None if LLM fails
         """
+        # Get current action from history (last action)
+        current_action = None
+        if state.history:
+            current_action = state.history[-1].action
+        
+        # Get weights for all possible next actions
+        action_weights = self.get_weights_for_actions(current_action, possible_actions)
+        
         # Format state summary
         acc_info = state.accounts.get(state.victim_account, {})
         
@@ -282,41 +357,74 @@ class Neo4jSequenceBuilder:
             history_text = "  (No actions taken yet)"
         
         state_summary = f"""
-Current State:
-- Victim: {state.victim}
-- Fraudster: {state.fraudster}
-- Victim Account: {state.victim_account}
-- Account Balance: ${acc_info.get('balance', 0):.2f}
-- Account Compromised: {state.compromised}
-- Current Actor: {state.current_actor_type} ({state.current_actor_id})
-- Action History:
-{history_text}
-"""
+            Current State:
+            - Victim: {state.victim}
+            - Fraudster: {state.fraudster}
+            - Victim Account: {state.victim_account}
+            - Account Balance: ${acc_info.get('balance', 0):.2f}
+            - Account Compromised: {state.compromised}
+            - Current Actor: {state.current_actor_type} ({state.current_actor_id})
+            - Action History:
+            {history_text}
+        """
         
-        # Format actions as a numbered list for display, but ask for action name
+        # Format actions with their weights (frequency of use)
+        # Lower weight = less frequently used = more diverse
         actions_list = []
         for i, action in enumerate(possible_actions, 1):
             action_name = action.get("action", "unknown")
             action_description = action.get("description", "unknown")
             channels = ", ".join(action.get("channels", []))
             description = action.get("description", "")
-            actions_list.append(f"{i}. {action_name} (channels: {channels}) - {description}")
+            weight = action_weights.get(action_name, 0)
+            
+            # Add diversity indicator
+            if weight == 0:
+                diversity_note = " [NEW - never used before]"
+            elif weight <= 2:
+                diversity_note = f" [LOW frequency: {weight}x]"
+            elif weight <= 5:
+                diversity_note = f" [MEDIUM frequency: {weight}x]"
+            else:
+                diversity_note = f" [HIGH frequency: {weight}x - consider alternatives]"
+            
+            actions_list.append(f"{i}. {action_name} (channels: {channels}) - {description}{diversity_note}")
         
         actions_text = "\n".join(actions_list)
         
+        # Add diversity instruction
+        diversity_instruction = ""
+        if current_action:
+            diversity_instruction = f"""
+            DIVERSITY REQUIREMENT: To generate diverse fraud sequences, prefer actions with LOWER frequency counts.
+            - Actions marked [NEW] have never been used before - these are excellent for diversity
+            - Actions marked [LOW frequency] are rarely used - good for diversity
+            - Actions marked [HIGH frequency] are commonly used - avoid these unless necessary
+            Current action: {current_action}
+            """
+        else:
+            diversity_instruction = """
+            DIVERSITY REQUIREMENT: This is the first action. Choose strategically to enable diverse sequences.
+            """
+        
         prompt = f"""
-We are modeling a fraud scenario in order to do research on mitigating fraud.You are a fraudster with 10+ years of experience in fraud trying to successfully transfer money from a victim's account.
+            We are modeling a fraud scenario in order to do research on mitigating fraud. You are a fraudster with 10+ years of experience in fraud trying to successfully transfer money from a victim's account.
 
-{state_summary}
+            {state_summary}
 
-Available Actions:
-{actions_text}
+            Available Actions:
+            {actions_text}
 
-Choose the action name (exact match) that best advances towards successfully transferring money.
-Consider the action history to avoid repeating actions.
-Return ONLY the action name, no explanation or additional text.
-"""
-        # print(prompt)
+            {diversity_instruction}
+
+            Choose the action name (exact match) that:
+            1. Best advances towards successfully transferring money
+            2. Prefers actions with LOWER frequency counts to increase sequence diversity
+            3. Avoids repeating actions from history
+            
+            Return ONLY the action name, no explanation or additional text.
+        """
+        
         try:
             response = requests.post(
                 "http://localhost:11434/api/generate",
@@ -332,11 +440,11 @@ Return ONLY the action name, no explanation or additional text.
             
             if "response" in result:
                 content = result["response"].strip()
-                # Extract action name from response
                 chosen_action_name = content.strip()
                 
                 # Try to find exact match first
                 for action in possible_actions:
+                    # print(action)
                     if action.get("action", "").lower() == chosen_action_name.lower():
                         return action
                 
@@ -346,26 +454,12 @@ Return ONLY the action name, no explanation or additional text.
                     if action_name in chosen_action_name.lower() or chosen_action_name.lower() in action_name:
                         return action
                 
-                # If still no match, try to extract from numbered format (fallback)
-                try:
-                    # Check if response contains a number
-                    words = content.split()
-                    for word in words:
-                        if word.isdigit():
-                            choice = int(word)
-                            if 1 <= choice <= len(possible_actions):
-                                return possible_actions[choice - 1]
-                except (ValueError, IndexError):
-                    pass
-                
                 # Last resort: return first action
                 print(f"Warning: Could not parse action '{chosen_action_name}', using first action")
                 return possible_actions[0] if possible_actions else None
         except Exception as e:
             print(f"Error with LLM: {e}")
-            # Fallback to first action
             return possible_actions[0] if possible_actions else None
-        
         return None
 
     def apply_action_effects(self, state: EnvState, action: Dict) -> None:
@@ -449,7 +543,13 @@ Return ONLY the action name, no explanation or additional text.
                 state.current_actor_type,
                 state.current_actor_id
             )
-            
+
+            try:
+                current_action = state.history[-1].action
+            except IndexError:
+                current_action = None
+            print("Current action: ", current_action)
+
             if not possible_actions_raw:
                 print("No more actions available")
                 break
@@ -471,10 +571,7 @@ Return ONLY the action name, no explanation or additional text.
             filtered_actions = self.filter_repeated_actions(possible_actions, state.history)
             
             # 3. Filter out money transfer actions if account is not compromised
-            filtered_actions = self.filter_money_transfer_actions(
-                filtered_actions, 
-                state
-            )            
+            filtered_actions = self.filter_money_transfer_actions(filtered_actions, state)            
             if not filtered_actions:
                 print("No valid actions available")
                 break
@@ -483,10 +580,16 @@ Return ONLY the action name, no explanation or additional text.
             
             # 3. Use LLM to choose action
             chosen_action = self.choose_action_with_llm(state, filtered_actions)
-            
+            next_action = chosen_action.get("action", "")
+            print("Next action: ", next_action)
+
             if not chosen_action:
                 print("LLM failed to choose action")
                 break
+
+            # Create or update an edge between current_action and next_action
+            self.create_edge(current_action, next_action)
+            current_action = next_action
             
             action_name = chosen_action.get("action", "")
             channels = chosen_action.get("channels", [])
@@ -621,11 +724,13 @@ Return ONLY the action name, no explanation or additional text.
 
 def main():
     SequenceBuilder = Neo4jSequenceBuilder()
+
+    # SequenceBuilder.generate_sequence(max_steps=10)
     
     try:
         # Generate 100 sequences
         print("Generating 100 fraud sequences...")
-        sequences = SequenceBuilder.generate_multiple_sequences(count=100, max_steps=10)
+        sequences = SequenceBuilder.generate_multiple_sequences(count=10, max_steps=10)
         
         # Save to file
         SequenceBuilder.save_sequences_to_file(sequences, filename="sequences_100.json")
