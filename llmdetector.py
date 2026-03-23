@@ -209,7 +209,7 @@ class LLMDetector():
 
 
 def main():
-    detector = LLMDetector("sequences_100.json", "llama3.2")
+    detector = LLMDetector("fraud_sequences_100.json", "llama3.2")
     accuracy = detector.run_detector()
     print(f"Accuracy: {accuracy}")
 

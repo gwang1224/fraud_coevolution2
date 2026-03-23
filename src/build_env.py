@@ -3,15 +3,29 @@ Environment Builder for Fraudulent Transaction Sequences
 
 This module generates deterministic fraud scenarios using LLM (Ollama) and stores
 them in Neo4j graph database with proper nodes and relationships.
+
+Also supports LLM invention of legitimate (benign) banking actions via
+generate_legit_actions_database(), merged into data/victim_actions.json under
+legit_actions for use by build_normal_sequence.py.
 """
 
 import json
 import random
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
 import requests
 from pathlib import Path
 
+
+# Categories for LLM-generated legit actions (must match build_normal_sequence / victim_actions.json).
+LEGIT_ACTION_CATEGORIES: Tuple[str, ...] = (
+    "check_balance",
+    "pay_friend",
+    "pay_rent",
+    "small_bill_payment",
+    "recurring_transfer",
+    "new_benign_recipient",
+)
 
 
 @dataclass
@@ -43,7 +57,8 @@ class OllamaClient:
             "victim": self._load("victim.txt"),
             "fraudster": self._load("fraudster.txt"),
             "fraudster_actions": self._load("fraudster_actions.txt"),
-            "victim_actions": self._load("victim_actions.txt")
+            "victim_actions": self._load("victim_actions.txt"),
+            "legit_actions": self._load("legit_actions.txt"),
         }
     
     def _load(self, filename):
@@ -220,6 +235,49 @@ class OllamaClient:
             print(f"Warning: Error loading existing victim actions: {e}")
         
         return existing_names
+
+    def load_existing_legit_actions(self, filepath: str = "data/victim_actions.json") -> List[str]:
+        """Existing legit action names (legit_actions key) for uniqueness."""
+        existing_names: List[str] = []
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                if "legit_actions" in data:
+                    existing_names = [
+                        a.get("name", "")
+                        for a in data["legit_actions"]
+                        if a.get("name")
+                    ]
+        except FileNotFoundError:
+            pass
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse {filepath}, assuming no existing legit actions")
+        except Exception as e:
+            print(f"Warning: Error loading existing legit actions: {e}")
+        return existing_names
+
+    def _load_victim_actions_file(self, filepath: str) -> Dict:
+        """Full victim_actions.json payload (fraud victim_actions + legit_actions)."""
+        try:
+            with open(filepath, "r") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not parse {filepath}: {e}")
+            return {}
+
+    def _validate_legit_action(self, action: Dict) -> bool:
+        if not action.get("name") or not action.get("common_channels"):
+            return False
+        cat = action.get("category", "")
+        if cat not in LEGIT_ACTION_CATEGORIES:
+            return False
+        if "is_payment" not in action:
+            return False
+        if not str(action.get("target", "")).strip():
+            return False
+        return True
 
     def generate_single_victim(self, existing_names: List[str] = None) -> Optional[Dict]:
         """
@@ -712,8 +770,12 @@ class OllamaClient:
             if attempts >= max_attempts:
                 print(f"    ✗ Failed to generate unique victim action after {max_attempts} attempts")
         
-        # Save all actions to file
-        output = {"victim_actions": actions}
+        # Save all actions to file; preserve legit_actions if present
+        prior = self._load_victim_actions_file(filepath)
+        output = {
+            "victim_actions": actions,
+            "legit_actions": prior.get("legit_actions", []),
+        }
         with open(filepath, "w") as f:
             json.dump(output, f, indent=4)
         
@@ -723,17 +785,130 @@ class OllamaClient:
         
         return actions
 
+    def generate_legit_actions_database(
+        self, num_actions: int = 25, filepath: str = "data/victim_actions.json"
+    ) -> List[Dict]:
+        """
+        Use LLM to invent new legitimate banking actions; append to legit_actions in victim_actions.json.
+        Preserves existing victim_actions (fraud) and any existing legit_actions.
+        """
+        existing_names = self.load_existing_legit_actions(filepath)
+        print(f"Found {len(existing_names)} existing legit action names")
+
+        data = self._load_victim_actions_file(filepath)
+        existing_legit = list(data.get("legit_actions", []))
+        actions = existing_legit.copy()
+        base_prompt = self.prompts.get("legit_actions")
+        max_attempts = 10
+
+        print(f"\nGenerating {num_actions} unique legit (benign) actions...")
+
+        for i in range(num_actions):
+            category_hint = LEGIT_ACTION_CATEGORIES[i % len(LEGIT_ACTION_CATEGORIES)]
+            print(f"  Generating legit action {i + 1}/{num_actions} (category hint: {category_hint})...")
+            attempts = 0
+
+            while attempts < max_attempts:
+                prompt_parts = [
+                    base_prompt,
+                    f'\n\nFor this generation, set "category" to exactly "{category_hint}" (required). '
+                    f'Invent a novel "name" (snake_case) that fits this category.',
+                ]
+                if existing_names:
+                    names_list = ", ".join(existing_names[:40])
+                    prompt_parts.append(
+                        f"\n\nIMPORTANT: Do NOT use any of these existing legit action names: {names_list}\n"
+                        "Generate a completely unique action name."
+                    )
+                prompt = "\n".join(prompt_parts)
+
+                try:
+                    response = requests.post(
+                        f"{self.base_url}/api/generate",
+                        json={
+                            "model": self.model,
+                            "prompt": prompt,
+                            "stream": False,
+                            "format": "json",
+                        },
+                        timeout=60,
+                    )
+                    response.raise_for_status()
+                    result = response.json()
+
+                    if "response" not in result:
+                        attempts += 1
+                        continue
+
+                    content = result["response"].strip()
+                    if content.startswith("```"):
+                        parts = content.split("```")
+                        for part in parts:
+                            part = part.strip()
+                            if part.startswith("json"):
+                                part = part[4:].strip()
+                            if part.startswith("{") and part.endswith("}"):
+                                content = part
+                                break
+
+                    parsed = json.loads(content)
+                    new_action = None
+                    if "legit_actions" in parsed and len(parsed["legit_actions"]) > 0:
+                        new_action = parsed["legit_actions"][0]
+                    elif "name" in parsed:
+                        new_action = parsed
+
+                    if new_action and self._validate_legit_action(new_action):
+                        action_name = new_action.get("name", "").lower().strip()
+                        if action_name not in [
+                            a.get("name", "").lower().strip() for a in actions
+                        ]:
+                            actions.append(new_action)
+                            existing_names.append(action_name)
+                            print(f"    ✓ Generated unique legit action: {action_name}")
+                            break
+                        print(f"    ✗ Duplicate detected: {action_name}, retrying...")
+                        attempts += 1
+                    else:
+                        attempts += 1
+                except Exception as e:
+                    print(f"    ✗ Error: {e}")
+                    attempts += 1
+
+            if attempts >= max_attempts:
+                print(
+                    f"    ✗ Failed to generate unique legit action after {max_attempts} attempts"
+                )
+
+        victim_block = data.get("victim_actions", [])
+        output = {"victim_actions": victim_block, "legit_actions": actions}
+        with open(filepath, "w") as f:
+            json.dump(output, f, indent=4)
+
+        print(f"\n✓ Saved {len(actions)} total legit_actions entries to {filepath}")
+        print(f"  - New actions requested this run: {num_actions}")
+        print(f"  - Total legit actions in file: {len(actions)}")
+
+        return actions
+
     
     
 
 def main():
     """Main function to run the environment builder"""
-    client = OllamaClient("http://localhost:11434", "llama3.2", "/Users/gracewang/Documents/fraud_coevolution2/llm_config")
-    
-    client.generate_victim_database()
-    client.generate_fraudster_database()
+    _root = Path(__file__).resolve().parent
+    client = OllamaClient(
+        "http://localhost:11434",
+        "llama3.2",
+        str(_root / "llm_config"),
+        guidelines_path=str(_root / "data" / "guidelines.json"),
+    )
+
+    # client.generate_victim_database()
+    # client.generate_fraudster_database()
     # client.generate_fraudster_actions_database()
     # client.generate_victim_actions_database()
+    client.generate_legit_actions_database(num_actions=25)
 
 if __name__ == "__main__":
     main()

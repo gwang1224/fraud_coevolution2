@@ -1,0 +1,3161 @@
+{
+  "metadata": {
+    "dataset": "legit",
+    "total_sequences": 100,
+    "generated_at": "2026-03-22T19:31:28.342252",
+    "successful_sequences": 100,
+    "total_actions": 291,
+    "average_actions_per_sequence": 2.91
+  },
+  "sequences": [
+    {
+      "sequence_id": 1,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:19:49.675577",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "danielle_williams",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 2,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:19:57.970531",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jade_davis",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "small_bill_payment_pay_lease_fee",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 3,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:14.350301",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "maya_cameron",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "auto_bill_split",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 4,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:20.693948",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "maddison_rice",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 5,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:29.554895",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "victims_frank",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 6,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:40.023082",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "megan_chen",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "small_bill_payment_pay_lease_fee",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 7,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:41.451618",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "victim_1",
+          "action": "pay_rent",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 8,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:20:49.457384",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 9,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:03.339029",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "amy_brown",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 10,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:08.797555",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 11,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:13.838139",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 12,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:24.009731",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend"
+      ],
+      "actions": [
+        {
+          "entity1": "taylor_morris",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 13,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:33.494514",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "natalie_wilson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 14,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:40.731187",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "maya_cameron",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "bill_pay"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 15,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:42.322181",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "laura_fowler",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 16,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:48.292072",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jessie_gibson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 17,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:55.214979",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "erin_tate",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 18,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:56.654465",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "emily_smith",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "bill_pay"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 19,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:21:58.338087",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 20,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:07.562491",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "natalie_wilson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 21,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:14.377408",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "maddison_rice",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 22,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:22.801339",
+      "scenario_tags": [
+        "check_balance",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 23,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:24.391289",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "erin_tate",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 24,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:35.781728",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 25,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:42.822452",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "kiera_sanders",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 26,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:50.191514",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "kayla_hamilton",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 27,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:22:57.621140",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "maddison_rice",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "verify_account_balance_on_phone",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 28,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:04.093416",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "taylor_morris",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 29,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:08.379231",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "kayla_hamilton",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 30,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:18.905517",
+      "scenario_tags": [
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 31,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:20.347864",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "laura_fowler",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 32,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:39.324920",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "keely_henderson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "auto_bill_split",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 6,
+      "successful": true
+    },
+    {
+      "sequence_id": 33,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:47.297177",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "maya_cameron",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 34,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:56.938428",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 35,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:23:58.686759",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "taylor_morris",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 36,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:07.060632",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "amy_brown",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 37,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:16.670145",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 38,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:27.060939",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "victims_frank",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 39,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:28.605689",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "jade_davis",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 40,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:30.312987",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "sarah_turner",
+          "action": "add_verified_payee_with_direct_deposit",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 41,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:38.634034",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "maya_cameron",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 42,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:43.288792",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "send_aid_to_sister",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 43,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:24:47.472661",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "sarah_turner",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "add_verified_payee_with_direct_deposit",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 44,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:05.606382",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 7,
+      "successful": true
+    },
+    {
+      "sequence_id": 45,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:12.787657",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 46,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:22.104675",
+      "scenario_tags": [
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "megan_chen",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 47,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:28.328324",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "erin_tate",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 48,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:34.965131",
+      "scenario_tags": [
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "victims_frank",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "send_aid_to_sister",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 49,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:40.127939",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "donna_johnson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 50,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:41.687827",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jessie_gibson",
+          "action": "pay_rent",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 51,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:47.424524",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 52,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:48.758181",
+      "scenario_tags": [
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "amy_brown",
+          "action": "auto_bill_split",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 53,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:25:57.738449",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "kayla_hamilton",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 54,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:05.263041",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "jessie_gibson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 55,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:10.308313",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "kiera_sanders",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 56,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:15.674167",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend"
+      ],
+      "actions": [
+        {
+          "entity1": "laura_fowler",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 57,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:20.859885",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "sophia_jones",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 58,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:28.874228",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "taylor_morris",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 59,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:39.682223",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 60,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:50.167829",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jade_davis",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 61,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:26:55.459691",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "danielle_williams",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 62,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:06.933872",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "laura_fowler",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 63,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:11.701870",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jessie_gibson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "branch"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 64,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:12.850989",
+      "scenario_tags": [
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jade_davis",
+          "action": "transfer_money_to_new_acquaintance",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 65,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:18.750792",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "kayla_hamilton",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 66,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:28.152036",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "taylor_morris",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 67,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:36.816226",
+      "scenario_tags": [
+        "pay_friend",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 68,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:45.204598",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "samantha_white",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 69,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:54.449726",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 70,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:27:55.823299",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "sarah_turner",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "bill_pay"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 71,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:05.664625",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "atm"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 72,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:07.385492",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "donna_johnson",
+          "action": "create_savings_account_payee",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 73,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:13.005248",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 74,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:18.266569",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend"
+      ],
+      "actions": [
+        {
+          "entity1": "emily_smith",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "ivr"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 75,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:25.093642",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient"
+      ],
+      "actions": [
+        {
+          "entity1": "natalie_wilson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "natalie_wilson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 76,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:29.883705",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "donna_johnson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 77,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:34.583365",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "sarah_turner",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 78,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:48.076338",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "emily_smith",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 79,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:28:55.727188",
+      "scenario_tags": [
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "victim_1",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 80,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:09.797955",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 81,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:16.203688",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "maddison_rice",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 82,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:21.957805",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "jessie_gibson",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "add_verified_payee_with_direct_deposit",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 83,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:27.683589",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 84,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:31.228290",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "victims_frank",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "branch"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 85,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:41.509898",
+      "scenario_tags": [
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "erin_tate",
+          "action": "view_recent_transactions",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 86,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:48.094050",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend"
+      ],
+      "actions": [
+        {
+          "entity1": "sarah_turner",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 87,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:29:53.285495",
+      "scenario_tags": [
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "jade_davis",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 88,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:01.649121",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "send_aid_to_sister",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 89,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:13.165872",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "pay_friend",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 90,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:22.629956",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "alexandra_black",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "set_up_recurring_transfer",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    },
+    {
+      "sequence_id": 91,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:32.063497",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "amy_brown",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 92,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:36.079302",
+      "scenario_tags": [
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "donna_johnson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 93,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:39.581842",
+      "scenario_tags": [
+        "check_balance",
+        "new_benign_recipient",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "add_verified_payee_with_direct_deposit",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 94,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:45.686523",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "keely_henderson",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "send_aid_to_sister",
+          "entity2": "verified_new_payee",
+          "channel": "app"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 95,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:30:50.279456",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "sophia_jones",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "auto_bill_split",
+          "entity2": "own_or_household_account",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 96,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:31:05.488650",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "recurring_transfer"
+      ],
+      "actions": [
+        {
+          "entity1": "sophia_jones",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "check_account_status",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "recurring_transfer_reinforce_schedule",
+          "entity2": "own_or_household_account",
+          "channel": "web"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "remit_cash_request",
+          "entity2": "trusted_contact",
+          "channel": "app"
+        }
+      ],
+      "action_count": 5,
+      "successful": true
+    },
+    {
+      "sequence_id": 97,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:31:10.334156",
+      "scenario_tags": [
+        "new_benign_recipient",
+        "pay_friend",
+        "pay_rent"
+      ],
+      "actions": [
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "add_new_payee_and_send_verified_payment",
+          "entity2": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "action_count": 2,
+      "successful": true
+    },
+    {
+      "sequence_id": 98,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:31:11.759747",
+      "scenario_tags": [
+        "pay_rent",
+        "recurring_transfer",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "amy_brown",
+          "action": "schedule_rent_payment",
+          "entity2": "landlord",
+          "channel": "bill_pay"
+        }
+      ],
+      "action_count": 1,
+      "successful": true
+    },
+    {
+      "sequence_id": 99,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:31:19.666476",
+      "scenario_tags": [
+        "check_balance",
+        "pay_friend",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "zoe_kelly",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "get_current_account_status",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "send_p2p_to_saved_contact",
+          "entity2": "trusted_contact",
+          "channel": "web"
+        }
+      ],
+      "action_count": 3,
+      "successful": true
+    },
+    {
+      "sequence_id": 100,
+      "label": "legit",
+      "timestamp": "2026-03-22T19:31:28.341953",
+      "scenario_tags": [
+        "check_balance",
+        "pay_rent",
+        "small_bill_payment"
+      ],
+      "actions": [
+        {
+          "entity1": "danielle_williams",
+          "action": "check_balance",
+          "entity2": "self",
+          "channel": "web"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "get_balance_inquiry",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "query_available_funds",
+          "entity2": "self",
+          "channel": "app"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "pay_rent_on_time",
+          "entity2": "landlord",
+          "channel": "web"
+        }
+      ],
+      "action_count": 4,
+      "successful": true
+    }
+  ]
+}

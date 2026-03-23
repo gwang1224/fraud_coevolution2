@@ -1,0 +1,47 @@
+Create a structured JSON dictionary for ONE legitimate retail-banking action in a FAST-payment simulation (authorized, benign customer behavior — not fraud).
+
+You must generate exactly 1 action. The action must be realistic routine banking: balance checks, paying friends, rent, small bills, recurring transfers, or first-time verified payees.
+
+Required fields for the action:
+- "name" (lowercase, snake_case, no spaces; must be unique among all legit actions generated so far)
+- "common_channels" (array of strings: at least one of app, web, atm, ivr, bill_pay, branch, sms_alert, etc.)
+- "description" (string: what the customer does and why it is normal/authorized)
+- "category" (string; MUST be exactly one of these literals):
+  - "check_balance"
+  - "pay_friend"
+  - "pay_rent"
+  - "small_bill_payment"
+  - "recurring_transfer"
+  - "new_benign_recipient"
+- "is_payment" (bool: true if money leaves the account or is scheduled to leave; false for read-only steps like balance inquiry or confirming a schedule without moving funds)
+- "stage" (string: e.g. "ROUTINE", "BILL_PAY", "TRANSFER")
+- "initiator" (string: always "victim" — here meaning the account holder / customer)
+- "target" (string: one of: self, trusted_contact, landlord, utility, own_or_household_account, verified_new_payee, merchant)
+- "is_terminal" (bool: ONLY TRUE if money is transferred)
+
+Constraints:
+- Do NOT describe phishing, scams, coercion, or transfers to fraudsters.
+- Names must be lowercase snake_case.
+- common_channels must have at least one channel.
+- Do NOT include markdown or code fences.
+- Output valid JSON only.
+
+Output format (exactly one object in the array):
+
+{
+    "legit_actions": [
+        {
+            "name": "example_action_name",
+            "common_channels": ["app", "web"],
+            "description": "...",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": true
+        }
+    ]
+}
+
+You may also output a single action object with a "name" key at the top level instead of the wrapper; both are acceptable.

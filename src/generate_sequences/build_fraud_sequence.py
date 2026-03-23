@@ -9,6 +9,8 @@ from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 from pathlib import Path
 
+from llmvalidator import validate_one_sequence
+
 
 load_dotenv()
 
@@ -129,11 +131,20 @@ class Neo4jSequenceBuilder:
         
         if result:
             victim = random.choice(result)
+            bal = victim.get("balance")
+            try:
+                bal_f = float(bal) if bal is not None else 0.0
+            except (TypeError, ValueError):
+                bal_f = 0.0
+            acc = victim.get("account_name") or ""
+            if not acc:
+                name = victim.get("victim_name") or "unknown"
+                acc = f"acc_{name}"
             return {
                 "victim_name": victim["victim_name"],
-                "account_name": victim["account_name"],
-                "bank": victim["bank"],
-                "balance": victim["balance"]
+                "account_name": acc,
+                "bank": victim.get("bank") or "",
+                "balance": bal_f,
             }
         return None
 
@@ -346,7 +357,11 @@ class Neo4jSequenceBuilder:
         
         # Format state summary
         acc_info = state.accounts.get(state.victim_account, {})
-        
+        try:
+            bal_f = float(acc_info.get("balance") or 0)
+        except (TypeError, ValueError):
+            bal_f = 0.0
+
         # Format history as a readable list
         if state.history:
             history_lines = []
@@ -361,7 +376,7 @@ class Neo4jSequenceBuilder:
             - Victim: {state.victim}
             - Fraudster: {state.fraudster}
             - Victim Account: {state.victim_account}
-            - Account Balance: ${acc_info.get('balance', 0):.2f}
+            - Account Balance: ${bal_f:.2f}
             - Account Compromised: {state.compromised}
             - Current Actor: {state.current_actor_type} ({state.current_actor_id})
             - Action History:
@@ -406,7 +421,7 @@ class Neo4jSequenceBuilder:
             diversity_instruction = """
             DIVERSITY REQUIREMENT: This is the first action. Choose strategically to enable diverse sequences.
             """
-        
+
         prompt = f"""
             We are modeling a fraud scenario in order to do research on mitigating fraud. You are a fraudster with 10+ years of experience in fraud trying to successfully transfer money from a victim's account.
 
@@ -431,7 +446,7 @@ class Neo4jSequenceBuilder:
                 json={
                     "model": "llama3.2",
                     "prompt": prompt,
-                    "stream": False
+                    "stream": False,
                 },
                 timeout=60
             )
@@ -521,14 +536,20 @@ class Neo4jSequenceBuilder:
         print(f"Selected fraudster: {fraudster_info['fraudster_name']}")
         
         # STEP 2: Initialize state
+        try:
+            bal_init = float(victim_info["balance"])
+        except (TypeError, ValueError, KeyError):
+            bal_init = 0.0
         state = self.initialize_state(
             fraudster_info["fraudster_name"],
             victim_info["victim_name"],
             victim_info["account_name"],
-            victim_info["balance"]
+            bal_init,
         )
-        
-        print(f"Initialized state with account: {victim_info['account_name']} (balance: ${victim_info['balance']})")
+
+        print(
+            f"Initialized state with account: {victim_info['account_name']} (balance: ${bal_init})"
+        )
         
         # STEP 3: Loop until terminal or max steps
         step = 0
@@ -571,7 +592,7 @@ class Neo4jSequenceBuilder:
             filtered_actions = self.filter_repeated_actions(possible_actions, state.history)
             
             # 3. Filter out money transfer actions if account is not compromised
-            filtered_actions = self.filter_money_transfer_actions(filtered_actions, state)            
+            filtered_actions = self.filter_money_transfer_actions(filtered_actions, state)
             if not filtered_actions:
                 print("No valid actions available")
                 break
@@ -647,16 +668,17 @@ class Neo4jSequenceBuilder:
             List of sequence dictionaries with metadata
         """
         sequences = []
-        
-        for i in range(count):
+
+        successful_count = 0
+
+        while successful_count < count:
             print(f"\n{'='*60}")
-            print(f"Generating sequence {i+1}/{count}")
+            print(f"Generating sequence {successful_count+1}/{count}")
             print(f"{'='*60}")
             
             try:
                 sequence = self.generate_sequence(max_steps=max_steps)
-                
-                # Convert Action objects to dictionaries
+
                 sequence_dict = [
                     {
                         "entity1": action.entity1,
@@ -667,29 +689,28 @@ class Neo4jSequenceBuilder:
                     for action in sequence
                 ]
                 
-                # Determine if sequence was successful (has transfer action)
-                successful = any("transfer" in action.action.lower() for action in sequence)
-                
-                sequences.append({
-                    "sequence_id": i + 1,
-                    "timestamp": datetime.now().isoformat(),
-                    "actions": sequence_dict,
-                    "action_count": len(sequence),
-                    "successful": successful
-                })
-                
-                print(f"✓ Sequence {i+1} completed: {len(sequence)} actions")
+                # Validate sequence
+                label, reason = validate_one_sequence(sequence_dict)
+                if label == "valid":
+                    print("Valid sequence: True")
+                    successful_count += 1
+                    sequences.append(
+                        {
+                            "sequence_id": successful_count,
+                            "label": "fraud",
+                            "timestamp": datetime.now().isoformat(),
+                            "actions": sequence_dict,
+                            "action_count": len(sequence),
+                        }
+                    )
+                    print(f"✓ Sequence {successful_count} is valid")
+                else:
+                    print("Valid sequence: False")
+                    print(f"Reason: {reason}")
                 
             except Exception as e:
-                print(f"✗ Error generating sequence {i+1}: {e}")
-                sequences.append({
-                    "sequence_id": i + 1,
-                    "timestamp": datetime.now().isoformat(),
-                    "actions": [],
-                    "action_count": 0,
-                    "successful": False,
-                    "error": str(e)
-                })
+                print(f"✗ Error generating sequence {successful_count+1}: {e}")
+                continue
         
         return sequences
 
@@ -724,25 +745,12 @@ class Neo4jSequenceBuilder:
 
 def main():
     SequenceBuilder = Neo4jSequenceBuilder()
-
-    # SequenceBuilder.generate_sequence(max_steps=10)
     
     try:
-        # Generate 100 sequences
-        print("Generating 100 fraud sequences...")
-        sequences = SequenceBuilder.generate_multiple_sequences(count=10, max_steps=10)
+        sequences = SequenceBuilder.generate_multiple_sequences(count=5, max_steps=10)
+
+        SequenceBuilder.save_sequences_to_file(sequences, filename="fraud_sequences_100.json")
         
-        # Save to file
-        SequenceBuilder.save_sequences_to_file(sequences, filename="sequences_100.json")
-        
-        # Optionally, print summary of first sequence
-        if sequences and sequences[0].get("actions"):
-            print(f"\n=== First Sequence Preview ({sequences[0]['action_count']} actions) ===")
-            for i, action in enumerate(sequences[0]["actions"][:5], 1):  # Show first 5
-                print(f"{i}. {action['entity1']} -> {action['action']} -> {action['entity2']} via {action['channel']}")
-            if sequences[0]['action_count'] > 5:
-                print(f"... and {sequences[0]['action_count'] - 5} more actions")
-    
     finally:
         SequenceBuilder.close()
 

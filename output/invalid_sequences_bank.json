@@ -1,0 +1,1896 @@
+{
+  "sequences": [
+    {
+      "sequence_id": 1,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "swift_merchantservices",
+          "action": "phishing",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "swift_merchantservices",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt by swift_merchantservices to obtain sensitive information from keely_henderson via SMS, which is a plausible manipulation. However, the next step, \"transfer_funds_to_safe_account_requested_by_caller\" initiated by keely_henderson, appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from swift_merchantservices to keely_henderson, and then from keely_henderson to swift_merchantservices again, does not connect believably, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt by swift_merchantservices to obtain sensitive information from keely_henderson via SMS, which is a plausible manipulation. However, the next step, \"transfer_funds_to_safe_account_requested_by_caller\" initiated by keely_henderson, appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from swift_merchantservices to keely_henderson, and then from keely_henderson to swift_merchantservices again, does not connect believably, violating rule 3."
+    },
+    {
+      "sequence_id": 2,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "golden_sun_finance",
+          "action": "phishing",
+          "entity2": "laura_fowler",
+          "channel": "website"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "golden_sun_finance",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with phishing (golden_sun_finance -> laura_fowler via website), which is a plausible manipulation. However, the next step, \"transfer_funds_to_safe_account_requested_by_caller\" from laura_fowler to golden_sun_finance via app, seems unlikely as it appears to be the recipient initiating the transfer without any prior interaction or manipulation. This contradicts rule 2, requiring plausible manipulation before a transfer.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with phishing (golden_sun_finance -> laura_fowler via website), which is a plausible manipulation. However, the next step, \"transfer_funds_to_safe_account_requested_by_caller\" from laura_fowler to golden_sun_finance via app, seems unlikely as it appears to be the recipient initiating the transfer without any prior interaction or manipulation. This contradicts rule 2, requiring plausible manipulation before a transfer."
+    },
+    {
+      "sequence_id": 3,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_expertise_llc",
+          "action": "account_impersonation",
+          "entity2": "kayla_hamilton",
+          "channel": "website"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_expertise_llc",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 1, 2, and 3. The sequence starts with global_expertise_llc impersonating kayla_hamilton via website, which is a plausible manipulation (rule 2). However, the next step, transfer_funds_to_safe_account_requested_by_caller, seems contradictory as it implies kayla_hamilton is now requesting to transfer funds from their account, yet they were previously impersonated. This contradictory transition violates rule 3, connecting actions that don't believably follow one another.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 1, 2, and 3. The sequence starts with global_expertise_llc impersonating kayla_hamilton via website, which is a plausible manipulation (rule 2). However, the next step, transfer_funds_to_safe_account_requested_by_caller, seems contradictory as it implies kayla_hamilton is now requesting to transfer funds from their account, yet they were previously impersonated. This contradictory transition violates rule 3, connecting actions that don't believably follow one another."
+    },
+    {
+      "sequence_id": 4,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "social_engineering",
+          "entity2": "alexandra_black",
+          "channel": "call"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "quick_cash_merchant",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a social engineering call from \"quick_cash_merchant\" to \"alexandra_black\", which is plausible. However, the next step, where \"alexandra_black\" requests a transfer of funds to a safe account via an app, seems out of place as there was no prior manipulation or phishing involved in the initial call. This contradictory transition violates rule 3, as the actions do not connect believably.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a social engineering call from \"quick_cash_merchant\" to \"alexandra_black\", which is plausible. However, the next step, where \"alexandra_black\" requests a transfer of funds to a safe account via an app, seems out of place as there was no prior manipulation or phishing involved in the initial call. This contradictory transition violates rule 3, as the actions do not connect believably."
+    },
+    {
+      "sequence_id": 5,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_investments_limited",
+          "action": "email_trap",
+          "entity2": "megan_chen",
+          "channel": "email"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_investments_limited",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from megan_chen to global_investments_limited appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from a request for transferring funds to a safe account via call to actually making the transfer without any intermediate steps or further communication violates rule 3, which expects actions to connect believably.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from megan_chen to global_investments_limited appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from a request for transferring funds to a safe account via call to actually making the transfer without any intermediate steps or further communication violates rule 3, which expects actions to connect believably."
+    },
+    {
+      "sequence_id": 6,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "credential_jacking",
+          "entity2": "donna_johnson",
+          "channel": "email"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "website"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from donna_johnson initiating a fast transfer to blue_ribbon_enterprises via website seems impossible, as donna_johnson is the victim being manipulated, not the perpetrator. This contradicts rule 4. Additionally, there's no plausible manipulation or prior action that would justify this sudden reversal of roles, violating rules 1 and 2.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from donna_johnson initiating a fast transfer to blue_ribbon_enterprises via website seems impossible, as donna_johnson is the victim being manipulated, not the perpetrator. This contradicts rule 4. Additionally, there's no plausible manipulation or prior action that would justify this sudden reversal of roles, violating rules 1 and 2."
+    },
+    {
+      "sequence_id": 7,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "new_fraudster",
+          "action": "email_trap",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "new_fraudster",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 1, 2, and 3. The transition from \"email_trap\" to \"keely_henderson via sms\" is impossible, as an email cannot be sent via SMS. This contradicts the expectation of logical progression toward theft (rule 1). Additionally, the transfer of funds without prior plausible manipulation (rule 2) is not supported by the sequence, as there is no indication of phishing or impersonation. The connection between \"keely_henderson\" and \"new_fraudster\" via call also seems implausible, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 1, 2, and 3. The transition from \"email_trap\" to \"keely_henderson via sms\" is impossible, as an email cannot be sent via SMS. This contradicts the expectation of logical progression toward theft (rule 1). Additionally, the transfer of funds without prior plausible manipulation (rule 2) is not supported by the sequence, as there is no indication of phishing or impersonation. The connection between \"keely_henderson\" and \"new_fraudster\" via call also seems implausible, violating rule 3."
+    },
+    {
+      "sequence_id": 9,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_supply_chains",
+          "action": "phishing",
+          "entity2": "victims_frank",
+          "channel": "website"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_supply_chains",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 1, 2, and 3. The transition from \"global_supply_chains - phishing -> victims_frank via website\" to \"victims_frank - transfer_funds_to_safe_account_requested_by_caller -> global_supply_chains via app\" is contradictory, as the initial phishing attempt would not lead to a request to transfer funds to a safe account. Additionally, there is no plausible manipulation or prior action that connects the two entities in a believable way. The sequence also violates rule 3, as the actions do not logically progress toward theft.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 1, 2, and 3. The transition from \"global_supply_chains - phishing -> victims_frank via website\" to \"victims_frank - transfer_funds_to_safe_account_requested_by_caller -> global_supply_chains via app\" is contradictory, as the initial phishing attempt would not lead to a request to transfer funds to a safe account. Additionally, there is no plausible manipulation or prior action that connects the two entities in a believable way. The sequence also violates rule 3, as the actions do not logically progress toward theft."
+    },
+    {
+      "sequence_id": 11,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "phishing",
+          "entity2": "jade_davis",
+          "channel": "email"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from jade_davis to digital_services_inc appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from a request for a transfer to the actual transfer itself seems too direct and lacks a believable connection, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from jade_davis to digital_services_inc appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from a request for a transfer to the actual transfer itself seems too direct and lacks a believable connection, violating rule 3."
+    },
+    {
+      "sequence_id": 13,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "email_trap",
+          "entity2": "donna_johnson",
+          "channel": "website"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (blue_ribbon_enterprises - email_trap -> donna_johnson) to obtain Donna Johnson's credentials, but then proceeds to request a transfer of funds without any further plausible manipulation or connection between the two actions. Specifically, the transition from \"email_trap\" to \"transfer_funds_to_safe_account_requested_by_caller\" is contradictory and impossible, as there is no logical link between obtaining someone's email address through phishing and requesting them to make a payment.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (blue_ribbon_enterprises - email_trap -> donna_johnson) to obtain Donna Johnson's credentials, but then proceeds to request a transfer of funds without any further plausible manipulation or connection between the two actions. Specifically, the transition from \"email_trap\" to \"transfer_funds_to_safe_account_requested_by_caller\" is contradictory and impossible, as there is no logical link between obtaining someone's email address through phishing and requesting them to make a payment."
+    },
+    {
+      "sequence_id": 14,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "goldenfinch_corp",
+          "action": "email_trap",
+          "entity2": "jessie_gibson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "goldenfinch_corp",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (goldenfinch_corp -> jessie_gibson) followed by a request to transfer funds to a safe account via SMS (jessie_gibson -> transfer_funds_to_safe_account_requested_by_caller). This contradicts rule 2, as the transfer appears without prior plausible manipulation. Furthermore, the transition from an email trap to requesting a fund transfer via SMS is not a believable connection between actions, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (goldenfinch_corp -> jessie_gibson) followed by a request to transfer funds to a safe account via SMS (jessie_gibson -> transfer_funds_to_safe_account_requested_by_caller). This contradicts rule 2, as the transfer appears without prior plausible manipulation. Furthermore, the transition from an email trap to requesting a fund transfer via SMS is not a believable connection between actions, violating rule 3."
+    },
+    {
+      "sequence_id": 15,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jason_henry",
+          "action": "phishing",
+          "entity2": "kayla_hamilton",
+          "channel": "website"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jason_henry",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from kayla_hamilton requesting to transfer funds to jason_henry via call contradicts the logical progression toward theft (rule 1), as the initial phishing attempt should have led to a more direct manipulation or exploitation of kayla_hamilton's account credentials. Furthermore, this sequence lacks prior plausible manipulation (rule 2), as there is no clear connection between the phishing and the subsequent call. The actions also do not connect believably (rule 3), as kayla_hamilton's request to transfer funds seems out of character for someone who was previously phished by jason_henry.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from kayla_hamilton requesting to transfer funds to jason_henry via call contradicts the logical progression toward theft (rule 1), as the initial phishing attempt should have led to a more direct manipulation or exploitation of kayla_hamilton's account credentials. Furthermore, this sequence lacks prior plausible manipulation (rule 2), as there is no clear connection between the phishing and the subsequent call. The actions also do not connect believably (rule 3), as kayla_hamilton's request to transfer funds seems out of character for someone who was previously phished by jason_henry."
+    },
+    {
+      "sequence_id": 18,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "account_impersonation_spear",
+          "entity2": "laura_fowler",
+          "channel": "sms"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "remit_vulnerable_info",
+          "entity2": "jessica_parker",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessica_parker",
+          "action": "phishing_attack",
+          "entity2": "laura_fowler",
+          "channel": "email"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "jessica_parker",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessica_parker",
+          "action": "account_compromise",
+          "entity2": "laura_fowler",
+          "channel": "call"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rule 3: Actions should connect believably. Specifically, step 6 transfers funds to a safe account requested by the caller (jessica_parker), but there is no prior plausible manipulation or connection between laura_fowler and jessica_parker in steps 1-5. The sequence lacks logical progression toward theft, as the transfer of funds does not follow from any previous actions that would justify such a request.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rule 3: Actions should connect believably. Specifically, step 6 transfers funds to a safe account requested by the caller (jessica_parker), but there is no prior plausible manipulation or connection between laura_fowler and jessica_parker in steps 1-5. The sequence lacks logical progression toward theft, as the transfer of funds does not follow from any previous actions that would justify such a request."
+    },
+    {
+      "sequence_id": 19,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "credential_jacking",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "quick_cash_merchant",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with a merchant (quick_cash_merchant) being compromised through credential_jacking, but then Keely Henderson receives a request to transfer funds to a safe account via an app, which contradicts the logical progression toward theft. Additionally, there is no plausible manipulation or prior action that connects the transition from credential_jacking to receiving a fund transfer request. The sequence also lacks a clear connection between the two entities, as the actions do not believably connect Keely Henderson's compromised credentials with the merchant's request for funds.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with a merchant (quick_cash_merchant) being compromised through credential_jacking, but then Keely Henderson receives a request to transfer funds to a safe account via an app, which contradicts the logical progression toward theft. Additionally, there is no plausible manipulation or prior action that connects the transition from credential_jacking to receiving a fund transfer request. The sequence also lacks a clear connection between the two entities, as the actions do not believably connect Keely Henderson's compromised credentials with the merchant's request for funds."
+    },
+    {
+      "sequence_id": 20,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "phishing",
+          "entity2": "danielle_williams",
+          "channel": "sms"
+        },
+        {
+          "entity1": "danielle_williams",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt by james_wilson to danielle_williams via sms, which is a plausible manipulation. However, the subsequent transfer of funds from danielle_williams to james_wilson without any prior interaction or plausible reason (rule 2) seems unrealistic. Furthermore, the transition from a call to a direct fund transfer between two individuals without any intermediary or additional context (rule 3) appears contradictory and impossible.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt by james_wilson to danielle_williams via sms, which is a plausible manipulation. However, the subsequent transfer of funds from danielle_williams to james_wilson without any prior interaction or plausible reason (rule 2) seems unrealistic. Furthermore, the transition from a call to a direct fund transfer between two individuals without any intermediary or additional context (rule 3) appears contradictory and impossible."
+    },
+    {
+      "sequence_id": 21,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "high_street_trading_co",
+          "action": "social_engineering_attack",
+          "entity2": "megan_chen",
+          "channel": "website"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "high_street_trading_co",
+          "channel": "website"
+        },
+        {
+          "entity1": "high_street_trading_co",
+          "action": "password_promise",
+          "entity2": "megan_chen",
+          "channel": "call"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "high_street_trading_co",
+          "channel": "app"
+        },
+        {
+          "entity1": "high_street_trading_co",
+          "action": "email_trap",
+          "entity2": "megan_chen",
+          "channel": "email"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "high_street_trading_co",
+          "channel": "website"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, step 6 transitions from \"initiate_fast_transfer_to_fraudster_account\" to \"high_street_trading_co\", which contradicts the expectation that transfers should not appear without prior plausible manipulation (rule 2). Additionally, the sequence jumps abruptly from a website-based transfer to an email-based interaction with no clear connection between the two steps.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, step 6 transitions from \"initiate_fast_transfer_to_fraudster_account\" to \"high_street_trading_co\", which contradicts the expectation that transfers should not appear without prior plausible manipulation (rule 2). Additionally, the sequence jumps abruptly from a website-based transfer to an email-based interaction with no clear connection between the two steps."
+    },
+    {
+      "sequence_id": 22,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "new_fraudster",
+          "action": "credential_snatch",
+          "entity2": "kiera_sanders",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "submit_sensitive_information",
+          "entity2": "new_fraudster",
+          "channel": "email"
+        },
+        {
+          "entity1": "new_fraudster",
+          "action": "transaction_malicious_link_click",
+          "entity2": "kiera_sanders",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "allow_unverified_transaction",
+          "entity2": "new_fraudster",
+          "channel": "call"
+        },
+        {
+          "entity1": "new_fraudster",
+          "action": "email_trap",
+          "entity2": "kiera_sanders",
+          "channel": "email"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "new_fraudster",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from step 6 (\"transfer_funds_to_safe_account_requested_by_caller\") to step 1 (\"new_fraudster - credential_snatch -> kiera_sanders via sms\") is contradictory and impossible, as the victim would not be tricked into divulging sensitive information after already being convinced to transfer funds. This sequence also fails to demonstrate logical progression toward theft, as the final action appears to be a recovery attempt rather than a continuation of the scam.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from step 6 (\"transfer_funds_to_safe_account_requested_by_caller\") to step 1 (\"new_fraudster - credential_snatch -> kiera_sanders via sms\") is contradictory and impossible, as the victim would not be tricked into divulging sensitive information after already being convinced to transfer funds. This sequence also fails to demonstrate logical progression toward theft, as the final action appears to be a recovery attempt rather than a continuation of the scam."
+    },
+    {
+      "sequence_id": 23,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "email_trap",
+          "entity2": "kayla_hamilton",
+          "channel": "email"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (blue_ribbon_enterprises - email_trap -> kayla_hamilton via email), which is a plausible manipulation. However, the subsequent transfer of funds to a safe account (kayla_hamilton - transfer_funds_to_safe_account_requested_by_caller -> blue_ribbon_enterprises via app) contradicts the expectation that actions should connect believably, as it implies kayla_hamilton would willingly send money to the scammer after being phished.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (blue_ribbon_enterprises - email_trap -> kayla_hamilton via email), which is a plausible manipulation. However, the subsequent transfer of funds to a safe account (kayla_hamilton - transfer_funds_to_safe_account_requested_by_caller -> blue_ribbon_enterprises via app) contradicts the expectation that actions should connect believably, as it implies kayla_hamilton would willingly send money to the scammer after being phished."
+    },
+    {
+      "sequence_id": 24,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aurelia_cameron",
+          "action": "credential_jacking",
+          "entity2": "keely_henderson",
+          "channel": "email"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aurelia_cameron",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from keely_henderson to aurelia_cameron via email (step 1) lacks logical progression toward theft, as the initial action is credential_jacking, which is a precursor to phishing or identity theft, but the subsequent action of requesting a transfer to a safe account seems unrelated to the initial malicious intent. Additionally, there is no plausible manipulation before the transfer request, violating rule 2. The connection between the two actions also feels contrived, as aurelia_cameron's request for funds appears out of character given her earlier compromised credentials.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from keely_henderson to aurelia_cameron via email (step 1) lacks logical progression toward theft, as the initial action is credential_jacking, which is a precursor to phishing or identity theft, but the subsequent action of requesting a transfer to a safe account seems unrelated to the initial malicious intent. Additionally, there is no plausible manipulation before the transfer request, violating rule 2. The connection between the two actions also feels contrived, as aurelia_cameron's request for funds appears out of character given her earlier compromised credentials."
+    },
+    {
+      "sequence_id": 25,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer."
+    },
+    {
+      "sequence_id": 26,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "luxury_goods_emporium",
+          "action": "account_impersonation",
+          "entity2": "samantha_white",
+          "channel": "website"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "luxury_goods_emporium",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from luxury_goods_emporium to samantha_white via account_impersonation seems plausible, but the subsequent transfer_funds_to_safe_account_requested_by_caller action appears to be a contradictory step, as samantha_white is impersonating someone (samantha_white) who requested a safe account transfer. This contradicts rule 3, which states that actions should connect believably.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from luxury_goods_emporium to samantha_white via account_impersonation seems plausible, but the subsequent transfer_funds_to_safe_account_requested_by_caller action appears to be a contradictory step, as samantha_white is impersonating someone (samantha_white) who requested a safe account transfer. This contradicts rule 3, which states that actions should connect believably."
+    },
+    {
+      "sequence_id": 27,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "email_trap",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap targeting james_wilson, but then proceeds to transfer funds from keely_henderson's account to james_wilson's without any prior plausible manipulation (phishing or impersonation). This contradicts rule 2, as the transfer appears without a clear precursor. Furthermore, the transition from an SMS message to a fund transfer via app is also impossible and contradictory, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap targeting james_wilson, but then proceeds to transfer funds from keely_henderson's account to james_wilson's without any prior plausible manipulation (phishing or impersonation). This contradicts rule 2, as the transfer appears without a clear precursor. Furthermore, the transition from an SMS message to a fund transfer via app is also impossible and contradictory, violating rule 3."
+    },
+    {
+      "sequence_id": 28,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_solutions_corp",
+          "action": "phishing",
+          "entity2": "maddison_rice",
+          "channel": "email"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_solutions_corp",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (maddison_rice), but there's no prior plausible manipulation (phishing or impersonation) that would justify this action. Additionally, the transition from digital_solutions_corp receiving a phishing email to maddison_rice requesting a transfer without any further interaction between the two entities contradicts rule 3, as actions should connect believably.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (maddison_rice), but there's no prior plausible manipulation (phishing or impersonation) that would justify this action. Additionally, the transition from digital_solutions_corp receiving a phishing email to maddison_rice requesting a transfer without any further interaction between the two entities contradicts rule 3, as actions should connect believably."
+    },
+    {
+      "sequence_id": 29,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_investments_limited",
+          "action": "email_trap",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_investments_limited",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transition from global_investments_limited to keely_henderson via email_trap and then to transfer_funds_to_safe_account_requested_by_caller is implausible, as there's no clear connection between the initial phishing attempt (email_trap) and the subsequent request for a safe account transfer. Additionally, the sequence contradicts rule 4, as it implies a direct communication channel (sms) between keely_henderson and global_investments_limited without any intermediate steps or plausible manipulation.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transition from global_investments_limited to keely_henderson via email_trap and then to transfer_funds_to_safe_account_requested_by_caller is implausible, as there's no clear connection between the initial phishing attempt (email_trap) and the subsequent request for a safe account transfer. Additionally, the sequence contradicts rule 4, as it implies a direct communication channel (sms) between keely_henderson and global_investments_limited without any intermediate steps or plausible manipulation."
+    },
+    {
+      "sequence_id": 30,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "phishing_attack",
+          "entity2": "jessie_gibson",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "submit_sensitive_information",
+          "entity2": "digital_services_inc",
+          "channel": "website"
+        },
+        {
+          "entity1": "digital_services_inc",
+          "action": "credential_jacking",
+          "entity2": "jessie_gibson",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rule 3: Actions should connect believably. The transition from \"transfer_funds_to_safe_account_requested_by_caller\" to \"credential_jacking\" is contradictory and impossible, as the first action implies a legitimate request for funds transfer, while the second action suggests unauthorized access to sensitive information. This disconnects the sequence from logical progression toward theft.",
+      "invalid_reason_raw": "This sequence fails because it violates rule 3: Actions should connect believably. The transition from \"transfer_funds_to_safe_account_requested_by_caller\" to \"credential_jacking\" is contradictory and impossible, as the first action implies a legitimate request for funds transfer, while the second action suggests unauthorized access to sensitive information. This disconnects the sequence from logical progression toward theft."
+    },
+    {
+      "sequence_id": 32,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "victor_taylor",
+          "action": "phishing",
+          "entity2": "jessie_gibson",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "victor_taylor",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from phishing (victor_taylor -> jessie_gibson via email) to requesting a transfer of funds without prior plausible manipulation is impossible. There should be a more convincing connection between the initial phishing attempt and the subsequent action.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from phishing (victor_taylor -> jessie_gibson via email) to requesting a transfer of funds without prior plausible manipulation is impossible. There should be a more convincing connection between the initial phishing attempt and the subsequent action."
+    },
+    {
+      "sequence_id": 33,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "phishing",
+          "entity2": "kiera_sanders",
+          "channel": "email"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The transition from james_wilson to kiera_sanders via email (phishing) is plausible, but the subsequent transfer of funds without any prior manipulation or connection between the two entities is contradictory. Specifically, there's no logical progression toward theft, as the initial phishing attempt doesn't lead to a tangible action that facilitates theft.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The transition from james_wilson to kiera_sanders via email (phishing) is plausible, but the subsequent transfer of funds without any prior manipulation or connection between the two entities is contradictory. Specifically, there's no logical progression toward theft, as the initial phishing attempt doesn't lead to a tangible action that facilitates theft."
+    },
+    {
+      "sequence_id": 34,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "social_engineering",
+          "entity2": "victims_frank",
+          "channel": "call"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victims_frank to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from digital_services_inc requesting a fund transfer via call to victims_frank responding with the same action via app seems implausible and contradicts rule 3, which requires actions to connect believably.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victims_frank to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from digital_services_inc requesting a fund transfer via call to victims_frank responding with the same action via app seems implausible and contradicts rule 3, which requires actions to connect believably."
+    },
+    {
+      "sequence_id": 35,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aureliahillman",
+          "action": "social_engineering",
+          "entity2": "jessie_parks",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aureliahillman",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with social engineering on aureliahillman's website account, but then jessie_parks requests to transfer funds to a safe account without any prior plausible manipulation (phishing or impersonation) being shown. Furthermore, the transition from aureliahillman's website account to jessie_parks' call is not believable, as there is no clear connection between the two entities in this sequence.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with social engineering on aureliahillman's website account, but then jessie_parks requests to transfer funds to a safe account without any prior plausible manipulation (phishing or impersonation) being shown. Furthermore, the transition from aureliahillman's website account to jessie_parks' call is not believable, as there is no clear connection between the two entities in this sequence."
+    },
+    {
+      "sequence_id": 36,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "phishing",
+          "entity2": "emily_smith",
+          "channel": "email"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller, but there's no prior plausible manipulation (phishing or impersonation) that would justify this action. Additionally, the transition from emily_smith requesting a transfer to global_e-commerce_network receiving one seems implausible, as it doesn't connect believably.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller, but there's no prior plausible manipulation (phishing or impersonation) that would justify this action. Additionally, the transition from emily_smith requesting a transfer to global_e-commerce_network receiving one seems implausible, as it doesn't connect believably."
+    },
+    {
+      "sequence_id": 37,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jason_henry",
+          "action": "victim_info_exploitation",
+          "entity2": "megan_chen",
+          "channel": "sms"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jason_henry",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an SMS phishing attempt (megan_chen - victim_info_exploitation -> jason_henry via sms), which is plausible. However, the subsequent call to request a transfer of funds to a safe account (megan_chen - transfer_funds_to_safe_account_requested_by_caller -> jason_henry via call) seems out of place and lacks logical progression. The actions do not connect believably, as there's no clear connection between the initial phishing attempt and the subsequent request for a bank transfer.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an SMS phishing attempt (megan_chen - victim_info_exploitation -> jason_henry via sms), which is plausible. However, the subsequent call to request a transfer of funds to a safe account (megan_chen - transfer_funds_to_safe_account_requested_by_caller -> jason_henry via call) seems out of place and lacks logical progression. The actions do not connect believably, as there's no clear connection between the initial phishing attempt and the subsequent request for a bank transfer."
+    },
+    {
+      "sequence_id": 38,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_solutions_inc",
+          "action": "phishing",
+          "entity2": "alexandra_black",
+          "channel": "email"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_solutions_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (alexandra_black) after being phished via email from global_solutions_inc, which contradicts the expectation that actions should connect believably. Additionally, this sequence lacks plausible manipulation before the transfer request, violating rule 2.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (alexandra_black) after being phished via email from global_solutions_inc, which contradicts the expectation that actions should connect believably. Additionally, this sequence lacks plausible manipulation before the transfer request, violating rule 2."
+    },
+    {
+      "sequence_id": 39,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_finance_group",
+          "action": "phishing_attack",
+          "entity2": "amy_brown",
+          "channel": "email"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_finance_group",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_finance_group",
+          "action": "email_trap",
+          "entity2": "amy_brown",
+          "channel": "website"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_finance_group",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from \"use_trusted_service_to_send_funds\" to \"email_trap\" is contradictory, as sending funds via a trusted service would typically involve receiving the funds, not being tricked into revealing sensitive information. Additionally, the subsequent action of transferring funds to a safe account requested by a caller seems impossible and unrealistic, as the scammer has already been tricked into revealing sensitive information.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from \"use_trusted_service_to_send_funds\" to \"email_trap\" is contradictory, as sending funds via a trusted service would typically involve receiving the funds, not being tricked into revealing sensitive information. Additionally, the subsequent action of transferring funds to a safe account requested by a caller seems impossible and unrealistic, as the scammer has already been tricked into revealing sensitive information."
+    },
+    {
+      "sequence_id": 40,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "swift_merchantservices",
+          "action": "email_trap",
+          "entity2": "jessie_gibson",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "swift_merchantservices",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap from swift_merchantservices to jessie_gibson via website, which is a plausible phishing attempt. However, the next step, where jessie_gibson requests to transfer funds to a safe account after receiving a call, seems unrelated to the initial phishing attempt and lacks logical progression toward theft. The transition from email trap to requesting a fund transfer without any clear connection between the two actions violates rule 3, making this sequence unrealistic.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap from swift_merchantservices to jessie_gibson via website, which is a plausible phishing attempt. However, the next step, where jessie_gibson requests to transfer funds to a safe account after receiving a call, seems unrelated to the initial phishing attempt and lacks logical progression toward theft. The transition from email trap to requesting a fund transfer without any clear connection between the two actions violates rule 3, making this sequence unrealistic."
+    },
+    {
+      "sequence_id": 41,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_finance_group",
+          "action": "email_trap",
+          "entity2": "kaitlyn_bennett",
+          "channel": "email"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_finance_group",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The global finance group initiates an email trap (email_trap) to kaitlyn_bennett, which is a plausible manipulation step. However, the subsequent transfer of funds from kaitlyn_bennett to the global finance group via call (transfer_funds_to_safe_account_requested_by_caller) seems unlikely without prior phishing or impersonation. The sequence lacks a believable connection between the email trap and the phone call, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The global finance group initiates an email trap (email_trap) to kaitlyn_bennett, which is a plausible manipulation step. However, the subsequent transfer of funds from kaitlyn_bennett to the global finance group via call (transfer_funds_to_safe_account_requested_by_caller) seems unlikely without prior phishing or impersonation. The sequence lacks a believable connection between the email trap and the phone call, violating rule 3."
+    },
+    {
+      "sequence_id": 42,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "email_trap",
+          "entity2": "kiera_sanders",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 1, 2, and 3. The transition from global_e-commerce_network to kiera_sanders via email_trap and then to initiate_fast_transfer_to_fraudster_account seems implausible, as there is no clear logical progression toward theft. Additionally, the transfer appears without prior plausible manipulation, violating rule 2. Furthermore, the connection between kiera_sanders initiating a fast transfer and global_e-commerce_network receiving it through their website contradicts believable actions, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 1, 2, and 3. The transition from global_e-commerce_network to kiera_sanders via email_trap and then to initiate_fast_transfer_to_fraudster_account seems implausible, as there is no clear logical progression toward theft. Additionally, the transfer appears without prior plausible manipulation, violating rule 2. Furthermore, the connection between kiera_sanders initiating a fast transfer and global_e-commerce_network receiving it through their website contradicts believable actions, violating rule 3."
+    },
+    {
+      "sequence_id": 44,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aurelia_cameron",
+          "action": "account_takeover_impersonation",
+          "entity2": "jade_davis",
+          "channel": "sms"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aurelia_cameron",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rule 3: Actions should connect believably. The transition from aurelia_cameron taking over jade_davis' account to requesting a transfer of funds via call is implausible, as there's no clear connection between the initial impersonation and the subsequent action. Additionally, this sequence contradicts rule 2: Transfers should not appear without prior plausible manipulation. There's no indication that jade_davis was previously manipulated or compromised before receiving the request to transfer funds.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rule 3: Actions should connect believably. The transition from aurelia_cameron taking over jade_davis' account to requesting a transfer of funds via call is implausible, as there's no clear connection between the initial impersonation and the subsequent action. Additionally, this sequence contradicts rule 2: Transfers should not appear without prior plausible manipulation. There's no indication that jade_davis was previously manipulated or compromised before receiving the request to transfer funds."
+    },
+    {
+      "sequence_id": 46,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "email_trap",
+          "entity2": "keely_henderson",
+          "channel": "email"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email manipulation (email_trap) from james_wilson to keely_henderson, which is plausible. However, the next step, transfer_funds_to_safe_account_requested_by_caller, appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from keely_henderson receiving a request for funds via app to requesting a fund transfer themselves seems implausible and contradictory, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email manipulation (email_trap) from james_wilson to keely_henderson, which is plausible. However, the next step, transfer_funds_to_safe_account_requested_by_caller, appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from keely_henderson receiving a request for funds via app to requesting a fund transfer themselves seems implausible and contradictory, violating rule 3."
+    },
+    {
+      "sequence_id": 47,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "luxury_goods_emporium",
+          "action": "phishing",
+          "entity2": "maddison_rice",
+          "channel": "website"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "luxury_goods_emporium",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from maddison_rice to luxury_goods_emporium appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from a phishing attempt on maddison_rice to a request for fund transfer in the opposite direction contradicts the logical progression toward theft, violating rule 1.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from maddison_rice to luxury_goods_emporium appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from a phishing attempt on maddison_rice to a request for fund transfer in the opposite direction contradicts the logical progression toward theft, violating rule 1."
+    },
+    {
+      "sequence_id": 48,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_finance_group",
+          "action": "phishing",
+          "entity2": "zoe_kelly",
+          "channel": "sms"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_finance_group",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (zoe_kelly) after being phished via SMS from global_finance_group, which doesn't logically progress toward theft. Furthermore, the transition from phishing to requesting a transfer without any plausible manipulation or prior action seems implausible.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (zoe_kelly) after being phished via SMS from global_finance_group, which doesn't logically progress toward theft. Furthermore, the transition from phishing to requesting a transfer without any plausible manipulation or prior action seems implausible."
+    },
+    {
+      "sequence_id": 49,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "swift_merchantservices",
+          "action": "email_trap",
+          "entity2": "keely_henderson",
+          "channel": "email"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "swift_merchantservices",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (swift_merchantservices - email_trap -> keely_henderson via email), which is a plausible manipulation. However, the subsequent action of requesting to transfer funds to a safe account (keely_henderson - transfer_funds_to_safe_account_requested_by_caller) appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from an email phishing attempt to requesting a fund transfer without any further interaction or manipulation is contradictory and impossible, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (swift_merchantservices - email_trap -> keely_henderson via email), which is a plausible manipulation. However, the subsequent action of requesting to transfer funds to a safe account (keely_henderson - transfer_funds_to_safe_account_requested_by_caller) appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from an email phishing attempt to requesting a fund transfer without any further interaction or manipulation is contradictory and impossible, violating rule 3."
+    },
+    {
+      "sequence_id": 50,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "goldenfinch_corp",
+          "action": "email_trap",
+          "entity2": "alexandra_black",
+          "channel": "email"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "goldenfinch_corp",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (goldenfinch_corp - email_trap -> alexandra_black via email), which is a plausible manipulation. However, the subsequent transfer request (alexandra_black - transfer_funds_to_safe_account_requested_by_caller -> goldenfinch_corp via app) appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from requesting funds to transferring them seems too direct and lacks a believable connection, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (goldenfinch_corp - email_trap -> alexandra_black via email), which is a plausible manipulation. However, the subsequent transfer request (alexandra_black - transfer_funds_to_safe_account_requested_by_caller -> goldenfinch_corp via app) appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from requesting funds to transferring them seems too direct and lacks a believable connection, violating rule 3."
+    },
+    {
+      "sequence_id": 51,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "email_trap",
+          "entity2": "sophia_jones",
+          "channel": "email"
+        },
+        {
+          "entity1": "sophia_jones",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email manipulation (email_trap) from james_wilson to sophia_jones, which is plausible. However, the subsequent action of transferring funds to a safe account requested by a caller (transfer_funds_to_safe_account_requested_by_caller) seems out of place without any prior phishing or impersonation attempt. The transition from an email manipulation to a phone call request without any connection between the two actions contradicts expectation 3, suggesting that the sequence lacks believability.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email manipulation (email_trap) from james_wilson to sophia_jones, which is plausible. However, the subsequent action of transferring funds to a safe account requested by a caller (transfer_funds_to_safe_account_requested_by_caller) seems out of place without any prior phishing or impersonation attempt. The transition from an email manipulation to a phone call request without any connection between the two actions contradicts expectation 3, suggesting that the sequence lacks believability."
+    },
+    {
+      "sequence_id": 52,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_solutions_corp",
+          "action": "social_engineering",
+          "entity2": "kiera_sanders",
+          "channel": "app"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_solutions_corp",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from digital_solutions_corp to kiera_sanders appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (manipulation) to a request for transferring funds to a safe account seems implausible, as social engineering typically aims to obtain sensitive information or gain access, not initiate financial transactions.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from digital_solutions_corp to kiera_sanders appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (manipulation) to a request for transferring funds to a safe account seems implausible, as social engineering typically aims to obtain sensitive information or gain access, not initiate financial transactions."
+    },
+    {
+      "sequence_id": 53,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "credential_jacking",
+          "entity2": "maddison_rice",
+          "channel": "app"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with blue_ribbon_enterprises being compromised through credential_jacking, but then maddison_rice initiates a transfer to a safe account without any prior manipulation or plausible connection to the initial breach. This contradicts rule 2, as there is no apparent link between the phishing attempt and the subsequent transfer request. Additionally, the transition from Maddison Rice requesting a transfer to Blue Ribbon Enterprises receiving the funds seems implausible and disconnected, violating rules 1 and 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with blue_ribbon_enterprises being compromised through credential_jacking, but then maddison_rice initiates a transfer to a safe account without any prior manipulation or plausible connection to the initial breach. This contradicts rule 2, as there is no apparent link between the phishing attempt and the subsequent transfer request. Additionally, the transition from Maddison Rice requesting a transfer to Blue Ribbon Enterprises receiving the funds seems implausible and disconnected, violating rules 1 and 3."
+    },
+    {
+      "sequence_id": 54,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_expertise_llc",
+          "action": "social_engineering",
+          "entity2": "erin_tate",
+          "channel": "call"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "global_expertise_llc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 1, 2, and 3. The transition from global_expertise_llc initiating a fast transfer to erin_tate is contradictory, as erin_tate is supposed to be the victim being manipulated, not the one initiating the action. This contradicts rule 4. Additionally, there's no plausible manipulation or prior interaction between erin_tate and global_expertise_llc, violating rule 2. The sequence lacks a believable connection between the entities involved.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 1, 2, and 3. The transition from global_expertise_llc initiating a fast transfer to erin_tate is contradictory, as erin_tate is supposed to be the victim being manipulated, not the one initiating the action. This contradicts rule 4. Additionally, there's no plausible manipulation or prior interaction between erin_tate and global_expertise_llc, violating rule 2. The sequence lacks a believable connection between the entities involved."
+    },
+    {
+      "sequence_id": 55,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_solutions_inc",
+          "action": "credential_jacking",
+          "entity2": "kiera_sanders",
+          "channel": "app"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_solutions_inc",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from global_solutions_inc to kiera_sanders appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from kiera_sanders requesting a transfer to global_solutions_inc receiving the transfer is contradictory, as the initial action implies that kiera_sanders is being called and manipulated into making the request, but then the roles are reversed with no clear connection between the two entities' actions.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from global_solutions_inc to kiera_sanders appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from kiera_sanders requesting a transfer to global_solutions_inc receiving the transfer is contradictory, as the initial action implies that kiera_sanders is being called and manipulated into making the request, but then the roles are reversed with no clear connection between the two entities' actions."
+    },
+    {
+      "sequence_id": 56,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aurelia_cameron",
+          "action": "phishing",
+          "entity2": "laura_fowler",
+          "channel": "email"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aurelia_cameron",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The transition from aurelia_cameron to laura_fowler via email (phishing) is plausible, but the subsequent transfer of funds without any prior manipulation or connection between the two entities is contradictory. Specifically, rule 3 states that actions should connect believably, as there is no logical link between a phishing attempt and an immediate request for a fund transfer.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The transition from aurelia_cameron to laura_fowler via email (phishing) is plausible, but the subsequent transfer of funds without any prior manipulation or connection between the two entities is contradictory. Specifically, rule 3 states that actions should connect believably, as there is no logical link between a phishing attempt and an immediate request for a fund transfer."
+    },
+    {
+      "sequence_id": 57,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_solutions_inc",
+          "action": "phishing",
+          "entity2": "maddison_rice",
+          "channel": "sms"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_solutions_inc",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rule 3: Actions should connect believably. The transition from global_solutions_inc being phished to maddison_rice receiving a request to transfer funds without any plausible manipulation or prior interaction is unrealistic. Additionally, the sequence contradicts rule 1: Logical progression toward theft by having the victim (maddison_rice) take an action that benefits the scammer (transferring funds).",
+      "invalid_reason_raw": "This sequence fails because it violates rule 3: Actions should connect believably. The transition from global_solutions_inc being phished to maddison_rice receiving a request to transfer funds without any plausible manipulation or prior interaction is unrealistic. Additionally, the sequence contradicts rule 1: Logical progression toward theft by having the victim (maddison_rice) take an action that benefits the scammer (transferring funds)."
+    },
+    {
+      "sequence_id": 58,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "phishing",
+          "entity2": "megan_chen",
+          "channel": "website"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with digital_services_inc being phished via a website, which is a plausible manipulation (rule 2). However, the subsequent transfer from megan_chen to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from megan_chen requesting a transfer to digital_services_inc receiving the funds seems contradictory and impossible, as there's no clear connection between the two entities or actions (rule 3).",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with digital_services_inc being phished via a website, which is a plausible manipulation (rule 2). However, the subsequent transfer from megan_chen to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from megan_chen requesting a transfer to digital_services_inc receiving the funds seems contradictory and impossible, as there's no clear connection between the two entities or actions (rule 3)."
+    },
+    {
+      "sequence_id": 59,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "premium_services_inc",
+          "action": "phishing",
+          "entity2": "donna_johnson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "premium_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (donna_johnson) without prior plausible manipulation (phishing or impersonation), which contradicts rule 2. Furthermore, donna_johnson's actions do not logically connect with premium_services_inc, as there is no clear relationship between the two entities in this sequence, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller (donna_johnson) without prior plausible manipulation (phishing or impersonation), which contradicts rule 2. Furthermore, donna_johnson's actions do not logically connect with premium_services_inc, as there is no clear relationship between the two entities in this sequence, violating rule 3."
+    },
+    {
+      "sequence_id": 60,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_expertise_llc",
+          "action": "account_takeover_impersonation",
+          "entity2": "zoe_kelly",
+          "channel": "email"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_expertise_llc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account takeover impersonation (global_expertise_llc -> zoe_kelly via email), which is a plausible manipulation. However, the next step is a transfer of funds to a safe account requested by a caller (zoe_kelly -> global_expertise_llc via app), which contradicts the expectation that actions should connect believably. Specifically, it's unlikely that the victim would immediately transfer funds to the scammer after being impersonated.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account takeover impersonation (global_expertise_llc -> zoe_kelly via email), which is a plausible manipulation. However, the next step is a transfer of funds to a safe account requested by a caller (zoe_kelly -> global_expertise_llc via app), which contradicts the expectation that actions should connect believably. Specifically, it's unlikely that the victim would immediately transfer funds to the scammer after being impersonated."
+    },
+    {
+      "sequence_id": 62,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "phishing_attack",
+          "entity2": "maya_cameron",
+          "channel": "website"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "remit_vulnerable_info",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "website"
+        },
+        {
+          "entity1": "blue_ribbon_enterprises",
+          "action": "email_trap",
+          "entity2": "maya_cameron",
+          "channel": "email"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "blue_ribbon_enterprises",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from \"transfer_funds_to_safe_account_requested_by_caller\" to \"email_trap\" is contradictory, as requesting funds transfer via an app does not logically lead to receiving an email trap. Additionally, the connection between \"email_trap\" and subsequent actions seems implausible.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from \"transfer_funds_to_safe_account_requested_by_caller\" to \"email_trap\" is contradictory, as requesting funds transfer via an app does not logically lead to receiving an email trap. Additionally, the connection between \"email_trap\" and subsequent actions seems implausible."
+    },
+    {
+      "sequence_id": 63,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_expertise_llc",
+          "action": "social_engineering",
+          "entity2": "victims_frank",
+          "channel": "app"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_expertise_llc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victims_frank to global_expertise_llc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (manipulation) to a request for a fund transfer is not logically connected, as social_engineering typically aims to obtain sensitive information or manipulate behavior, not initiate financial transactions.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victims_frank to global_expertise_llc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (manipulation) to a request for a fund transfer is not logically connected, as social_engineering typically aims to obtain sensitive information or manipulate behavior, not initiate financial transactions."
+    },
+    {
+      "sequence_id": 64,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "victor_taylor",
+          "action": "phishing",
+          "entity2": "victim_1",
+          "channel": "sms"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "victor_taylor",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victim_1 to victor_taylor appears without prior plausible manipulation (phishing), violating rule 2. Furthermore, the transition from a request to transfer funds via SMS to actually transferring funds via an app is not a believable connection between actions, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from victim_1 to victor_taylor appears without prior plausible manipulation (phishing), violating rule 2. Furthermore, the transition from a request to transfer funds via SMS to actually transferring funds via an app is not a believable connection between actions, violating rule 3."
+    },
+    {
+      "sequence_id": 65,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_finance_group",
+          "action": "email_trap",
+          "entity2": "victims_frank",
+          "channel": "website"
+        },
+        {
+          "entity1": "victims_frank",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_finance_group",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller, but there's no prior plausible manipulation (phishing or impersonation) that would lead to this action. Furthermore, the transition from receiving an email trap to requesting a fund transfer without any intermediate steps connecting believably is contradictory.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds to a safe account is requested by a caller, but there's no prior plausible manipulation (phishing or impersonation) that would lead to this action. Furthermore, the transition from receiving an email trap to requesting a fund transfer without any intermediate steps connecting believably is contradictory."
+    },
+    {
+      "sequence_id": 66,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aureliahillman",
+          "action": "phishing",
+          "entity2": "victim_1",
+          "channel": "sms"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aureliahillman",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from aureliahillman phishing victim_1 via sms to victim_1 transfer_funds_to_safe_account_requested_by_caller aureliahillman via call seems implausible, as there's no clear connection between the initial phishing attempt and the subsequent request for a safe account transfer. Additionally, the sequence implies that victim_1 is being manipulated by aureliahillman through both SMS and phone calls, which is contradictory and impossible in reality.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from aureliahillman phishing victim_1 via sms to victim_1 transfer_funds_to_safe_account_requested_by_caller aureliahillman via call seems implausible, as there's no clear connection between the initial phishing attempt and the subsequent request for a safe account transfer. Additionally, the sequence implies that victim_1 is being manipulated by aureliahillman through both SMS and phone calls, which is contradictory and impossible in reality."
+    },
+    {
+      "sequence_id": 68,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "account_impersonation",
+          "entity2": "victim_1",
+          "channel": "app"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account impersonation attempt (jessica_parker - account_impersonation) that is supposed to lead to a plausible manipulation, but the next step is a transfer of funds without any prior phishing or manipulation (victim_1 - transfer_funds_to_safe_account_requested_by_caller). This contradicts rule 2. Additionally, the transition from impersonation attempt to requesting a fund transfer without any further interaction between the entities violates rule 3, as it does not connect believably.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account impersonation attempt (jessica_parker - account_impersonation) that is supposed to lead to a plausible manipulation, but the next step is a transfer of funds without any prior phishing or manipulation (victim_1 - transfer_funds_to_safe_account_requested_by_caller). This contradicts rule 2. Additionally, the transition from impersonation attempt to requesting a fund transfer without any further interaction between the entities violates rule 3, as it does not connect believably."
+    },
+    {
+      "sequence_id": 70,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jason_henry",
+          "action": "account_impersonation",
+          "entity2": "keely_henderson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jason_henry",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an account impersonation attempt (jason_henry - account_impersonation -> keely_henderson via sms), which is a plausible manipulation. However, the subsequent transfer request (keely_henderson - transfer_funds_to_safe_account_requested_by_caller -> jason_henry via app) appears to be a contradictory transition, as it suggests that Jason Henry is requesting funds from Keely Henderson's account after having impersonated her. This contradicts rule 3, which states that actions should connect believably.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an account impersonation attempt (jason_henry - account_impersonation -> keely_henderson via sms), which is a plausible manipulation. However, the subsequent transfer request (keely_henderson - transfer_funds_to_safe_account_requested_by_caller -> jason_henry via app) appears to be a contradictory transition, as it suggests that Jason Henry is requesting funds from Keely Henderson's account after having impersonated her. This contradicts rule 3, which states that actions should connect believably."
+    },
+    {
+      "sequence_id": 71,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "high_street_trading_co",
+          "action": "phishing",
+          "entity2": "jessie_parks",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "high_street_trading_co",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from high_street_trading_co (a trading company) to jessie_parks (an individual) via phishing email seems implausible, as a legitimate business would not typically be phished by an employee or customer. Additionally, the transfer of funds from jessie_parks to high_street_trading_co without any prior plausible manipulation (e.g., phone call or in-person meeting) is contradictory and impossible. The sequence also fails to connect believably, as it jumps abruptly from a phishing email to a request for a fund transfer via an app.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from high_street_trading_co (a trading company) to jessie_parks (an individual) via phishing email seems implausible, as a legitimate business would not typically be phished by an employee or customer. Additionally, the transfer of funds from jessie_parks to high_street_trading_co without any prior plausible manipulation (e.g., phone call or in-person meeting) is contradictory and impossible. The sequence also fails to connect believably, as it jumps abruptly from a phishing email to a request for a fund transfer via an app."
+    },
+    {
+      "sequence_id": 72,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "swift_merchantservices",
+          "action": "phishing",
+          "entity2": "emily_smith",
+          "channel": "website"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "swift_merchantservices",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt on swift_merchantservices, but then emily_smith receives a request to transfer funds to a safe account via an app, which contradicts the initial phishing scenario. Additionally, the transition from the website to the app without any clear connection between the two steps violates rule 3, as actions should connect believably.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with a phishing attempt on swift_merchantservices, but then emily_smith receives a request to transfer funds to a safe account via an app, which contradicts the initial phishing scenario. Additionally, the transition from the website to the app without any clear connection between the two steps violates rule 3, as actions should connect believably."
+    },
+    {
+      "sequence_id": 73,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "social_engineering",
+          "entity2": "keely_henderson",
+          "channel": "call"
+        },
+        {
+          "entity1": "keely_henderson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from keely_henderson to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (digital_services_inc contacting keely_henderson) to transfer_funds_to_safe_account_requested_by_caller is not a logical progression toward theft, as there's no clear connection between the initial phishing attempt and the subsequent request for a safe account transfer.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from keely_henderson to digital_services_inc appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from social_engineering (digital_services_inc contacting keely_henderson) to transfer_funds_to_safe_account_requested_by_caller is not a logical progression toward theft, as there's no clear connection between the initial phishing attempt and the subsequent request for a safe account transfer."
+    },
+    {
+      "sequence_id": 74,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "luxury_goods_emporium",
+          "action": "unauthorized_account_takeover",
+          "entity2": "alexandra_black",
+          "channel": "email"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "luxury_goods_emporium",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from luxury_goods_emporium to alexandra_black via email seems plausible, but the subsequent transfer of funds from alexandra_black to luxury_goods_emporium via app appears contradictory, as alexandra_black is now receiving a request to transfer funds, rather than initiating a transfer themselves. This disconnects believably and contradicts rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from luxury_goods_emporium to alexandra_black via email seems plausible, but the subsequent transfer of funds from alexandra_black to luxury_goods_emporium via app appears contradictory, as alexandra_black is now receiving a request to transfer funds, rather than initiating a transfer themselves. This disconnects believably and contradicts rule 3."
+    },
+    {
+      "sequence_id": 76,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "payment_link_redirect",
+          "entity2": "megan_chen",
+          "channel": "website"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with a legitimate website interaction (global_e-commerce_network -> megan_chen via website), but then transitions to an app-based action (megan_chen -> transfer_funds_to_safe_account_requested_by_caller) without any plausible manipulation or prior interaction, violating rule 2. Additionally, the connection between these two actions is unclear and lacks a believable progression toward theft, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with a legitimate website interaction (global_e-commerce_network -> megan_chen via website), but then transitions to an app-based action (megan_chen -> transfer_funds_to_safe_account_requested_by_caller) without any plausible manipulation or prior interaction, violating rule 2. Additionally, the connection between these two actions is unclear and lacks a believable progression toward theft, violating rule 3."
+    },
+    {
+      "sequence_id": 77,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "social_engineering_attack",
+          "entity2": "jessie_gibson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "james_wilson",
+          "channel": "email"
+        },
+        {
+          "entity1": "james_wilson",
+          "action": "victims_data_exploitation",
+          "entity2": "jessie_gibson",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "submit_sensitive_information",
+          "entity2": "james_wilson",
+          "channel": "email"
+        },
+        {
+          "entity1": "james_wilson",
+          "action": "social_engineering",
+          "entity2": "jessie_gibson",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, step 6 transfers funds to a safe account requested by a caller, which contradicts the logical progression toward theft (rule 1). Additionally, this action appears without prior plausible manipulation or connection to the previous steps, violating rule 2. The sequence also jumps abruptly from exploiting victims' data to requesting a transfer of funds, making it impossible and contradictory.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, step 6 transfers funds to a safe account requested by a caller, which contradicts the logical progression toward theft (rule 1). Additionally, this action appears without prior plausible manipulation or connection to the previous steps, violating rule 2. The sequence also jumps abruptly from exploiting victims' data to requesting a transfer of funds, making it impossible and contradictory."
+    },
+    {
+      "sequence_id": 78,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "victor_taylor",
+          "action": "account_impersonation",
+          "entity2": "victim_1",
+          "channel": "sms"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "victor_taylor",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account impersonation attempt (victor_taylor - account_impersonation -> victim_1 via sms), which is a plausible manipulation. However, the subsequent transfer of funds to a safe account requested by the caller (victim_1 - transfer_funds_to_safe_account_requested_by_caller -> victor_taylor via app) contradicts the expectation that actions should connect believably, as the initial impersonation attempt would not typically lead to the victim requesting a transfer. Additionally, this sequence lacks logical progression toward theft, as the victim is actually taking steps to secure their account rather than facilitating further fraudulent activity.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an account impersonation attempt (victor_taylor - account_impersonation -> victim_1 via sms), which is a plausible manipulation. However, the subsequent transfer of funds to a safe account requested by the caller (victim_1 - transfer_funds_to_safe_account_requested_by_caller -> victor_taylor via app) contradicts the expectation that actions should connect believably, as the initial impersonation attempt would not typically lead to the victim requesting a transfer. Additionally, this sequence lacks logical progression toward theft, as the victim is actually taking steps to secure their account rather than facilitating further fraudulent activity."
+    },
+    {
+      "sequence_id": 79,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_finance_group",
+          "action": "phishing",
+          "entity2": "kiera_sanders",
+          "channel": "website"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_finance_group",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 1, 2, and 3. The transition from global_finance_group (a large financial institution) to kiera_sanders (an individual) via phishing on a website is implausible, as legitimate financial institutions do not typically engage in phishing attacks. Additionally, the transfer of funds from kiera_sanders to global_finance_group without prior manipulation or plausible connection is contradictory to rule 2. The sequence also fails to connect believably, as it is unlikely that an individual would be able to request a large-scale fund transfer via phone call and have it processed by a financial institution.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 1, 2, and 3. The transition from global_finance_group (a large financial institution) to kiera_sanders (an individual) via phishing on a website is implausible, as legitimate financial institutions do not typically engage in phishing attacks. Additionally, the transfer of funds from kiera_sanders to global_finance_group without prior manipulation or plausible connection is contradictory to rule 2. The sequence also fails to connect believably, as it is unlikely that an individual would be able to request a large-scale fund transfer via phone call and have it processed by a financial institution."
+    },
+    {
+      "sequence_id": 81,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "high_street_trading_co",
+          "action": "email_trap",
+          "entity2": "kaitlyn_bennett",
+          "channel": "website"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "high_street_trading_co",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (high_street_trading_co -> kaitlyn_bennett) followed by a request to transfer funds to a safe account via the app (kaitlyn_bennett -> high_street_trading_co). This contradicts rule 2, as there is no plausible manipulation or prior interaction between the two entities. Additionally, the sequence does not show a logical progression toward theft, as the initial email trap seems unrelated to the subsequent request for fund transfer.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (high_street_trading_co -> kaitlyn_bennett) followed by a request to transfer funds to a safe account via the app (kaitlyn_bennett -> high_street_trading_co). This contradicts rule 2, as there is no plausible manipulation or prior interaction between the two entities. Additionally, the sequence does not show a logical progression toward theft, as the initial email trap seems unrelated to the subsequent request for fund transfer."
+    },
+    {
+      "sequence_id": 82,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "account_impersonation",
+          "entity2": "jessie_parks",
+          "channel": "app"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. The transition from \"account_impersonation\" to \"transfer_funds_to_safe_account_requested_by_caller\" is contradictory, as impersonating an account holder would not typically result in them requesting a transfer to their own safe account. Additionally, the sequence implies that jessie_parks, who was impersonated, is now taking actions that would further compromise their own security, which is impossible and unrealistic.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. The transition from \"account_impersonation\" to \"transfer_funds_to_safe_account_requested_by_caller\" is contradictory, as impersonating an account holder would not typically result in them requesting a transfer to their own safe account. Additionally, the sequence implies that jessie_parks, who was impersonated, is now taking actions that would further compromise their own security, which is impossible and unrealistic."
+    },
+    {
+      "sequence_id": 83,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "aureliahillman",
+          "action": "email_trap",
+          "entity2": "victim_1",
+          "channel": "website"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aureliahillman",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an email phishing attempt (aureliahillman - email_trap -> victim_1 via website), which is a plausible manipulation. However, the subsequent action of transferring funds to a safe account requested by a caller (victim_1 - transfer_funds_to_safe_account_requested_by_caller -> aureliahillman via app) contradicts the initial phishing attempt, as the victim would not be expected to take such an action after being phished. This contradictory transition violates rule 3, and the lack of prior plausible manipulation before the transfer request further undermines the sequence's believability.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The sequence starts with an email phishing attempt (aureliahillman - email_trap -> victim_1 via website), which is a plausible manipulation. However, the subsequent action of transferring funds to a safe account requested by a caller (victim_1 - transfer_funds_to_safe_account_requested_by_caller -> aureliahillman via app) contradicts the initial phishing attempt, as the victim would not be expected to take such an action after being phished. This contradictory transition violates rule 3, and the lack of prior plausible manipulation before the transfer request further undermines the sequence's believability."
+    },
+    {
+      "sequence_id": 84,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "luxury_goods_emporium",
+          "action": "phishing",
+          "entity2": "maddison_rice",
+          "channel": "website"
+        },
+        {
+          "entity1": "maddison_rice",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "luxury_goods_emporium",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 2 and 3. The transfer of funds from maddison_rice to luxury_goods_emporium appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from a phishing attempt on maddison_rice to a request for fund transfer in the opposite direction contradicts the logical progression toward theft, violating rule 1.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 2 and 3. The transfer of funds from maddison_rice to luxury_goods_emporium appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from a phishing attempt on maddison_rice to a request for fund transfer in the opposite direction contradicts the logical progression toward theft, violating rule 1."
+    },
+    {
+      "sequence_id": 85,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "amanda_harrison",
+          "action": "social_engineering_attack",
+          "entity2": "sarah_turner",
+          "channel": "website"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "amanda_harrison",
+          "channel": "email"
+        },
+        {
+          "entity1": "amanda_harrison",
+          "action": "phishing",
+          "entity2": "sarah_turner",
+          "channel": "sms"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "amanda_harrison",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds to a safe account requested by a caller (step 4) appears without prior plausible manipulation, specifically phishing (step 3), which is a crucial step in establishing trust and obtaining sensitive information. Additionally, the transition from submitting vulnerable account details via email (step 2) to requesting a fund transfer via an app (step 4) seems implausible and contradicts rule 3, as actions should connect believably.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds to a safe account requested by a caller (step 4) appears without prior plausible manipulation, specifically phishing (step 3), which is a crucial step in establishing trust and obtaining sensitive information. Additionally, the transition from submitting vulnerable account details via email (step 2) to requesting a fund transfer via an app (step 4) seems implausible and contradicts rule 3, as actions should connect believably."
+    },
+    {
+      "sequence_id": 87,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "phishing",
+          "entity2": "laura_fowler",
+          "channel": "website"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_e-commerce_network",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from laura_fowler to global_e-commerce_network appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from laura_fowler requesting a transfer to global_e-commerce_network receiving the transfer is contradictory and impossible, as laura_fowler would not be able to receive the funds she is sending. This contradicts rule 3, which requires actions to connect believably.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The transfer of funds from laura_fowler to global_e-commerce_network appears without prior plausible manipulation (phishing or impersonation), violating rule 2. Furthermore, the transition from laura_fowler requesting a transfer to global_e-commerce_network receiving the transfer is contradictory and impossible, as laura_fowler would not be able to receive the funds she is sending. This contradicts rule 3, which requires actions to connect believably."
+    },
+    {
+      "sequence_id": 88,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer."
+    },
+    {
+      "sequence_id": 89,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer."
+    },
+    {
+      "sequence_id": 90,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "digital_services_inc",
+          "action": "email_trap",
+          "entity2": "amy_brown",
+          "channel": "sms"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_services_inc",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (digital_services_inc -> amy_brown via sms), which is a plausible manipulation step. However, the next action, \"transfer_funds_to_safe_account_requested_by_caller\", appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from amy_brown to digital_services_inc via app seems contradictory and impossible, as it implies that amy_brown, who was initially targeted by a phishing attempt, is now initiating a transfer to the original scammer's account, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email trap (digital_services_inc -> amy_brown via sms), which is a plausible manipulation step. However, the next action, \"transfer_funds_to_safe_account_requested_by_caller\", appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from amy_brown to digital_services_inc via app seems contradictory and impossible, as it implies that amy_brown, who was initially targeted by a phishing attempt, is now initiating a transfer to the original scammer's account, violating rule 3."
+    },
+    {
+      "sequence_id": 91,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "credential_jacking",
+          "entity2": "laura_fowler",
+          "channel": "app"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The transition from \"credential_jacking\" to \"transfer_funds_to_safe_account_requested_by_caller\" is impossible without prior plausible manipulation, such as phishing or impersonation. Additionally, the connection between \"laura_fowler\" being manipulated into requesting a transfer and then making that request to \"jessica_parker\" seems implausible, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The transition from \"credential_jacking\" to \"transfer_funds_to_safe_account_requested_by_caller\" is impossible without prior plausible manipulation, such as phishing or impersonation. Additionally, the connection between \"laura_fowler\" being manipulated into requesting a transfer and then making that request to \"jessica_parker\" seems implausible, violating rule 3."
+    },
+    {
+      "sequence_id": 92,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [],
+      "invalid_reason": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer.",
+      "invalid_reason_raw": "This payment sequence fails as a realistic fraud scenario because it violates rules 2 and 3. The sequence starts with an unknown entity (Entity A) initiating a transfer of $100 to Entity B, without any prior plausible manipulation or action mentioned. This lack of connection between the two entities makes the transition seem implausible. Furthermore, there is no logical progression toward theft, as the sequence does not show any suspicious activity leading up to the transfer."
+    },
+    {
+      "sequence_id": 93,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "rapid_development_llc",
+          "action": "email_trap",
+          "entity2": "taylor_morris",
+          "channel": "sms"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "rapid_development_llc",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 1, 2, and 3. The rapid progression toward theft is hindered by the fact that the caller (taylor_morris) requests to transfer funds to a safe account after being contacted via SMS, which contradicts the expectation of logical progression toward theft. Additionally, this action appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from taylor_morris requesting to transfer funds to rapid_development_llc via call seems contradictory and impossible, as it would require taylor_morris to take an action that is typically associated with the scammer, violating rule 3.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 1, 2, and 3. The rapid progression toward theft is hindered by the fact that the caller (taylor_morris) requests to transfer funds to a safe account after being contacted via SMS, which contradicts the expectation of logical progression toward theft. Additionally, this action appears without prior plausible manipulation, violating rule 2. Furthermore, the transition from taylor_morris requesting to transfer funds to rapid_development_llc via call seems contradictory and impossible, as it would require taylor_morris to take an action that is typically associated with the scammer, violating rule 3."
+    },
+    {
+      "sequence_id": 94,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "goldenfinch_corp",
+          "action": "password_promise",
+          "entity2": "laura_fowler",
+          "channel": "call"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "reveal_payment_details",
+          "entity2": "goldenfinch_corp",
+          "channel": "website"
+        },
+        {
+          "entity1": "goldenfinch_corp",
+          "action": "phishing_attack",
+          "entity2": "laura_fowler",
+          "channel": "website"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "enter_malicious_webpage",
+          "entity2": "goldenfinch_corp",
+          "channel": "website"
+        },
+        {
+          "entity1": "goldenfinch_corp",
+          "action": "account_compromise",
+          "entity2": "laura_fowler",
+          "channel": "call"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "goldenfinch_corp",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rule 4: Contradictory or impossible transitions. Specifically, step 6 transfers funds to a safe account requested by the caller (laura_fowler), which contradicts the logical progression toward theft expected in a phishing scenario. Additionally, this action seems out of character for a typical phishing attack, where the goal is usually to obtain sensitive information rather than facilitate a legitimate transfer.",
+      "invalid_reason_raw": "This sequence fails because it violates rule 4: Contradictory or impossible transitions. Specifically, step 6 transfers funds to a safe account requested by the caller (laura_fowler), which contradicts the logical progression toward theft expected in a phishing scenario. Additionally, this action seems out of character for a typical phishing attack, where the goal is usually to obtain sensitive information rather than facilitate a legitimate transfer."
+    },
+    {
+      "sequence_id": 95,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "high_street_trading_co",
+          "action": "phishing",
+          "entity2": "sarah_turner",
+          "channel": "email"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "high_street_trading_co",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from high_street_trading_co (a company) to sarah_turner (an individual) via email phishing is implausible, as legitimate companies do not typically use phishing tactics to manipulate employees. Additionally, the transfer of funds from sarah_turner to high_street_trading_co without prior plausible manipulation (e.g., phishing or impersonation) is contradictory and impossible. The sequence also violates rule 3, as actions do not connect believably between a company being phished by an individual and then requesting a transfer of funds back to the same company.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 1, 2, and 3. The transition from high_street_trading_co (a company) to sarah_turner (an individual) via email phishing is implausible, as legitimate companies do not typically use phishing tactics to manipulate employees. Additionally, the transfer of funds from sarah_turner to high_street_trading_co without prior plausible manipulation (e.g., phishing or impersonation) is contradictory and impossible. The sequence also violates rule 3, as actions do not connect believably between a company being phished by an individual and then requesting a transfer of funds back to the same company."
+    },
+    {
+      "sequence_id": 96,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "global_investments_limited",
+          "action": "phishing",
+          "entity2": "taylor_morris",
+          "channel": "website"
+        },
+        {
+          "entity1": "taylor_morris",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_investments_limited",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails because it violates rules 3 and 4. The transition from global_investments_limited to taylor_morris via website seems implausible, as there is no clear connection between the two entities. Furthermore, the transfer of funds from taylor_morris to global_investments_limited via app contradicts rule 3, as it appears that global_investments_limited is initiating the request for a fund transfer, rather than receiving one. This contradictory transition violates expectation 4.",
+      "invalid_reason_raw": "This sequence fails because it violates rules 3 and 4. The transition from global_investments_limited to taylor_morris via website seems implausible, as there is no clear connection between the two entities. Furthermore, the transfer of funds from taylor_morris to global_investments_limited via app contradicts rule 3, as it appears that global_investments_limited is initiating the request for a fund transfer, rather than receiving one. This contradictory transition violates expectation 4."
+    },
+    {
+      "sequence_id": 97,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "high_street_trading_co",
+          "action": "email_trap",
+          "entity2": "laura_fowler",
+          "channel": "website"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "high_street_trading_co",
+          "channel": "call"
+        }
+      ],
+      "invalid_reason": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (high_street_trading_co - email_trap -> laura_fowler) followed by a transfer request from laura_fowler to high_street_trading_co, which contradicts the expectation that transfers should not appear without prior plausible manipulation. Additionally, the transition from laura_fowler requesting a transfer to high_street_trading_co receiving the funds seems implausible and disconnected, violating rule 3.",
+      "invalid_reason_raw": "This payment sequence fails because it violates rules 2 and 3. The sequence starts with an email phishing attempt (high_street_trading_co - email_trap -> laura_fowler) followed by a transfer request from laura_fowler to high_street_trading_co, which contradicts the expectation that transfers should not appear without prior plausible manipulation. Additionally, the transition from laura_fowler requesting a transfer to high_street_trading_co receiving the funds seems implausible and disconnected, violating rule 3."
+    },
+    {
+      "sequence_id": 100,
+      "label": "invalid",
+      "validator_output": "invalid",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "credential_snatch",
+          "entity2": "alexandra_black",
+          "channel": "sms"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "jessica_parker",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessica_parker",
+          "action": "email_trap",
+          "entity2": "alexandra_black",
+          "channel": "website"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "app"
+        }
+      ],
+      "invalid_reason": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, the transition from step 2 to step 3 is contradictory: alexandra_black uses a trusted service to send funds via email, but then receives an email trap (step 3) that attempts to manipulate her further. This impossible transition violates rule 4. Additionally, the sequence does not demonstrate logical progression toward theft, as the actions seem to be in a loop rather than building towards a malicious outcome.",
+      "invalid_reason_raw": "This sequence fails as a realistic fraud scenario because it violates rules 3 and 4. Specifically, the transition from step 2 to step 3 is contradictory: alexandra_black uses a trusted service to send funds via email, but then receives an email trap (step 3) that attempts to manipulate her further. This impossible transition violates rule 4. Additionally, the sequence does not demonstrate logical progression toward theft, as the actions seem to be in a loop rather than building towards a malicious outcome."
+    }
+  ]
+}

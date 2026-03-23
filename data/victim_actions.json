@@ -335,7 +335,10 @@
         },
         {
             "name": "initiate_fast_transfer_to_fraudster_account",
-            "common_channels": ["app", "website"],
+            "common_channels": [
+                "app",
+                "website"
+            ],
             "description": "The victim initiates a fast payment to an account controlled by the fraudster, believing it to be legitimate.",
             "stage": "TRANSFER",
             "initiator": "victim",
@@ -345,13 +348,372 @@
         },
         {
             "name": "transfer_funds_to_safe_account_requested_by_caller",
-            "common_channels": ["call", "app"],
+            "common_channels": [
+                "call",
+                "app"
+            ],
             "description": "The victim transfers funds to a so-called safe account as instructed by a caller impersonating the bank or government.",
             "stage": "TRANSFER",
             "initiator": "victim",
             "target": "fraudster_account",
             "compromises_account": true,
             "is_terminal": true
+        }
+    ],
+    "legit_actions": [
+        {
+            "name": "check_balance",
+            "common_channels": [
+                "app",
+                "web",
+                "atm",
+                "ivr"
+            ],
+            "description": "Customer checks available balance on their account.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "view_recent_transactions",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "Customer reviews recent posted transactions for accuracy.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "send_p2p_to_saved_contact",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "Peer payment to a saved, trusted contact (split dinner, reimbursement).",
+            "category": "pay_friend",
+            "is_payment": true,
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "trusted_contact",
+            "is_terminal": true
+        },
+        {
+            "name": "schedule_rent_payment",
+            "common_channels": [
+                "app",
+                "web",
+                "bill_pay"
+            ],
+            "description": "One-time or scheduled payment to landlord or property manager.",
+            "category": "pay_rent",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "landlord",
+            "is_terminal": true
+        },
+        {
+            "name": "set_up_recurring_transfer",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "Creates or confirms an automated recurring transfer to own or household account.",
+            "category": "recurring_transfer",
+            "is_payment": true,
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "own_or_household_account",
+            "is_terminal": true
+        },
+        {
+            "name": "add_new_payee_and_send_verified_payment",
+            "common_channels": [
+                "app",
+                "web",
+                "branch"
+            ],
+            "description": "Adds a first-time payee after verification, sends a small expected payment.",
+            "category": "new_benign_recipient",
+            "is_payment": true,
+            "stage": "TRANSFER",
+            "initiator": "victim",
+            "target": "verified_new_payee",
+            "is_terminal": true
+        },
+        {
+            "name": "get_balance_inquiry",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer checks their account balance through the app or website to ensure they have sufficient funds.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "transfer_money_to_new_acquaintance",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer wants to send money to a new acquaintance as a friendly gesture.",
+            "category": "pay_friend",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "verified_new_payee",
+            "is_terminal": true
+        },
+        {
+            "name": "pay_rent_on_time",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer is paying their rent on time as part of their regular banking routine.",
+            "category": "pay_rent",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "landlord",
+            "is_terminal": true
+        },
+        {
+            "name": "pay_furniture_deposit",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer checks their account balance to ensure enough funds are available for the upcoming furniture deposit.",
+            "category": "small_bill_payment",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": true
+        },
+        {
+            "name": "auto_bill_split",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "A customer configures a recurring automatic bill split on their account for an expense.",
+            "category": "recurring_transfer",
+            "is_payment": false,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "own_or_household_account",
+            "is_terminal": true
+        },
+        {
+            "name": "get_current_account_status",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "A customer logs in to their account via the app or website to view their current account balance and any recent transaction history.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "monthly_recurring_deposits",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer sets up and confirms recurring transfers of $100 to their savings account for monthly deposits.",
+            "category": "recurring_transfer",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "own_or_household_account",
+            "is_terminal": true
+        },
+        {
+            "name": "add_verified_payee_with_direct_deposit",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The victim adds a new verified payee to receive regular direct deposits.",
+            "category": "new_benign_recipient",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "verified_new_payee",
+            "is_terminal": true
+        },
+        {
+            "name": "query_available_funds",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "Checking the current balance of your account to see if you have sufficient funds for an upcoming bill.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "send_aid_to_sister",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer initiates a payment to their sister using the app and web channels.",
+            "category": "pay_friend",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "verified_new_payee",
+            "is_terminal": true
+        },
+        {
+            "name": "monthly_rent_debit",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer initiates a recurring payment to their landlord via the bank's mobile app.",
+            "category": "pay_rent",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "landlord",
+            "is_terminal": true
+        },
+        {
+            "name": "recurring_transfer_reinforce_schedule",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The victim regularly transfers a small amount to their savings account as part of their monthly budget.",
+            "category": "recurring_transfer",
+            "is_payment": true,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "own_or_household_account",
+            "is_terminal": false
+        },
+        {
+            "name": "verify_account_balance_on_phone",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer checks their account balance on their mobile device using the bank's app.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
+        },
+        {
+            "name": "remit_cash_request",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer initiates a request to send cash to a friend via the bank's mobile app.",
+            "category": "pay_friend",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "trusted_contact",
+            "is_terminal": true
+        },
+        {
+            "name": "pay_rent",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer pays their monthly rent on time to avoid late fees and penalties.",
+            "category": "pay_rent",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "landlord",
+            "is_terminal": true
+        },
+        {
+            "name": "small_bill_payment_pay_lease_fee",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer makes the first payment for their lease fee.",
+            "category": "small_bill_payment",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "landlord",
+            "is_terminal": true
+        },
+        {
+            "name": "establish_regular_deposit",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "A customer sets up a recurring transfer to receive regular deposits into their account.",
+            "category": "recurring_transfer",
+            "is_payment": true,
+            "stage": "BILL_PAY",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": true
+        },
+        {
+            "name": "create_savings_account_payee",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer adds a new payee to their savings account and sends them a small amount of money as an introduction.",
+            "category": "new_benign_recipient",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "verified_new_payee",
+            "is_terminal": true
+        },
+        {
+            "name": "check_account_status",
+            "common_channels": [
+                "app",
+                "web"
+            ],
+            "description": "The customer checks the current balance of their account.",
+            "category": "check_balance",
+            "is_payment": false,
+            "stage": "ROUTINE",
+            "initiator": "victim",
+            "target": "self",
+            "is_terminal": false
         }
     ]
 }
