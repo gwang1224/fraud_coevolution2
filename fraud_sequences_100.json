@@ -1,0 +1,427 @@
+{
+  "metadata": {
+    "total_sequences": 10,
+    "generated_at": "2026-03-22T21:51:10.183842",
+    "successful_sequences": 0,
+    "total_actions": 56,
+    "average_actions_per_sequence": 5.6
+  },
+  "sequences": [
+    {
+      "sequence_id": 1,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:44:41.085262",
+      "actions": [
+        {
+          "entity1": "aurelia_cameron",
+          "action": "account_impersonation_spear",
+          "entity2": "jessie_gibson",
+          "channel": "sms"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "accept_unsolicited_payment_request",
+          "entity2": "aurelia_cameron",
+          "channel": "call"
+        },
+        {
+          "entity1": "aurelia_cameron",
+          "action": "email_trap",
+          "entity2": "jessie_gibson",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_gibson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aurelia_cameron",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4
+    },
+    {
+      "sequence_id": 2,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:45:53.770774",
+      "actions": [
+        {
+          "entity1": "global_investments_limited",
+          "action": "social_engineering_attack",
+          "entity2": "donna_johnson",
+          "channel": "call"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "enter_malicious_webpage",
+          "entity2": "global_investments_limited",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_investments_limited",
+          "action": "email_trap",
+          "entity2": "donna_johnson",
+          "channel": "website"
+        },
+        {
+          "entity1": "donna_johnson",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_investments_limited",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4
+    },
+    {
+      "sequence_id": 3,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:46:35.756220",
+      "actions": [
+        {
+          "entity1": "global_supply_chains",
+          "action": "phishing_attack",
+          "entity2": "zoe_kelly",
+          "channel": "email"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_supply_chains",
+          "channel": "email"
+        },
+        {
+          "entity1": "global_supply_chains",
+          "action": "credential_snatch",
+          "entity2": "zoe_kelly",
+          "channel": "call"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "make_unverified_payment",
+          "entity2": "global_supply_chains",
+          "channel": "email"
+        },
+        {
+          "entity1": "global_supply_chains",
+          "action": "email_trap",
+          "entity2": "zoe_kelly",
+          "channel": "email"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_supply_chains",
+          "channel": "call"
+        }
+      ],
+      "action_count": 6
+    },
+    {
+      "sequence_id": 4,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:47:10.509067",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "credential_snatch",
+          "entity2": "laura_fowler",
+          "channel": "app"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "victims_info_promise",
+          "entity2": "laura_fowler",
+          "channel": "sms"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "submit_sensitive_information",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "payment_link_redirect",
+          "entity2": "laura_fowler",
+          "channel": "sms"
+        },
+        {
+          "entity1": "laura_fowler",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        }
+      ],
+      "action_count": 6
+    },
+    {
+      "sequence_id": 5,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:47:33.598652",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "password_promise",
+          "entity2": "jade_davis",
+          "channel": "call"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "jessica_parker",
+          "channel": "app"
+        },
+        {
+          "entity1": "jessica_parker",
+          "action": "email_trap",
+          "entity2": "jade_davis",
+          "channel": "sms"
+        },
+        {
+          "entity1": "jade_davis",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4
+    },
+    {
+      "sequence_id": 6,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:48:30.146359",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "credential_snatch",
+          "entity2": "zoe_kelly",
+          "channel": "app"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "submit_sensitive_information",
+          "entity2": "quick_cash_merchant",
+          "channel": "website"
+        },
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "password_promise",
+          "entity2": "zoe_kelly",
+          "channel": "call"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "quick_cash_merchant",
+          "channel": "website"
+        },
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "account_reconnaissance",
+          "entity2": "zoe_kelly",
+          "channel": "sms"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "make_unverified_payment",
+          "entity2": "quick_cash_merchant",
+          "channel": "sms"
+        },
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "social_engineering_attack",
+          "entity2": "zoe_kelly",
+          "channel": "sms"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "allow_unverified_transaction",
+          "entity2": "quick_cash_merchant",
+          "channel": "website"
+        },
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "phishing_attack",
+          "entity2": "zoe_kelly",
+          "channel": "email"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "click_on_insecure_link",
+          "entity2": "quick_cash_merchant",
+          "channel": "website"
+        }
+      ],
+      "action_count": 10
+    },
+    {
+      "sequence_id": 7,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:48:49.679084",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "phishing",
+          "entity2": "erin_tate",
+          "channel": "email"
+        },
+        {
+          "entity1": "erin_tate",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "quick_cash_merchant",
+          "channel": "call"
+        }
+      ],
+      "action_count": 2
+    },
+    {
+      "sequence_id": 8,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:49:19.387542",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "social_engineering_attack",
+          "entity2": "emily_smith",
+          "channel": "website"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "account_reconnaissance",
+          "entity2": "emily_smith",
+          "channel": "email"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_e-commerce_network",
+          "channel": "email"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "phishing",
+          "entity2": "emily_smith",
+          "channel": "sms"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        }
+      ],
+      "action_count": 6
+    },
+    {
+      "sequence_id": 9,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:49:46.921695",
+      "actions": [
+        {
+          "entity1": "global_supply_chains",
+          "action": "password_promise",
+          "entity2": "sarah_turner",
+          "channel": "email"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "global_supply_chains",
+          "channel": "app"
+        },
+        {
+          "entity1": "global_supply_chains",
+          "action": "phishing_attack",
+          "entity2": "sarah_turner",
+          "channel": "website"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "submit_sensitive_information",
+          "entity2": "global_supply_chains",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_supply_chains",
+          "action": "email_trap",
+          "entity2": "sarah_turner",
+          "channel": "email"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_supply_chains",
+          "channel": "app"
+        }
+      ],
+      "action_count": 6
+    },
+    {
+      "sequence_id": 10,
+      "label": "fraud",
+      "timestamp": "2026-03-22T21:51:10.183778",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "social_engineering_attack",
+          "entity2": "maya_cameron",
+          "channel": "call"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_e-commerce_network",
+          "channel": "email"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "data_spoofing",
+          "entity2": "maya_cameron",
+          "channel": "sms"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "credential_snatch",
+          "entity2": "maya_cameron",
+          "channel": "call"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "submit_sensitive_information",
+          "entity2": "global_e-commerce_network",
+          "channel": "email"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "payment_link_redirect",
+          "entity2": "maya_cameron",
+          "channel": "website"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "initiate_fast_transfer_to_fraudster_account",
+          "entity2": "global_e-commerce_network",
+          "channel": "app"
+        }
+      ],
+      "action_count": 8
+    }
+  ]
+}

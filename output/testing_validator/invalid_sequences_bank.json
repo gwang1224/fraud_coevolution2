@@ -1,4 +1,10 @@
 {
+  "metadata": {
+    "validator": "fraud",
+    "total_input": 100,
+    "invalid": 84,
+    "unclassified": 0
+  },
   "sequences": [
     {
       "sequence_id": 1,

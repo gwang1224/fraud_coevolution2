@@ -9,9 +9,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-_ROOT = Path(__file__).resolve().parent
-_DEFAULT_INPUT = _ROOT / "output" / "fraud_sequences_100.json"
-_DEFAULT_INVALID_BANK = _ROOT / "output" / "invalid_sequences_bank.json"
+# Project root (…/fraud_coevolution2), not src/validators — so default paths match output/
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+_DEFAULT_INPUT = _PROJECT_ROOT / "output" / "fraud_sequences_100.json"
+_DEFAULT_INVALID_BANK = _PROJECT_ROOT / "output" / "invalid_sequences_bank.json"
+_DEFAULT_VALID_BANK = _PROJECT_ROOT / "output" / "valid_sequences_bank.json"
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
@@ -191,7 +193,13 @@ def main():
         "--output-invalid-bank",
         type=Path,
         default=_DEFAULT_INVALID_BANK,
-        help="Where to write invalid sequences",
+        help="Where to write invalid / unclassified sequences",
+    )
+    parser.add_argument(
+        "--output-valid-bank",
+        type=Path,
+        default=_DEFAULT_VALID_BANK,
+        help="Where to write sequences judged valid",
     )
     parser.add_argument(
         "--verbose",
@@ -213,6 +221,7 @@ def main():
     invalid_sequences = 0
     unclassified = 0
     invalid_sequence_bank = []
+    valid_sequence_bank = []
 
     for sequence in sequences:
         sid = sequence.get("sequence_id", "?")
@@ -226,6 +235,8 @@ def main():
 
         if label == "valid":
             valid_sequences += 1
+            valid_entry = {**sequence, "label": "valid", "validator_output": raw}
+            valid_sequence_bank.append(valid_entry)
         elif label == "invalid":
             invalid_sequences += 1
             entry = {
@@ -257,13 +268,41 @@ def main():
             invalid_sequence_bank.append(entry)
 
     args.output_invalid_bank.parent.mkdir(parents=True, exist_ok=True)
+    args.output_valid_bank.parent.mkdir(parents=True, exist_ok=True)
+
     with open(args.output_invalid_bank, "w", encoding="utf-8") as f:
-        json.dump({"sequences": invalid_sequence_bank}, f, indent=2)
+        json.dump(
+            {
+                "metadata": {
+                    "validator": "fraud",
+                    "total_input": len(sequences),
+                    "invalid": invalid_sequences,
+                    "unclassified": unclassified,
+                },
+                "sequences": invalid_sequence_bank,
+            },
+            f,
+            indent=2,
+        )
+    with open(args.output_valid_bank, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "metadata": {
+                    "validator": "fraud",
+                    "total_input": len(sequences),
+                    "valid": valid_sequences,
+                },
+                "sequences": valid_sequence_bank,
+            },
+            f,
+            indent=2,
+        )
 
     print(f"Valid sequences: {valid_sequences}")
     print(f"Invalid sequences: {invalid_sequences}")
     if unclassified:
         print(f"Unclassified (after retries): {unclassified}")
+    print(f"Saved valid bank to: {args.output_valid_bank}")
     print(f"Saved invalid / unclassified bank to: {args.output_invalid_bank}")
 
 

@@ -1,7 +1,9 @@
 from neo4j import GraphDatabase
+import argparse
 import json
 import os
 import random
+import sys
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
@@ -9,7 +11,12 @@ from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Optional
 from pathlib import Path
 
-from llmvalidator import validate_one_sequence
+# Running as `python .../build_fraud_sequence.py` does not put `src` on sys.path
+_src = Path(__file__).resolve().parents[1]
+if str(_src) not in sys.path:
+    sys.path.insert(0, str(_src))
+
+from validators.fraud_validator import validate_one_sequence
 
 
 load_dotenv()
@@ -655,6 +662,38 @@ class Neo4jSequenceBuilder:
             print(f"\nReached maximum steps ({max_steps})")
         
         return state.history
+    
+    def generate_one_sequence(self, max_steps: int = 10) -> List[Action]:
+        """
+        Generate and validate a single sequence
+
+        Args:
+            max_steps: Maximum steps per sequence
+        Returns:
+            List of Action objects representing the sequence
+        """
+        valid_sequence = False
+        
+        while not valid_sequence:
+            sequence = self.generate_sequence(max_steps=max_steps)
+
+            sequence_dict = [
+                    {
+                        "entity1": action.entity1,
+                        "action": action.action,
+                        "entity2": action.entity2,
+                        "channel": action.channel
+                    }
+                    for action in sequence
+                ]
+
+            label, reason = validate_one_sequence(sequence_dict)
+            
+            if label == "valid":
+                valid_sequence = True
+            else:
+                print(f"\nInvalid sequence")
+        return sequence
 
     def generate_multiple_sequences(self, count: int, max_steps: int = 10) -> List[Dict]:
         """
@@ -692,7 +731,7 @@ class Neo4jSequenceBuilder:
                 # Validate sequence
                 label, reason = validate_one_sequence(sequence_dict)
                 if label == "valid":
-                    print("Valid sequence: True")
+                    print("\nValid sequence: True")
                     successful_count += 1
                     sequences.append(
                         {
@@ -705,8 +744,7 @@ class Neo4jSequenceBuilder:
                     )
                     print(f"✓ Sequence {successful_count} is valid")
                 else:
-                    print("Valid sequence: False")
-                    print(f"Reason: {reason}")
+                    print("\nValid sequence: False")
                 
             except Exception as e:
                 print(f"✗ Error generating sequence {successful_count+1}: {e}")
@@ -744,12 +782,24 @@ class Neo4jSequenceBuilder:
     
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate fraud sequences")
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path(os.getenv("FRAUD_SEQUENCES_OUT", "fraud_sequences.json")),
+        help="Output JSON path (default: FRAUD_SEQUENCES_OUT or fraud_sequences.json)",
+    )
+    args = parser.parse_args()
+
     SequenceBuilder = Neo4jSequenceBuilder()
     
     try:
-        sequences = SequenceBuilder.generate_multiple_sequences(count=5, max_steps=10)
+        # sequences = SequenceBuilder.generate_multiple_sequences(count=1, max_steps=10)
+        # args.output.parent.mkdir(parents=True, exist_ok=True)
+        # SequenceBuilder.save_sequences_to_file(sequences, filename=str(args.output))
 
-        SequenceBuilder.save_sequences_to_file(sequences, filename="fraud_sequences_100.json")
+        sequence = SequenceBuilder.generate_one_sequence(max_steps=10)
+        print(sequence)
         
     finally:
         SequenceBuilder.close()
