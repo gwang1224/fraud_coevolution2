@@ -1,3 +1,19 @@
+"""
+LLM **fraud-narrative** validator for saved sequence JSON.
+
+Reads a file with top-level ``sequences`` (each with ``actions``: ``entity1``, ``action``,
+``entity2``, ``channel``). Asks Ollama for a single token ``valid`` or ``invalid`` against
+rules for realistic scam progression. Optionally runs a second pass to explain invalid rows.
+
+Writes:
+- ``output/valid_sequences_bank.json`` (default) — accepted sequences plus metadata.
+- ``output/invalid_sequences_bank.json`` (default) — rejected / unclassified rows.
+
+Defaults resolve relative to the **repository root** (two levels above this file).
+
+Requires: ``requests``, ``python-dotenv``, Ollama.
+"""
+
 import argparse
 import json
 import os

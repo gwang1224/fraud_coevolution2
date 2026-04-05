@@ -1,8 +1,14 @@
 """
-LLM-based validator for legitimate / authorized FAST-payment-style sequences.
+LLM **legitimate-banking** validator for saved sequence JSON.
 
-Mirrors fraud_validator.py: binary valid/invalid verdict, optional explanation
-for failures, CLI over JSON with a top-level \"sequences\" list.
+Same interface style as ``fraud_validator``: binary ``valid`` / ``invalid`` from Ollama, optional
+explanation pass for failures, CLI over JSON with top-level ``sequences``. Judgments assume
+authorized, benign retail behavior (not scams).
+
+Default IO paths (repo ``output/``): ``legit_sequences_100.json`` in,
+``invalid_legit_sequences_bank.json`` out.
+
+Requires: ``requests``, ``python-dotenv``, Ollama.
 """
 
 import argparse

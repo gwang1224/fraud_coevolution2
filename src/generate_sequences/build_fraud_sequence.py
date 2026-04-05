@@ -1,3 +1,17 @@
+"""
+Synthetic **fraud** FAST-payment sequences backed by Neo4j.
+
+Loads victims, fraudsters, and action definitions from the graph; alternates fraudster and
+victim steps; uses an LLM (Ollama) to pick among legal next actions and Neo4j ``NEXT`` edge
+weights for diversity. Applies compromise/terminal transfer rules in simulation.
+
+Finished sequences can be checked with ``validators.fraud_validator.validate_one_sequence``
+before acceptance (see ``generate_multiple_sequences``). CLI supports ``--output`` and
+``FRAUD_SEQUENCES_OUT`` for JSON export paths.
+
+Requires: Neo4j, ``python-dotenv``, ``requests``, and Ollama for LLM calls.
+"""
+
 from neo4j import GraphDatabase
 import argparse
 import json
@@ -691,9 +705,18 @@ class Neo4jSequenceBuilder:
             
             if label == "valid":
                 valid_sequence = True
+                sequence_dict = [
+                    {
+                        "entity1": action.entity1,
+                        "action": action.action,
+                        "entity2": action.entity2,
+                        "channel": action.channel
+                    }
+                    for action in sequence
+                ]
             else:
                 print(f"\nInvalid sequence")
-        return sequence
+        return sequence_dict
 
     def generate_multiple_sequences(self, count: int, max_steps: int = 10) -> List[Dict]:
         """

@@ -1,10 +1,15 @@
 {
   "metadata": {
-    "total_sequences": 10,
+    "total_sequences": 26,
     "generated_at": "2026-03-22T21:51:10.183842",
-    "successful_sequences": 0,
-    "total_actions": 56,
-    "average_actions_per_sequence": 5.6
+    "successful_sequences": 26,
+    "total_actions": 120,
+    "average_actions_per_sequence": 4.615384615384615,
+    "validator_summary": {
+      "validator": "fraud",
+      "total_input": 100,
+      "valid": 16
+    }
   },
   "sequences": [
     {
@@ -422,6 +427,550 @@
         }
       ],
       "action_count": 8
+    },
+    {
+      "sequence_id": 11,
+      "timestamp": "2026-03-09T14:32:51.416187",
+      "actions": [
+        {
+          "entity1": "digital_solutions_corp",
+          "action": "credential_snatch",
+          "entity2": "kaitlyn_bennett",
+          "channel": "app"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "enter_malicious_webpage",
+          "entity2": "digital_solutions_corp",
+          "channel": "website"
+        },
+        {
+          "entity1": "digital_solutions_corp",
+          "action": "password_promise",
+          "entity2": "kaitlyn_bennett",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "submit_sensitive_information",
+          "entity2": "digital_solutions_corp",
+          "channel": "website"
+        },
+        {
+          "entity1": "digital_solutions_corp",
+          "action": "email_trap",
+          "entity2": "kaitlyn_bennett",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "digital_solutions_corp",
+          "channel": "call"
+        }
+      ],
+      "action_count": 6,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 12,
+      "timestamp": "2026-03-09T14:33:13.438882",
+      "actions": [
+        {
+          "entity1": "aureliahillman",
+          "action": "credential_snatch",
+          "entity2": "samantha_white",
+          "channel": "email"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "aureliahillman",
+          "channel": "email"
+        },
+        {
+          "entity1": "aureliahillman",
+          "action": "phishing",
+          "entity2": "samantha_white",
+          "channel": "sms"
+        },
+        {
+          "entity1": "samantha_white",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aureliahillman",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 13,
+      "timestamp": "2026-03-09T14:33:22.819122",
+      "actions": [
+        {
+          "entity1": "global_supply_chains",
+          "action": "phishing",
+          "entity2": "maya_cameron",
+          "channel": "email"
+        },
+        {
+          "entity1": "maya_cameron",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_supply_chains",
+          "channel": "call"
+        }
+      ],
+      "action_count": 2,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 14,
+      "timestamp": "2026-03-09T14:33:50.563555",
+      "actions": [
+        {
+          "entity1": "jessica_parker",
+          "action": "credential_snatch",
+          "entity2": "emily_smith",
+          "channel": "email"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "submit_sensitive_information",
+          "entity2": "jessica_parker",
+          "channel": "website"
+        },
+        {
+          "entity1": "jessica_parker",
+          "action": "email_trap",
+          "entity2": "emily_smith",
+          "channel": "website"
+        },
+        {
+          "entity1": "emily_smith",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jessica_parker",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 15,
+      "timestamp": "2026-03-09T14:34:06.339905",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "credential_snatch",
+          "entity2": "alexandra_black",
+          "channel": "email"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "quick_cash_merchant",
+          "channel": "website"
+        },
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "payment_link_redirect",
+          "entity2": "alexandra_black",
+          "channel": "sms"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "quick_cash_merchant",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 16,
+      "timestamp": "2026-03-09T14:36:26.337853",
+      "actions": [
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "credential_snatch",
+          "entity2": "kaitlyn_bennett",
+          "channel": "call"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "global_e-commerce_network",
+          "channel": "website"
+        },
+        {
+          "entity1": "global_e-commerce_network",
+          "action": "phishing",
+          "entity2": "kaitlyn_bennett",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kaitlyn_bennett",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_e-commerce_network",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 17,
+      "timestamp": "2026-03-09T14:37:37.984870",
+      "actions": [
+        {
+          "entity1": "aureliahillman",
+          "action": "password_promise",
+          "entity2": "amy_brown",
+          "channel": "call"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "submit_sensitive_information",
+          "entity2": "aureliahillman",
+          "channel": "email"
+        },
+        {
+          "entity1": "aureliahillman",
+          "action": "email_trap",
+          "entity2": "amy_brown",
+          "channel": "email"
+        },
+        {
+          "entity1": "amy_brown",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "aureliahillman",
+          "channel": "call"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 18,
+      "timestamp": "2026-03-09T14:37:45.799903",
+      "actions": [
+        {
+          "entity1": "swift_merchantservices",
+          "action": "phishing",
+          "entity2": "victim_1",
+          "channel": "sms"
+        },
+        {
+          "entity1": "victim_1",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "swift_merchantservices",
+          "channel": "call"
+        }
+      ],
+      "action_count": 2,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 19,
+      "timestamp": "2026-03-09T14:39:09.755778",
+      "actions": [
+        {
+          "entity1": "golden_sun_finance",
+          "action": "social_engineering_attack",
+          "entity2": "jessie_parks",
+          "channel": "call"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "make_unverified_payment",
+          "entity2": "golden_sun_finance",
+          "channel": "sms"
+        },
+        {
+          "entity1": "golden_sun_finance",
+          "action": "account_reconnaissance",
+          "entity2": "jessie_parks",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "accept_unsolicited_payment_request",
+          "entity2": "golden_sun_finance",
+          "channel": "call"
+        },
+        {
+          "entity1": "golden_sun_finance",
+          "action": "email_trap",
+          "entity2": "jessie_parks",
+          "channel": "email"
+        },
+        {
+          "entity1": "jessie_parks",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "golden_sun_finance",
+          "channel": "call"
+        }
+      ],
+      "action_count": 6,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 20,
+      "timestamp": "2026-03-09T14:39:45.504927",
+      "actions": [
+        {
+          "entity1": "golden_sun_finance",
+          "action": "social_engineering",
+          "entity2": "alexandra_black",
+          "channel": "call"
+        },
+        {
+          "entity1": "alexandra_black",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "golden_sun_finance",
+          "channel": "call"
+        }
+      ],
+      "action_count": 2,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 21,
+      "timestamp": "2026-03-09T14:40:18.212843",
+      "actions": [
+        {
+          "entity1": "rapid_development_llc",
+          "action": "phishing_attack",
+          "entity2": "megan_chen",
+          "channel": "email"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "rapid_development_llc",
+          "channel": "email"
+        },
+        {
+          "entity1": "rapid_development_llc",
+          "action": "account_impersonation_spear",
+          "entity2": "megan_chen",
+          "channel": "sms"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "make_unverified_payment",
+          "entity2": "rapid_development_llc",
+          "channel": "call"
+        },
+        {
+          "entity1": "rapid_development_llc",
+          "action": "email_trap",
+          "entity2": "megan_chen",
+          "channel": "website"
+        },
+        {
+          "entity1": "megan_chen",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "rapid_development_llc",
+          "channel": "app"
+        }
+      ],
+      "action_count": 6,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 22,
+      "timestamp": "2026-03-09T14:40:43.442078",
+      "actions": [
+        {
+          "entity1": "global_supply_chains",
+          "action": "phishing",
+          "entity2": "zoe_kelly",
+          "channel": "sms"
+        },
+        {
+          "entity1": "zoe_kelly",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "global_supply_chains",
+          "channel": "call"
+        }
+      ],
+      "action_count": 2,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 23,
+      "timestamp": "2026-03-09T14:41:37.240893",
+      "actions": [
+        {
+          "entity1": "james_wilson",
+          "action": "password_promise",
+          "entity2": "kayla_hamilton",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "submit_vulnerable_account_details",
+          "entity2": "james_wilson",
+          "channel": "app"
+        },
+        {
+          "entity1": "james_wilson",
+          "action": "victim_info_exploitation",
+          "entity2": "kayla_hamilton",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "james_wilson",
+          "channel": "app"
+        }
+      ],
+      "action_count": 4,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 24,
+      "timestamp": "2026-03-09T14:42:11.667950",
+      "actions": [
+        {
+          "entity1": "quick_cash_merchant",
+          "action": "phishing",
+          "entity2": "kiera_sanders",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kiera_sanders",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "quick_cash_merchant",
+          "channel": "app"
+        }
+      ],
+      "action_count": 2,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 25,
+      "timestamp": "2026-03-09T14:43:32.651643",
+      "actions": [
+        {
+          "entity1": "rapid_development_llc",
+          "action": "password_promise",
+          "entity2": "kayla_hamilton",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "enter_malicious_webpage",
+          "entity2": "rapid_development_llc",
+          "channel": "website"
+        },
+        {
+          "entity1": "rapid_development_llc",
+          "action": "credential_snatch",
+          "entity2": "kayla_hamilton",
+          "channel": "app"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "use_trusted_service_to_send_funds",
+          "entity2": "rapid_development_llc",
+          "channel": "email"
+        },
+        {
+          "entity1": "rapid_development_llc",
+          "action": "payment_link_redirect",
+          "entity2": "kayla_hamilton",
+          "channel": "sms"
+        },
+        {
+          "entity1": "kayla_hamilton",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "rapid_development_llc",
+          "channel": "call"
+        }
+      ],
+      "action_count": 6,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
+    },
+    {
+      "sequence_id": 26,
+      "timestamp": "2026-03-09T14:43:59.057888",
+      "actions": [
+        {
+          "entity1": "jason_henry",
+          "action": "social_engineering_attack",
+          "entity2": "sarah_turner",
+          "channel": "website"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "enter_malicious_webpage",
+          "entity2": "jason_henry",
+          "channel": "email"
+        },
+        {
+          "entity1": "jason_henry",
+          "action": "phishing_attack",
+          "entity2": "sarah_turner",
+          "channel": "website"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "submit_sensitive_information",
+          "entity2": "jason_henry",
+          "channel": "email"
+        },
+        {
+          "entity1": "jason_henry",
+          "action": "payment_link_redirect",
+          "entity2": "sarah_turner",
+          "channel": "sms"
+        },
+        {
+          "entity1": "sarah_turner",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "entity2": "jason_henry",
+          "channel": "call"
+        }
+      ],
+      "action_count": 6,
+      "successful": true,
+      "label": "valid",
+      "validator_output": "valid"
     }
   ]
 }

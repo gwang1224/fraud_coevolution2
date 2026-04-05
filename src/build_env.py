@@ -1,12 +1,16 @@
 """
-Environment Builder for Fraudulent Transaction Sequences
+LLM-driven **data generation** for fraud-simulation JSON assets (Ollama).
 
-This module generates deterministic fraud scenarios using LLM (Ollama) and stores
-them in Neo4j graph database with proper nodes and relationships.
+``OllamaClient`` uses prompts under the repository ``llm_config/`` directory and optional
+``data/llm/guidelines.json`` to
+author new victims, fraudsters, fraudster actions, victim (fraud) actions, and **legit**
+actions. Outputs are written under ``data/graph/`` (e.g. ``victims.json``, ``fraudsters.json``,
+``fraudster_actions.json``, ``victim_actions.json``). Legit rows are merged into
+``victim_actions.json`` under the ``legit_actions`` key for ``build_legit_sequence``.
 
-Also supports LLM invention of legitimate (benign) banking actions via
-generate_legit_actions_database(), merged into data/victim_actions.json under
-legit_actions for use by build_normal_sequence.py.
+**Loading into Neo4j** is a separate step: use ``src/build_graph.py`` after these files exist.
+
+Requires: ``requests``, ``python-dotenv``, Ollama.
 """
 
 import json
@@ -47,7 +51,7 @@ class Account:
 class OllamaClient:
     """Client for interacting with Ollama LLM"""
     
-    def __init__(self, base_url: str, model: str, prompt_dir: str, guidelines_path: str = "data/guidelines.json"):
+    def __init__(self, base_url: str, model: str, prompt_dir: str, guidelines_path: str = "data/llm/guidelines.json"):
         self.base_url = base_url
         self.model = model
         self.prompt_dir = Path(prompt_dir)
@@ -132,7 +136,7 @@ class OllamaClient:
             return "\n\nBackground Information (Use these guidelines to inform your action generation):\n" + "\n".join(sections) + "\n"
         return ""
     
-    def load_existing_victims(self, filepath: str = "data/victims.json") -> List[str]:
+    def load_existing_victims(self, filepath: str = "data/graph/victims.json") -> List[str]:
         """
         Load existing victim names from victims.json to check for uniqueness
         
@@ -158,7 +162,7 @@ class OllamaClient:
         
         return existing_names
 
-    def load_existing_fraudsters(self, filepath: str = "data/fraudsters.json") -> List[str]:
+    def load_existing_fraudsters(self, filepath: str = "data/graph/fraudsters.json") -> List[str]:
         """
         Load existing fraudster names from fraudsters.json to check for uniqueness
         
@@ -184,7 +188,7 @@ class OllamaClient:
         
         return existing_names
 
-    def load_existing_fraudster_actions(self, filepath: str = "data/fraudster_actions.json") -> List[str]:
+    def load_existing_fraudster_actions(self, filepath: str = "data/graph/fraudster_actions.json") -> List[str]:
         """
         Load existing fraudster action names from fraudster_actions.json to check for uniqueness
         
@@ -210,7 +214,7 @@ class OllamaClient:
         
         return existing_names
 
-    def load_existing_victim_actions(self, filepath: str = "data/victim_actions.json") -> List[str]:
+    def load_existing_victim_actions(self, filepath: str = "data/graph/victim_actions.json") -> List[str]:
         """
         Load existing victim action names from victim_actions.json to check for uniqueness
         
@@ -236,7 +240,7 @@ class OllamaClient:
         
         return existing_names
 
-    def load_existing_legit_actions(self, filepath: str = "data/victim_actions.json") -> List[str]:
+    def load_existing_legit_actions(self, filepath: str = "data/graph/victim_actions.json") -> List[str]:
         """Existing legit action names (legit_actions key) for uniqueness."""
         existing_names: List[str] = []
         try:
@@ -347,7 +351,7 @@ class OllamaClient:
             print(f"Error generating victim with Ollama: {e}")
             return None
 
-    def generate_victim_database(self, num_victims=25, filepath: str = "data/victims.json"):
+    def generate_victim_database(self, num_victims=25, filepath: str = "data/graph/victims.json"):
         """
         Generate multiple unique victims and save to file
         
@@ -479,7 +483,7 @@ class OllamaClient:
             print(f"Error generating fraudster with Ollama: {e}")
             return None
 
-    def generate_fraudster_database(self, num_fraudsters=25, filepath: str = "data/fraudsters.json"):
+    def generate_fraudster_database(self, num_fraudsters=25, filepath: str = "data/graph/fraudsters.json"):
         """
         Generate multiple unique fraudsters and save to file
         
@@ -545,7 +549,7 @@ class OllamaClient:
         print(f"  - Total unique fraudsters: {len(fraudsters)}")
         print(f"  - Entity type distribution: {entity_type_counts}")
 
-    def generate_fraudster_actions_database(self, num_actions=25, filepath: str = "data/fraudster_actions.json") -> List[Dict]:
+    def generate_fraudster_actions_database(self, num_actions=25, filepath: str = "data/graph/fraudster_actions.json") -> List[Dict]:
         """
         Use LLM to generate fraudster actions with uniqueness checking
         Returns a list of fraudster actions
@@ -662,7 +666,7 @@ class OllamaClient:
         
         return actions
 
-    def generate_victim_actions_database(self, num_actions=25, filepath: str = "data/victim_actions.json") -> List[Dict]:
+    def generate_victim_actions_database(self, num_actions=25, filepath: str = "data/graph/victim_actions.json") -> List[Dict]:
         """
         Use LLM to generate victim actions with uniqueness checking
         Returns a list of victim actions
@@ -786,7 +790,7 @@ class OllamaClient:
         return actions
 
     def generate_legit_actions_database(
-        self, num_actions: int = 25, filepath: str = "data/victim_actions.json"
+        self, num_actions: int = 25, filepath: str = "data/graph/victim_actions.json"
     ) -> List[Dict]:
         """
         Use LLM to invent new legitimate banking actions; append to legit_actions in victim_actions.json.
@@ -896,12 +900,12 @@ class OllamaClient:
 
 def main():
     """Main function to run the environment builder"""
-    _root = Path(__file__).resolve().parent
+    _repo_root = Path(__file__).resolve().parents[1]
     client = OllamaClient(
         "http://localhost:11434",
         "llama3.2",
-        str(_root / "llm_config"),
-        guidelines_path=str(_root / "data" / "guidelines.json"),
+        str(_repo_root / "llm_config"),
+        guidelines_path=str(_repo_root / "data" / "llm" / "guidelines.json"),
     )
 
     # client.generate_victim_database()

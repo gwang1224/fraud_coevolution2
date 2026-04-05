@@ -1,3 +1,17 @@
+"""
+Populate Neo4j from JSON **data** files (victims, fraudsters, fraudster actions, victim actions).
+
+``Neo4jApp`` reads JSON under ``data/graph/`` (``victims.json``, ``fraudsters.json``,
+``fraudster_actions.json``, ``victim_actions.json``) relative to ``database_path``, creates person and
+account nodes, and wires ``PERFORMS`` / ``TARGETS`` relationships for the fraud simulation
+graph used by sequence generators.
+
+Environment: ``NEO4J_URI``, ``NEO4J_USERNAME``, ``NEO4J_PASSWORD`` (via ``python-dotenv``).
+
+This loader does **not** ingest ``legit_actions`` inside ``victim_actions.json``; those rows
+are for ``build_legit_sequence`` only.
+"""
+
 from neo4j import GraphDatabase
 import json
 import os
@@ -127,7 +141,7 @@ class Neo4jApp:
             
     
 def main():
-    neo4j = Neo4jApp(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, "data/")
+    neo4j = Neo4jApp(NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, "data/graph/")
     neo4j.delete_all_nodes()
     neo4j.add_entity_acc_nodes("victims.json")
     neo4j.add_entity_acc_nodes("fraudsters.json")

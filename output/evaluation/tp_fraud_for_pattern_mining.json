@@ -1,0 +1,2513 @@
+{
+  "6": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "check_account_status",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "7": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "victim_1",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "8": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "erin_tate",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "auto_bill_split",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "9": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "natalie_wilson",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "web"
+      }
+    ]
+  },
+  "10": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "natalie_wilson",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "13": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "sophia_jones",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "sophia_jones",
+        "action": "send_aid_to_sister",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "15": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "megan_chen",
+        "action": "verify_account_balance_on_phone",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "remit_cash_request",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "16": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kiera_sanders",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "kiera_sanders",
+        "action": "pay_rent",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "17": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jade_davis",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "ivr"
+      },
+      {
+        "entity1": "jade_davis",
+        "action": "add_new_payee_and_send_verified_payment",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "18": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jessie_parks",
+        "action": "remit_cash_request",
+        "entity2": "trusted_contact",
+        "channel": "web"
+      }
+    ]
+  },
+  "19": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "victims_frank",
+        "action": "view_recent_transactions",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "set_up_recurring_transfer",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "20": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "maddison_rice",
+        "action": "verify_account_balance_on_phone",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "schedule_rent_payment",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "22": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "sophia_jones",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "sophia_jones",
+        "action": "send_aid_to_sister",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "24": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "maddison_rice",
+        "action": "get_current_account_status",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "auto_bill_split",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "28": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "sophia_jones",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      },
+      {
+        "entity1": "sophia_jones",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "30": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "amy_brown",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "31": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "victim_1",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "victim_1",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      },
+      {
+        "entity1": "victim_1",
+        "action": "set_up_recurring_transfer",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      }
+    ]
+  },
+  "35": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "megan_chen",
+        "action": "view_recent_transactions",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "37": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "zoe_kelly",
+        "action": "set_up_recurring_transfer",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "38": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "erin_tate",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "view_recent_transactions",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "pay_furniture_deposit",
+        "entity2": "self",
+        "channel": "web"
+      }
+    ]
+  },
+  "40": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "samantha_white",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "45": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "victims_frank",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "check_account_status",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "schedule_rent_payment",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "47": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "sarah_turner",
+        "action": "get_current_account_status",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "pay_furniture_deposit",
+        "entity2": "self",
+        "channel": "web"
+      }
+    ]
+  },
+  "48": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "samantha_white",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "49": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "megan_chen",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "51": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "keely_henderson",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "59": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "laura_fowler",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "add_new_payee_and_send_verified_payment",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "62": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "natalie_wilson",
+        "action": "monthly_recurring_deposits",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "64": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "zoe_kelly",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "zoe_kelly",
+        "action": "view_recent_transactions",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "zoe_kelly",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      }
+    ]
+  },
+  "65": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "taylor_morris",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "taylor_morris",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "taylor_morris",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "taylor_morris",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "69": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jessie_gibson",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "pay_rent",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "70": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "remit_cash_request",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "71": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "natalie_wilson",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "72": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "megan_chen",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "73": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "danielle_williams",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "view_recent_transactions",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      }
+    ]
+  },
+  "74": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jessie_gibson",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "send_aid_to_sister",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "76": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "zoe_kelly",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "zoe_kelly",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "79": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "danielle_williams",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "ivr"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "84": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "emily_smith",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "emily_smith",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "85": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kayla_hamilton",
+        "action": "create_savings_account_payee",
+        "entity2": "verified_new_payee",
+        "channel": "app"
+      }
+    ]
+  },
+  "87": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "samantha_white",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "web"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "send_p2p_to_saved_contact",
+        "entity2": "trusted_contact",
+        "channel": "web"
+      }
+    ]
+  },
+  "88": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "laura_fowler",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "ivr"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "pay_rent_on_time",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "89": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kiera_sanders",
+        "action": "pay_rent",
+        "entity2": "landlord",
+        "channel": "app"
+      }
+    ]
+  },
+  "91": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "emily_smith",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "emily_smith",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "emily_smith",
+        "action": "recurring_transfer_reinforce_schedule",
+        "entity2": "own_or_household_account",
+        "channel": "app"
+      }
+    ]
+  },
+  "92": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jessie_gibson",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "ivr"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "schedule_rent_payment",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "93": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "erin_tate",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "add_verified_payee_with_direct_deposit",
+        "entity2": "verified_new_payee",
+        "channel": "web"
+      }
+    ]
+  },
+  "94": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "jessie_parks",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "jessie_parks",
+        "action": "check_account_status",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "jessie_parks",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "jessie_parks",
+        "action": "remit_cash_request",
+        "entity2": "trusted_contact",
+        "channel": "app"
+      }
+    ]
+  },
+  "95": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "kayla_hamilton",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "verify_account_balance_on_phone",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "small_bill_payment_pay_lease_fee",
+        "entity2": "landlord",
+        "channel": "web"
+      }
+    ]
+  },
+  "96": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "amy_brown",
+        "action": "query_available_funds",
+        "entity2": "self",
+        "channel": "web"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "get_balance_inquiry",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "app"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "check_account_status",
+        "entity2": "self",
+        "channel": "app"
+      }
+    ]
+  },
+  "98": {
+    "label": "legit",
+    "sequence": [
+      {
+        "entity1": "danielle_williams",
+        "action": "check_balance",
+        "entity2": "self",
+        "channel": "atm"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "schedule_rent_payment",
+        "entity2": "landlord",
+        "channel": "bill_pay"
+      }
+    ]
+  },
+  "0": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "aureliahillman",
+        "action": "phishing",
+        "entity2": "jade_davis",
+        "channel": "email"
+      },
+      {
+        "entity1": "jade_davis",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "aureliahillman",
+        "channel": "call"
+      }
+    ]
+  },
+  "1": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "password_promise",
+        "entity2": "kayla_hamilton",
+        "channel": "sms"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "golden_sun_finance",
+        "channel": "email"
+      },
+      {
+        "entity1": "golden_sun_finance",
+        "action": "victims_info_promise",
+        "entity2": "kayla_hamilton",
+        "channel": "sms"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "golden_sun_finance",
+        "channel": "email"
+      },
+      {
+        "entity1": "golden_sun_finance",
+        "action": "email_trap",
+        "entity2": "kayla_hamilton",
+        "channel": "website"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "app"
+      }
+    ]
+  },
+  "2": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "swift_merchantservices",
+        "action": "social_engineering_attack",
+        "entity2": "emily_smith",
+        "channel": "call"
+      },
+      {
+        "entity1": "emily_smith",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "swift_merchantservices",
+        "channel": "website"
+      },
+      {
+        "entity1": "swift_merchantservices",
+        "action": "payment_link_redirect",
+        "entity2": "emily_smith",
+        "channel": "sms"
+      },
+      {
+        "entity1": "emily_smith",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "swift_merchantservices",
+        "channel": "call"
+      }
+    ]
+  },
+  "3": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_investments_limited",
+        "action": "social_engineering",
+        "entity2": "danielle_williams",
+        "channel": "call"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_investments_limited",
+        "channel": "call"
+      }
+    ]
+  },
+  "4": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_supply_chains",
+        "action": "password_promise",
+        "entity2": "victims_frank",
+        "channel": "email"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "submit_sensitive_information",
+        "entity2": "global_supply_chains",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "victims_info_promise",
+        "entity2": "victims_frank",
+        "channel": "email"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "make_unverified_payment",
+        "entity2": "global_supply_chains",
+        "channel": "sms"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "email_trap",
+        "entity2": "victims_frank",
+        "channel": "sms"
+      },
+      {
+        "entity1": "victims_frank",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_supply_chains",
+        "channel": "call"
+      }
+    ]
+  },
+  "5": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "victor_taylor",
+        "action": "phishing_attack",
+        "entity2": "victim_1",
+        "channel": "website"
+      },
+      {
+        "entity1": "victim_1",
+        "action": "report_phishing_email",
+        "entity2": "victor_taylor",
+        "channel": "email"
+      },
+      {
+        "entity1": "victor_taylor",
+        "action": "email_trap",
+        "entity2": "victim_1",
+        "channel": "email"
+      },
+      {
+        "entity1": "victim_1",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "victor_taylor",
+        "channel": "call"
+      }
+    ]
+  },
+  "11": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "credential_snatch",
+        "entity2": "laura_fowler",
+        "channel": "sms"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "golden_sun_finance",
+        "channel": "email"
+      },
+      {
+        "entity1": "golden_sun_finance",
+        "action": "payment_link_redirect",
+        "entity2": "laura_fowler",
+        "channel": "email"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "initiate_fast_transfer_to_fraudster_account",
+        "entity2": "golden_sun_finance",
+        "channel": "website"
+      }
+    ]
+  },
+  "12": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "blue_ribbon_enterprises",
+        "action": "social_engineering_attack",
+        "entity2": "sarah_turner",
+        "channel": "website"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "blue_ribbon_enterprises",
+        "channel": "email"
+      },
+      {
+        "entity1": "blue_ribbon_enterprises",
+        "action": "victims_info_promise",
+        "entity2": "sarah_turner",
+        "channel": "email"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "enter_unverified_merchant_details",
+        "entity2": "blue_ribbon_enterprises",
+        "channel": "website"
+      },
+      {
+        "entity1": "blue_ribbon_enterprises",
+        "action": "email_trap",
+        "entity2": "sarah_turner",
+        "channel": "website"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "blue_ribbon_enterprises",
+        "channel": "call"
+      }
+    ]
+  },
+  "14": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_supply_chains",
+        "action": "credential_snatch",
+        "entity2": "kaitlyn_bennett",
+        "channel": "sms"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_supply_chains",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "password_promise",
+        "entity2": "kaitlyn_bennett",
+        "channel": "email"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "report_phishing_email",
+        "entity2": "global_supply_chains",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "email_trap",
+        "entity2": "kaitlyn_bennett",
+        "channel": "email"
+      },
+      {
+        "entity1": "kaitlyn_bennett",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_supply_chains",
+        "channel": "app"
+      }
+    ]
+  },
+  "21": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "swift_merchantservices",
+        "action": "phishing_attack",
+        "entity2": "megan_chen",
+        "channel": "email"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "swift_merchantservices",
+        "channel": "email"
+      },
+      {
+        "entity1": "swift_merchantservices",
+        "action": "email_trap",
+        "entity2": "megan_chen",
+        "channel": "sms"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "swift_merchantservices",
+        "channel": "call"
+      }
+    ]
+  },
+  "23": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "rapid_development_llc",
+        "action": "credential_snatch",
+        "entity2": "amy_brown",
+        "channel": "sms"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "rapid_development_llc",
+        "channel": "email"
+      },
+      {
+        "entity1": "rapid_development_llc",
+        "action": "account_takeover_impersonation",
+        "entity2": "amy_brown",
+        "channel": "sms"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "rapid_development_llc",
+        "channel": "call"
+      }
+    ]
+  },
+  "25": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "new_fraudster",
+        "action": "phishing",
+        "entity2": "amy_brown",
+        "channel": "sms"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "new_fraudster",
+        "channel": "call"
+      }
+    ]
+  },
+  "26": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "rapid_development_llc",
+        "action": "social_engineering_attack",
+        "entity2": "donna_johnson",
+        "channel": "website"
+      },
+      {
+        "entity1": "donna_johnson",
+        "action": "enter_malicious_webpage",
+        "entity2": "rapid_development_llc",
+        "channel": "email"
+      },
+      {
+        "entity1": "rapid_development_llc",
+        "action": "email_trap",
+        "entity2": "donna_johnson",
+        "channel": "website"
+      },
+      {
+        "entity1": "donna_johnson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "rapid_development_llc",
+        "channel": "app"
+      }
+    ]
+  },
+  "27": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "quick_cash_merchant",
+        "action": "social_engineering_attack",
+        "entity2": "kayla_hamilton",
+        "channel": "email"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "quick_cash_merchant",
+        "channel": "sms"
+      },
+      {
+        "entity1": "quick_cash_merchant",
+        "action": "email_trap",
+        "entity2": "kayla_hamilton",
+        "channel": "email"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "quick_cash_merchant",
+        "channel": "call"
+      }
+    ]
+  },
+  "29": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_supply_chains",
+        "action": "password_promise",
+        "entity2": "alexandra_black",
+        "channel": "call"
+      },
+      {
+        "entity1": "alexandra_black",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_supply_chains",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "credential_snatch",
+        "entity2": "alexandra_black",
+        "channel": "email"
+      },
+      {
+        "entity1": "alexandra_black",
+        "action": "make_unverified_payment",
+        "entity2": "global_supply_chains",
+        "channel": "call"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "phishing",
+        "entity2": "alexandra_black",
+        "channel": "website"
+      },
+      {
+        "entity1": "alexandra_black",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_supply_chains",
+        "channel": "app"
+      }
+    ]
+  },
+  "32": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "rapid_development_llc",
+        "action": "password_promise",
+        "entity2": "amy_brown",
+        "channel": "call"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "rapid_development_llc",
+        "channel": "email"
+      },
+      {
+        "entity1": "rapid_development_llc",
+        "action": "payment_link_redirect",
+        "entity2": "amy_brown",
+        "channel": "website"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "rapid_development_llc",
+        "channel": "app"
+      }
+    ]
+  },
+  "33": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_expertise_llc",
+        "action": "phishing_attack",
+        "entity2": "amy_brown",
+        "channel": "sms"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "global_expertise_llc",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_expertise_llc",
+        "action": "email_trap",
+        "entity2": "amy_brown",
+        "channel": "website"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_expertise_llc",
+        "channel": "call"
+      }
+    ]
+  },
+  "34": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_investments_limited",
+        "action": "password_promise",
+        "entity2": "laura_fowler",
+        "channel": "sms"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "global_investments_limited",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_investments_limited",
+        "action": "social_engineering_attack",
+        "entity2": "laura_fowler",
+        "channel": "sms"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "submit_sensitive_information",
+        "entity2": "global_investments_limited",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_investments_limited",
+        "action": "email_trap",
+        "entity2": "laura_fowler",
+        "channel": "website"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_investments_limited",
+        "channel": "call"
+      }
+    ]
+  },
+  "36": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "new_fraudster",
+        "action": "credential_snatch",
+        "entity2": "samantha_white",
+        "channel": "sms"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "new_fraudster",
+        "channel": "website"
+      },
+      {
+        "entity1": "new_fraudster",
+        "action": "password_promise",
+        "entity2": "samantha_white",
+        "channel": "call"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "new_fraudster",
+        "channel": "call"
+      },
+      {
+        "entity1": "new_fraudster",
+        "action": "phishing_attack",
+        "entity2": "samantha_white",
+        "channel": "sms"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "remit_vulnerable_info",
+        "entity2": "new_fraudster",
+        "channel": "app"
+      },
+      {
+        "entity1": "new_fraudster",
+        "action": "email_trap",
+        "entity2": "samantha_white",
+        "channel": "sms"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "new_fraudster",
+        "channel": "app"
+      }
+    ]
+  },
+  "39": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "goldenfinch_corp",
+        "action": "social_engineering_attack",
+        "entity2": "maddison_rice",
+        "channel": "call"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "goldenfinch_corp",
+        "channel": "sms"
+      },
+      {
+        "entity1": "goldenfinch_corp",
+        "action": "email_trap",
+        "entity2": "maddison_rice",
+        "channel": "sms"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "goldenfinch_corp",
+        "channel": "app"
+      }
+    ]
+  },
+  "41": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "email_trap",
+        "entity2": "sarah_turner",
+        "channel": "email"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "call"
+      }
+    ]
+  },
+  "42": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "high_street_trading_co",
+        "action": "phishing",
+        "entity2": "taylor_morris",
+        "channel": "sms"
+      },
+      {
+        "entity1": "taylor_morris",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "high_street_trading_co",
+        "channel": "call"
+      }
+    ]
+  },
+  "43": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "quick_cash_merchant",
+        "action": "phishing",
+        "entity2": "maya_cameron",
+        "channel": "email"
+      },
+      {
+        "entity1": "maya_cameron",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "quick_cash_merchant",
+        "channel": "app"
+      }
+    ]
+  },
+  "44": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "phishing",
+        "entity2": "jessie_gibson",
+        "channel": "sms"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "call"
+      }
+    ]
+  },
+  "50": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "social_engineering_attack",
+        "entity2": "megan_chen",
+        "channel": "website"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "make_unverified_payment",
+        "entity2": "global_e-commerce_network",
+        "channel": "sms"
+      },
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "credential_snatch",
+        "entity2": "megan_chen",
+        "channel": "call"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_e-commerce_network",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "victims_info_promise",
+        "entity2": "megan_chen",
+        "channel": "sms"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "click_on_insecure_link",
+        "entity2": "global_e-commerce_network",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "account_compromise",
+        "entity2": "megan_chen",
+        "channel": "sms"
+      },
+      {
+        "entity1": "megan_chen",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_e-commerce_network",
+        "channel": "call"
+      }
+    ]
+  },
+  "52": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "jessica_parker",
+        "action": "social_engineering_attack",
+        "entity2": "sarah_turner",
+        "channel": "sms"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "report_phishing_email",
+        "entity2": "jessica_parker",
+        "channel": "email"
+      },
+      {
+        "entity1": "jessica_parker",
+        "action": "credential_jacking",
+        "entity2": "sarah_turner",
+        "channel": "email"
+      },
+      {
+        "entity1": "sarah_turner",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "jessica_parker",
+        "channel": "call"
+      }
+    ]
+  },
+  "53": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "social_engineering_attack",
+        "entity2": "jessie_gibson",
+        "channel": "website"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "luxury_goods_emporium",
+        "channel": "email"
+      },
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "victims_info_promise",
+        "entity2": "jessie_gibson",
+        "channel": "sms"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "initiate_unsolicited_transfer",
+        "entity2": "luxury_goods_emporium",
+        "channel": "email"
+      },
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "email_trap",
+        "entity2": "jessie_gibson",
+        "channel": "email"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "luxury_goods_emporium",
+        "channel": "call"
+      }
+    ]
+  },
+  "54": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "digital_services_inc",
+        "action": "social_engineering_attack",
+        "entity2": "jessie_gibson",
+        "channel": "call"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "digital_services_inc",
+        "channel": "app"
+      },
+      {
+        "entity1": "digital_services_inc",
+        "action": "email_trap",
+        "entity2": "jessie_gibson",
+        "channel": "email"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "digital_services_inc",
+        "channel": "app"
+      }
+    ]
+  },
+  "55": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_finance_group",
+        "action": "phishing",
+        "entity2": "jessie_gibson",
+        "channel": "email"
+      },
+      {
+        "entity1": "jessie_gibson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_finance_group",
+        "channel": "call"
+      }
+    ]
+  },
+  "56": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "credential_snatch",
+        "entity2": "samantha_white",
+        "channel": "call"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "luxury_goods_emporium",
+        "channel": "email"
+      },
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "email_trap",
+        "entity2": "samantha_white",
+        "channel": "website"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "luxury_goods_emporium",
+        "channel": "app"
+      }
+    ]
+  },
+  "57": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "credential_snatch",
+        "entity2": "keely_henderson",
+        "channel": "app"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "golden_sun_finance",
+        "channel": "website"
+      },
+      {
+        "entity1": "golden_sun_finance",
+        "action": "data_spoofing",
+        "entity2": "keely_henderson",
+        "channel": "app"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "golden_sun_finance",
+        "channel": "sms"
+      },
+      {
+        "entity1": "golden_sun_finance",
+        "action": "email_trap",
+        "entity2": "keely_henderson",
+        "channel": "website"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "call"
+      }
+    ]
+  },
+  "58": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "blue_ribbon_enterprises",
+        "action": "password_promise",
+        "entity2": "natalie_wilson",
+        "channel": "email"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "enter_malicious_webpage",
+        "entity2": "blue_ribbon_enterprises",
+        "channel": "email"
+      },
+      {
+        "entity1": "blue_ribbon_enterprises",
+        "action": "email_trap",
+        "entity2": "natalie_wilson",
+        "channel": "sms"
+      },
+      {
+        "entity1": "natalie_wilson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "blue_ribbon_enterprises",
+        "channel": "call"
+      }
+    ]
+  },
+  "60": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "goldenfinch_corp",
+        "action": "credential_snatch",
+        "entity2": "maddison_rice",
+        "channel": "sms"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "goldenfinch_corp",
+        "channel": "email"
+      },
+      {
+        "entity1": "goldenfinch_corp",
+        "action": "phishing",
+        "entity2": "maddison_rice",
+        "channel": "email"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "goldenfinch_corp",
+        "channel": "app"
+      }
+    ]
+  },
+  "61": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "email_trap",
+        "entity2": "alexandra_black",
+        "channel": "sms"
+      },
+      {
+        "entity1": "alexandra_black",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "luxury_goods_emporium",
+        "channel": "call"
+      }
+    ]
+  },
+  "63": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "phishing",
+        "entity2": "maya_cameron",
+        "channel": "sms"
+      },
+      {
+        "entity1": "maya_cameron",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "app"
+      }
+    ]
+  },
+  "66": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "phishing",
+        "entity2": "erin_tate",
+        "channel": "email"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "call"
+      }
+    ]
+  },
+  "67": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "swift_merchantservices",
+        "action": "phishing",
+        "entity2": "samantha_white",
+        "channel": "email"
+      },
+      {
+        "entity1": "samantha_white",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "swift_merchantservices",
+        "channel": "call"
+      }
+    ]
+  },
+  "68": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_finance_group",
+        "action": "credential_snatch",
+        "entity2": "laura_fowler",
+        "channel": "call"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_finance_group",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_finance_group",
+        "action": "victims_info_promise",
+        "entity2": "laura_fowler",
+        "channel": "website"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "submit_sensitive_information",
+        "entity2": "global_finance_group",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_finance_group",
+        "action": "email_trap",
+        "entity2": "laura_fowler",
+        "channel": "website"
+      },
+      {
+        "entity1": "laura_fowler",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_finance_group",
+        "channel": "call"
+      }
+    ]
+  },
+  "75": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "new_fraudster",
+        "action": "social_engineering_attack",
+        "entity2": "maddison_rice",
+        "channel": "call"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "new_fraudster",
+        "channel": "email"
+      },
+      {
+        "entity1": "new_fraudster",
+        "action": "victims_info_promise",
+        "entity2": "maddison_rice",
+        "channel": "email"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "new_fraudster",
+        "channel": "email"
+      },
+      {
+        "entity1": "new_fraudster",
+        "action": "email_trap",
+        "entity2": "maddison_rice",
+        "channel": "website"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "new_fraudster",
+        "channel": "app"
+      }
+    ]
+  },
+  "77": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "high_street_trading_co",
+        "action": "password_promise",
+        "entity2": "maya_cameron",
+        "channel": "sms"
+      },
+      {
+        "entity1": "maya_cameron",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "high_street_trading_co",
+        "channel": "email"
+      },
+      {
+        "entity1": "high_street_trading_co",
+        "action": "phishing_attack",
+        "entity2": "maya_cameron",
+        "channel": "email"
+      },
+      {
+        "entity1": "maya_cameron",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "high_street_trading_co",
+        "channel": "email"
+      },
+      {
+        "entity1": "high_street_trading_co",
+        "action": "email_trap",
+        "entity2": "maya_cameron",
+        "channel": "sms"
+      },
+      {
+        "entity1": "maya_cameron",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "high_street_trading_co",
+        "channel": "call"
+      }
+    ]
+  },
+  "78": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "quick_cash_merchant",
+        "action": "phishing",
+        "entity2": "maddison_rice",
+        "channel": "website"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "quick_cash_merchant",
+        "channel": "app"
+      }
+    ]
+  },
+  "80": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "digital_services_inc",
+        "action": "social_engineering_attack",
+        "entity2": "kayla_hamilton",
+        "channel": "website"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "digital_services_inc",
+        "channel": "website"
+      },
+      {
+        "entity1": "digital_services_inc",
+        "action": "victims_info_promise",
+        "entity2": "kayla_hamilton",
+        "channel": "website"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "submit_sensitive_information",
+        "entity2": "digital_services_inc",
+        "channel": "email"
+      },
+      {
+        "entity1": "digital_services_inc",
+        "action": "email_trap",
+        "entity2": "kayla_hamilton",
+        "channel": "website"
+      },
+      {
+        "entity1": "kayla_hamilton",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "digital_services_inc",
+        "channel": "app"
+      }
+    ]
+  },
+  "81": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_supply_chains",
+        "action": "credential_snatch",
+        "entity2": "maddison_rice",
+        "channel": "call"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_supply_chains",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_supply_chains",
+        "action": "phishing",
+        "entity2": "maddison_rice",
+        "channel": "email"
+      },
+      {
+        "entity1": "maddison_rice",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_supply_chains",
+        "channel": "call"
+      }
+    ]
+  },
+  "82": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "luxury_goods_emporium",
+        "action": "email_trap",
+        "entity2": "danielle_williams",
+        "channel": "sms"
+      },
+      {
+        "entity1": "danielle_williams",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "luxury_goods_emporium",
+        "channel": "call"
+      }
+    ]
+  },
+  "83": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_finance_group",
+        "action": "phishing_attack",
+        "entity2": "keely_henderson",
+        "channel": "email"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_finance_group",
+        "channel": "website"
+      },
+      {
+        "entity1": "global_finance_group",
+        "action": "victims_info_promise",
+        "entity2": "keely_henderson",
+        "channel": "website"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "submit_vulnerable_account_details",
+        "entity2": "global_finance_group",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_finance_group",
+        "action": "data_spoofing",
+        "entity2": "keely_henderson",
+        "channel": "website"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "accept_unsolicited_payment_request",
+        "entity2": "global_finance_group",
+        "channel": "sms"
+      },
+      {
+        "entity1": "global_finance_group",
+        "action": "phishing",
+        "entity2": "keely_henderson",
+        "channel": "website"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_finance_group",
+        "channel": "call"
+      }
+    ]
+  },
+  "86": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "credential_snatch",
+        "entity2": "keely_henderson",
+        "channel": "call"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "global_e-commerce_network",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "account_impersonation_spear",
+        "entity2": "keely_henderson",
+        "channel": "email"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "make_unverified_payment",
+        "entity2": "global_e-commerce_network",
+        "channel": "email"
+      },
+      {
+        "entity1": "global_e-commerce_network",
+        "action": "payment_link_redirect",
+        "entity2": "keely_henderson",
+        "channel": "website"
+      },
+      {
+        "entity1": "keely_henderson",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "global_e-commerce_network",
+        "channel": "call"
+      }
+    ]
+  },
+  "90": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "rapid_development_llc",
+        "action": "phishing",
+        "entity2": "amy_brown",
+        "channel": "sms"
+      },
+      {
+        "entity1": "amy_brown",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "rapid_development_llc",
+        "channel": "call"
+      }
+    ]
+  },
+  "97": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "golden_sun_finance",
+        "action": "phishing",
+        "entity2": "jade_davis",
+        "channel": "email"
+      },
+      {
+        "entity1": "jade_davis",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "golden_sun_finance",
+        "channel": "call"
+      }
+    ]
+  },
+  "99": {
+    "label": "fraud",
+    "sequence": [
+      {
+        "entity1": "amanda_harrison",
+        "action": "social_engineering_attack",
+        "entity2": "erin_tate",
+        "channel": "sms"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "use_trusted_service_to_send_funds",
+        "entity2": "amanda_harrison",
+        "channel": "email"
+      },
+      {
+        "entity1": "amanda_harrison",
+        "action": "phishing",
+        "entity2": "erin_tate",
+        "channel": "website"
+      },
+      {
+        "entity1": "erin_tate",
+        "action": "transfer_funds_to_safe_account_requested_by_caller",
+        "entity2": "amanda_harrison",
+        "channel": "call"
+      }
+    ]
+  }
+}

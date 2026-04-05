@@ -1,11 +1,15 @@
 """
-Parallel generator for normal / legitimate banking behavior sequences.
-Mirrors build_sequence.Neo4jSequenceBuilder flow: pick account holder, LLM-chosen
-steps with Neo4j NEXT-edge diversity, apply benign effects, export JSON.
+Synthetic **legitimate** banking sequences for classification datasets.
 
-Uses Neo4j only for real user names/accounts (same victims dataset as fraud) and
-for transition weights; legit action definitions load from data/victim_actions.json
-(key \"legit_actions\").
+Picks a customer from Neo4j (``victims`` / accounts), loads the action catalog from
+``data/graph/victim_actions.json`` under ``legit_actions``, samples scenario categories, and uses
+an LLM to choose steps. Reuses ``Neo4jSequenceBuilder`` from ``build_fraud_sequence`` only for
+connectivity, ``pick_victim``, and ``NEXT``-edge weighting—not for fraud actions.
+
+Emits the same per-step shape as fraud sequences (``entity1``, ``action``, ``entity2``,
+``channel``) with ``label: "legit"``. Optional balance adjustments for payment-like actions.
+
+Requires: Neo4j, Ollama, ``python-dotenv``, ``requests``.
 """
 
 from __future__ import annotations
@@ -21,7 +25,7 @@ from typing import Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
 
-from build_fraud_sequence import Action, Neo4jSequenceBuilder
+from src.generate_sequences.build_fraud_sequence import Action, Neo4jSequenceBuilder
 
 load_dotenv()
 
@@ -29,7 +33,7 @@ OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
 
 _DEFAULT_VICTIM_ACTIONS_PATH = (
-    Path(__file__).resolve().parent / "data" / "victim_actions.json"
+    Path(__file__).resolve().parents[2] / "data" / "graph" / "victim_actions.json"
 )
 
 
@@ -301,8 +305,21 @@ Return ONLY the action name, nothing else.
             if chosen.get("is_terminal"):
                 state.terminal = True
 
-
         return state.history, scenario_tags
+    
+    def generate_one_sequence(
+            self, max_steps: int=10
+    ):
+        actions, scenario_tags = self.generate_sequence(max_steps=max_steps)
+        return [
+                    {
+                        "entity1": a.entity1,
+                        "action": a.action,
+                        "entity2": a.entity2,
+                        "channel": a.channel,
+                    }
+                    for a in actions
+                ]
 
     def generate_multiple_sequences(
         self, count: int, max_steps: int = 10
@@ -378,10 +395,11 @@ def main():
     builder = Neo4jLegitSequenceBuilder()
     try:
         print("Generating legit banking sequences...")
-        sequences = builder.generate_multiple_sequences(count=100, max_steps=10)
-        out = os.getenv("LEGIT_SEQUENCES_OUT", "output/legit_sequences_100.json")
-        os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
-        builder.save_sequences_to_file(sequences, filename=out)
+        sequences = builder.generate_one_sequence()
+        print(sequences)
+        # out = os.getenv("LEGIT_SEQUENCES_OUT", "output/legit_sequences_100.json")
+        # os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+        # builder.save_sequences_to_file(sequences, filename=out)
         
     finally:
         builder.close()
