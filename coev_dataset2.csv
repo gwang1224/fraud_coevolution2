@@ -1,0 +1,209 @@
+{
+    "0": {
+        "label": "fraud",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "fraudster",
+                "actor_id": "high_street_trading_co",
+                "action": "payment_link_redirect",
+                "target_type": "victim",
+                "target_id": "jessie_parks",
+                "channel": "sms"
+            },
+            {
+                "step": 2,
+                "actor_type": "victim",
+                "actor_id": "jessie_parks",
+                "action": "transfer_funds_to_safe_account_requested_by_caller",
+                "target_type": "fraudster",
+                "target_id": "high_street_trading_co",
+                "channel": "call"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": true,
+            "payout": 608.11,
+            "loss_to_victim": 608.11,
+            "num_steps": 2,
+            "terminal_reason": "fraud_transfer_completed"
+        },
+        "audit": {
+            "flags_triggered": [
+                "account_takeover",
+                "impersonation",
+                "payment_redirect",
+                "sim_swap"
+            ],
+            "detection_score": 0.83
+        }
+    },
+    "1": {
+        "label": "fraud",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "fraudster",
+                "actor_id": "rapid_development_llc",
+                "action": "social_engineering_attack",
+                "target_type": "victim",
+                "target_id": "danielle_williams",
+                "channel": "sms"
+            },
+            {
+                "step": 2,
+                "actor_type": "victim",
+                "actor_id": "danielle_williams",
+                "action": "accept_unsolicited_payment_request",
+                "target_type": "fraudster",
+                "target_id": "rapid_development_llc",
+                "channel": "sms"
+            },
+            {
+                "step": 3,
+                "actor_type": "fraudster",
+                "actor_id": "rapid_development_llc",
+                "action": "email_trap",
+                "target_type": "victim",
+                "target_id": "danielle_williams",
+                "channel": "sms"
+            },
+            {
+                "step": 4,
+                "actor_type": "victim",
+                "actor_id": "danielle_williams",
+                "action": "transfer_funds_to_safe_account_requested_by_caller",
+                "target_type": "fraudster",
+                "target_id": "rapid_development_llc",
+                "channel": "call"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": true,
+            "payout": 284.94,
+            "loss_to_victim": 284.94,
+            "num_steps": 4,
+            "terminal_reason": "fraud_transfer_completed"
+        },
+        "audit": {
+            "flags_triggered": [
+                "account_takeover",
+                "impersonation",
+                "malware",
+                "payment_redirect",
+                "phishing",
+                "sim_swap",
+                "social_engineering"
+            ],
+            "detection_score": 0.87
+        }
+    },
+    "2": {
+        "label": "legit",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "customer",
+                "actor_id": "kiera_sanders",
+                "action": "query_available_funds",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "app"
+            },
+            {
+                "step": 2,
+                "actor_type": "customer",
+                "actor_id": "kiera_sanders",
+                "action": "pay_rent",
+                "target_type": "payee",
+                "target_id": "landlord",
+                "channel": "web"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": false,
+            "payout": 0.0,
+            "loss_to_victim": 312.52,
+            "num_steps": 2,
+            "terminal_reason": "session_complete",
+            "flags_triggered": [
+                "balance_check",
+                "bill_payment",
+                "new_payee",
+                "pay_rent",
+                "query_available_funds",
+                "self"
+            ],
+            "detection_score": 0.33
+        }
+    },
+    "3": {
+        "label": "legit",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "customer",
+                "actor_id": "zoe_kelly",
+                "action": "check_account_status",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "web"
+            },
+            {
+                "step": 2,
+                "actor_type": "customer",
+                "actor_id": "zoe_kelly",
+                "action": "recurring_transfer_reinforce_schedule",
+                "target_type": "payee",
+                "target_id": "own_or_household_account",
+                "channel": "app"
+            },
+            {
+                "step": 3,
+                "actor_type": "customer",
+                "actor_id": "zoe_kelly",
+                "action": "query_available_funds",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "web"
+            },
+            {
+                "step": 4,
+                "actor_type": "customer",
+                "actor_id": "zoe_kelly",
+                "action": "get_balance_inquiry",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "app"
+            },
+            {
+                "step": 5,
+                "actor_type": "customer",
+                "actor_id": "zoe_kelly",
+                "action": "pay_rent_on_time",
+                "target_type": "payee",
+                "target_id": "landlord",
+                "channel": "app"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": false,
+            "payout": 0.0,
+            "loss_to_victim": 939.32,
+            "num_steps": 5,
+            "terminal_reason": "session_complete",
+            "flags_triggered": [
+                "check_account_status",
+                "get_balance_inquiry",
+                "pay_rent_on_time",
+                "query_available_funds",
+                "recurring_transfer_reinforce_schedule"
+            ],
+            "detection_score": 0.13
+        }
+    }
+}

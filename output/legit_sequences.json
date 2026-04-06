@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "dataset": "legit",
+    "total_sequences": 1,
+    "generated_at": "2026-04-05T18:10:43.210277",
+    "total_steps": 3,
+    "average_steps_per_sequence": 3.0
+  },
+  "sequences": [
+    {
+      "label": "legit",
+      "sequence": [
+        {
+          "step": 1,
+          "actor_type": "customer",
+          "actor_id": "danielle_williams",
+          "action": "query_available_funds",
+          "target_type": "payee",
+          "target_id": "self",
+          "channel": "app"
+        },
+        {
+          "step": 2,
+          "actor_type": "customer",
+          "actor_id": "danielle_williams",
+          "action": "check_balance",
+          "target_type": "payee",
+          "target_id": "self",
+          "channel": "app"
+        },
+        {
+          "step": 3,
+          "actor_type": "customer",
+          "actor_id": "danielle_williams",
+          "action": "send_aid_to_sister",
+          "target_type": "payee",
+          "target_id": "verified_new_payee",
+          "channel": "web"
+        }
+      ],
+      "evaluation": {
+        "valid": true,
+        "fraud_success": false,
+        "payout": 0.0,
+        "loss_to_victim": 256.46,
+        "num_steps": 3,
+        "terminal_reason": "session_complete",
+        "flags_triggered": [
+          "check_balance",
+          "query_available_funds",
+          "send_aid_to_sister",
+          "verified_new_payee"
+        ],
+        "detection_score": 0.27
+      }
+    }
+  ]
+}

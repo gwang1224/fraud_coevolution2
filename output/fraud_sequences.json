@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "total_sequences": 1,
+    "generated_at": "2026-04-05T17:57:12.041471",
+    "total_steps": 2,
+    "average_steps_per_sequence": 2.0
+  },
+  "sequences": [
+    {
+      "label": "fraud",
+      "sequence": [
+        {
+          "step": 1,
+          "actor_type": "fraudster",
+          "actor_id": "golden_sun_finance",
+          "action": "phishing",
+          "target_type": "victim",
+          "target_id": "sarah_turner",
+          "channel": "email"
+        },
+        {
+          "step": 2,
+          "actor_type": "victim",
+          "actor_id": "sarah_turner",
+          "action": "transfer_funds_to_safe_account_requested_by_caller",
+          "target_type": "fraudster",
+          "target_id": "golden_sun_finance",
+          "channel": "call"
+        }
+      ],
+      "evaluation": {
+        "valid": true,
+        "fraud_success": true,
+        "payout": 113.91,
+        "loss_to_victim": 113.91,
+        "num_steps": 2,
+        "terminal_reason": "fraud_transfer_completed",
+        "flags_triggered": [
+          "account_takeover",
+          "payment_redirect",
+          "phishing",
+          "sim_swap"
+        ],
+        "detection_score": 0.82
+      }
+    }
+  ]
+}

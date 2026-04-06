@@ -1,0 +1,245 @@
+{
+    "0": {
+        "label": "fraud",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "fraudster",
+                "actor_id": "high_street_trading_co",
+                "action": "password_promise",
+                "target_type": "victim",
+                "target_id": "natalie_wilson",
+                "channel": "email"
+            },
+            {
+                "step": 2,
+                "actor_type": "victim",
+                "actor_id": "natalie_wilson",
+                "action": "submit_sensitive_information",
+                "target_type": "fraudster",
+                "target_id": "high_street_trading_co",
+                "channel": "email"
+            },
+            {
+                "step": 3,
+                "actor_type": "fraudster",
+                "actor_id": "high_street_trading_co",
+                "action": "email_trap",
+                "target_type": "victim",
+                "target_id": "natalie_wilson",
+                "channel": "email"
+            },
+            {
+                "step": 4,
+                "actor_type": "victim",
+                "actor_id": "natalie_wilson",
+                "action": "transfer_funds_to_safe_account_requested_by_caller",
+                "target_type": "fraudster",
+                "target_id": "high_street_trading_co",
+                "channel": "call"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": true,
+            "payout": 0.0,
+            "num_steps": 4,
+            "terminal_reason": "fraud_transfer_completed"
+        },
+        "audit": {
+            "flags_triggered": [
+                "account_takeover",
+                "email_trap",
+                "impersonation",
+                "password_promise",
+                "payment_redirect",
+                "phishing",
+                "sim_swap",
+                "social_engineering"
+            ],
+            "detection_score": 0.83
+        }
+    },
+    "1": {
+        "label": "legit",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "customer",
+                "actor_id": "victim_1",
+                "action": "check_balance",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "atm"
+            },
+            {
+                "step": 2,
+                "actor_type": "customer",
+                "actor_id": "victim_1",
+                "action": "pay_rent_on_time",
+                "target_type": "payee",
+                "target_id": "landlord",
+                "channel": "app"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": false,
+            "payout": 0.0,
+            "num_steps": 2,
+            "terminal_reason": "session_complete"
+        },
+        "audit": {
+            "flags_triggered": [
+                "check_balance",
+                "pay_rent_on_time"
+            ],
+            "detection_score": 0.3
+        }
+    },
+    "2": {
+        "label": "legit",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "customer",
+                "actor_id": "keely_henderson",
+                "action": "get_balance_inquiry",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "app"
+            },
+            {
+                "step": 2,
+                "actor_type": "customer",
+                "actor_id": "keely_henderson",
+                "action": "check_balance",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "atm"
+            },
+            {
+                "step": 3,
+                "actor_type": "customer",
+                "actor_id": "keely_henderson",
+                "action": "recurring_transfer_reinforce_schedule",
+                "target_type": "payee",
+                "target_id": "own_or_household_account",
+                "channel": "web"
+            },
+            {
+                "step": 4,
+                "actor_type": "customer",
+                "actor_id": "keely_henderson",
+                "action": "query_available_funds",
+                "target_type": "payee",
+                "target_id": "self",
+                "channel": "app"
+            },
+            {
+                "step": 5,
+                "actor_type": "customer",
+                "actor_id": "keely_henderson",
+                "action": "set_up_recurring_transfer",
+                "target_type": "payee",
+                "target_id": "own_or_household_account",
+                "channel": "web"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": false,
+            "payout": 0.0,
+            "num_steps": 5,
+            "terminal_reason": "session_complete"
+        },
+        "audit": {
+            "flags_triggered": [
+                "balance_check",
+                "direct_debit",
+                "payroll",
+                "recurring_payment",
+                "savings",
+                "subscription"
+            ],
+            "detection_score": 0.27
+        }
+    },
+    "3": {
+        "label": "fraud",
+        "sequence": [
+            {
+                "step": 1,
+                "actor_type": "fraudster",
+                "actor_id": "global_investments_limited",
+                "action": "social_engineering_attack",
+                "target_type": "victim",
+                "target_id": "samantha_white",
+                "channel": "call"
+            },
+            {
+                "step": 2,
+                "actor_type": "victim",
+                "actor_id": "samantha_white",
+                "action": "use_trusted_service_to_send_funds",
+                "target_type": "fraudster",
+                "target_id": "global_investments_limited",
+                "channel": "website"
+            },
+            {
+                "step": 3,
+                "actor_type": "fraudster",
+                "actor_id": "global_investments_limited",
+                "action": "password_promise",
+                "target_type": "victim",
+                "target_id": "samantha_white",
+                "channel": "call"
+            },
+            {
+                "step": 4,
+                "actor_type": "victim",
+                "actor_id": "samantha_white",
+                "action": "accept_unsolicited_payment_request",
+                "target_type": "fraudster",
+                "target_id": "global_investments_limited",
+                "channel": "sms"
+            },
+            {
+                "step": 5,
+                "actor_type": "fraudster",
+                "actor_id": "global_investments_limited",
+                "action": "victim_info_exploitation",
+                "target_type": "victim",
+                "target_id": "samantha_white",
+                "channel": "sms"
+            },
+            {
+                "step": 6,
+                "actor_type": "victim",
+                "actor_id": "samantha_white",
+                "action": "transfer_funds_to_safe_account_requested_by_caller",
+                "target_type": "fraudster",
+                "target_id": "global_investments_limited",
+                "channel": "call"
+            }
+        ],
+        "evaluation": {
+            "valid": true,
+            "fraud_success": true,
+            "payout": 921.84,
+            "num_steps": 6,
+            "terminal_reason": "fraud_transfer_completed"
+        },
+        "audit": {
+            "flags_triggered": [
+                "accept_unsolicited_payment_request",
+                "password_promise",
+                "payment_redirect",
+                "sim_swap",
+                "social_engineering",
+                "victim_info_exploitation"
+            ],
+            "detection_score": 0.9
+        }
+    }
+}

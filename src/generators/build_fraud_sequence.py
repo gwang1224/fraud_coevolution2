@@ -62,6 +62,96 @@ class EnvState:
     history: List[Action] = field(default_factory=list)
     terminal: bool = False
 
+OLLAMA_EVAL_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
+OLLAMA_EVAL_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
+
+_FLAGS_PROMPT = """\
+You are a fraud analyst. Given this FAST-payment sequence, list the distinct \
+fraud tactics / red-flag categories present. Use short snake_case labels \
+(e.g. phishing, credential_compromise, social_engineering, fast_transfer, \
+malware, sim_swap, account_takeover, payment_redirect, impersonation).
+
+Sequence:
+{sequence_text}
+
+Return ONLY a JSON array of strings, e.g. ["phishing","credential_compromise"].
+No explanation, no markdown fences, no extra text.
+"""
+
+_DETECTION_PROMPT = """\
+You are a bank's real-time fraud detection system analyzing a FAST-payment sequence.
+
+Rate how likely this sequence is fraudulent on a scale from 0.0 (certainly legitimate) \
+to 1.0 (certainly fraudulent). Consider:
+- Presence of social engineering, phishing, credential theft, etc.
+- Whether the money transfer is authorized or coerced/stolen.
+- How sophisticated the attack is (harder to detect = lower score).
+
+Sequence:
+{sequence_text}
+
+Return ONLY a single decimal number between 0.0 and 1.0. \
+No explanation, no extra text.
+"""
+
+
+def _llm_extract_flags(sequence_text: str, max_attempts: int = 3) -> List[str]:
+    """Ask the LLM to identify fraud tactic flags in a sequence."""
+    prompt = _FLAGS_PROMPT.format(sequence_text=sequence_text)
+    for _ in range(max_attempts):
+        try:
+            resp = requests.post(
+                OLLAMA_EVAL_URL,
+                json={
+                    "model": OLLAMA_EVAL_MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {"temperature": 0, "num_predict": 120, "stop": ["\n\n"]},
+                },
+                timeout=60,
+            )
+            resp.raise_for_status()
+            raw = (resp.json().get("response") or "").strip()
+            start = raw.find("[")
+            end = raw.rfind("]")
+            if start != -1 and end != -1:
+                flags = json.loads(raw[start : end + 1])
+                return sorted(set(str(f).strip().lower().replace(" ", "_") for f in flags if f))
+        except Exception:
+            continue
+    return []
+
+
+def _llm_detection_score(sequence_text: str, num_calls: int = 3) -> float:
+    """Run multiple LLM calls asking for a 0-1 fraud probability, return the mean."""
+    scores: List[float] = []
+    prompt = _DETECTION_PROMPT.format(sequence_text=sequence_text)
+    for _ in range(num_calls):
+        try:
+            resp = requests.post(
+                OLLAMA_EVAL_URL,
+                json={
+                    "model": OLLAMA_EVAL_MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {"temperature": 0.3, "num_predict": 12, "stop": ["\n"]},
+                },
+                timeout=60,
+            )
+            resp.raise_for_status()
+            raw = (resp.json().get("response") or "").strip()
+            for token in raw.replace(",", " ").split():
+                try:
+                    val = float(token)
+                    if 0.0 <= val <= 1.0:
+                        scores.append(val)
+                        break
+                except ValueError:
+                    continue
+        except Exception:
+            continue
+    return round(sum(scores) / len(scores), 2) if scores else 0.5
+
 
 class Neo4jSequenceBuilder:
     """Class for building sequences from Neo4j graph"""
@@ -357,7 +447,7 @@ class Neo4jSequenceBuilder:
         else:
             return [item for item in actions if item.get("is_terminal") is False]
 
-    def choose_action_with_llm(self, state: EnvState, possible_actions: List[Dict]) -> Optional[Dict]:
+    def choose_action(self, state: EnvState, possible_actions: List[Dict]) -> Optional[Dict]:
         """
         Use Ollama LLM to choose the best action from possible actions, considering edge weights for diversity
         
@@ -530,33 +620,30 @@ class Neo4jSequenceBuilder:
             else:
                 print(f"  → Cannot transfer money: Account {state.victim_account} is not compromised")
 
-    def generate_sequence(self, max_steps: int = 10) -> List[Action]:
+    def generate_sequence(self, max_steps: int = 10) -> tuple:
         """
-        STEP 3: Generate a complete fraud sequence
+        Generate a complete fraud sequence.
         
         Args:
             max_steps: Maximum number of steps before stopping
         
         Returns:
-            List of Action objects representing the sequence
+            (history: List[Action], state: EnvState, initial_balance: float)
         """
-        # STEP 1: Pick a victim
         victim_info = self.pick_victim()
         if not victim_info:
             print("No victims found in graph")
-            return []
+            return [], EnvState("", "", "", "", "", {}, False), 0.0
         
         print(f"Selected victim: {victim_info['victim_name']}")
         
-        # Pick a fraudster
         fraudster_info = self.pick_fraudster()
         if not fraudster_info:
             print("No fraudsters found in graph")
-            return []
+            return [], EnvState("", "", "", "", "", {}, False), 0.0
         
         print(f"Selected fraudster: {fraudster_info['fraudster_name']}")
         
-        # STEP 2: Initialize state
         try:
             bal_init = float(victim_info["balance"])
         except (TypeError, ValueError, KeyError):
@@ -621,7 +708,7 @@ class Neo4jSequenceBuilder:
             print(f"Available actions: {len(filtered_actions)}")
             
             # 3. Use LLM to choose action
-            chosen_action = self.choose_action_with_llm(state, filtered_actions)
+            chosen_action = self.choose_action(state, filtered_actions)
             next_action = chosen_action.get("action", "")
             print("Next action: ", next_action)
 
@@ -675,132 +762,165 @@ class Neo4jSequenceBuilder:
         if step >= max_steps:
             print(f"\nReached maximum steps ({max_steps})")
         
-        return state.history
+        return state.history, state, bal_init
+
+    def evaluate_sequence(
+        self,
+        history: List[Action],
+        state: EnvState,
+        initial_balance: float,
+    ) -> Dict:
+        """
+        Build the ``evaluation`` block for a completed fraud sequence.
+
+        Derives every field from the simulation state.  ``detection_score`` and
+        ``flags_triggered`` are both produced by LLM calls so they adapt to
+        novel action vocabularies without hardcoded keyword lists.
+        """
+        fraud_success = state.terminal and state.compromised
+        current_balance = 0.0
+        if state.victim_account in state.accounts:
+            current_balance = state.accounts[state.victim_account].get("balance", 0.0)
+        payout = max(0.0, initial_balance - current_balance) if fraud_success else 0.0
+
+        if state.terminal:
+            terminal_reason = "fraud_transfer_completed"
+        elif not state.compromised:
+            terminal_reason = "account_not_compromised"
+        else:
+            terminal_reason = "max_steps_reached"
+
+        flat = [
+            {"entity1": a.entity1, "action": a.action, "entity2": a.entity2, "channel": a.channel}
+            for a in history
+        ]
+        label, _ = validate_one_sequence(flat)
+
+        sequence_text = "\n".join(
+            f"{i}. {a.entity1} -> {a.action} -> {a.entity2} (via {a.channel})"
+            for i, a in enumerate(history, 1)
+        )
+
+        return {
+            "valid": label == "valid",
+            "fraud_success": fraud_success,
+            "payout": round(payout, 2),
+            "num_steps": len(history),
+            "terminal_reason": terminal_reason,
+        }
     
-    def generate_one_sequence(self, max_steps: int = 10) -> List[Action]:
+    def audit_sequence(self, history: List[Action]) -> Dict:
         """
-        Generate and validate a single sequence
-
-        Args:
-            max_steps: Maximum steps per sequence
-        Returns:
-            List of Action objects representing the sequence
+        Audit a sequence with LLM
         """
-        valid_sequence = False
-        
-        while not valid_sequence:
-            sequence = self.generate_sequence(max_steps=max_steps)
+        sequence_text = "\n".join(
+            f"{i}. {a.entity1} -> {a.action} -> {a.entity2} (via {a.channel})"
+            for i, a in enumerate(history, 1)
+        )
+        return {
+            "flags_triggered": _llm_extract_flags(sequence_text),
+            "detection_score": _llm_detection_score(sequence_text)
+        }
 
-            sequence_dict = [
-                    {
-                        "entity1": action.entity1,
-                        "action": action.action,
-                        "entity2": action.entity2,
-                        "channel": action.channel
-                    }
-                    for action in sequence
-                ]
 
-            label, reason = validate_one_sequence(sequence_dict)
-            
-            if label == "valid":
-                valid_sequence = True
-                sequence_dict = [
-                    {
-                        "entity1": action.entity1,
-                        "action": action.action,
-                        "entity2": action.entity2,
-                        "channel": action.channel
-                    }
-                    for action in sequence
-                ]
-            else:
-                print(f"\nInvalid sequence")
-        return sequence_dict
+    @staticmethod
+    def _format_step(step_num: int, action: Action, actor_type: str) -> Dict:
+        """Format one Action into the rich step dict."""
+        target_type = "victim" if actor_type == "fraudster" else "fraudster"
+        return {
+            "step": step_num,
+            "actor_type": actor_type,
+            "actor_id": action.entity1,
+            "action": action.action,
+            "target_type": target_type,
+            "target_id": action.entity2,
+            "channel": action.channel,
+        }
+
+    def generate_one_sequence(self, max_steps: int = 10) -> Dict:
+        """
+        Generate, validate, and evaluate a single fraud sequence.
+
+        Returns a dict matching the coevolution schema::
+
+            {
+              "label": "fraud",
+              "sequence": [ {step…}, … ],
+              "evaluation": { … }
+            }
+        """
+        while True:
+            history, state, initial_balance = self.generate_sequence(max_steps=max_steps)
+            if not history:
+                print("Empty sequence, retrying…")
+                continue
+
+            evaluation = self.evaluate_sequence(history, state, initial_balance)
+            audit = self.audit_sequence(history)
+            if not evaluation["valid"]:
+                print("\nInvalid sequence, retrying…")
+                continue
+
+            steps: List[Dict] = []
+            actor_type = "fraudster"
+            for i, action in enumerate(history, 1):
+                steps.append(self._format_step(i, action, actor_type))
+                actor_type = "victim" if actor_type == "fraudster" else "fraudster"
+
+            return {
+                "label": "fraud",
+                "sequence": steps,
+                "evaluation": evaluation,
+                "audit": audit,
+            }
 
     def generate_multiple_sequences(self, count: int, max_steps: int = 10) -> List[Dict]:
         """
-        Generate multiple sequences and return them as a list of dictionaries
-        
-        Args:
-            count: Number of sequences to generate
-            max_steps: Maximum steps per sequence
-        
-        Returns:
-            List of sequence dictionaries with metadata
+        Generate *count* validated fraud sequences with evaluation metadata.
+
+        Each entry uses the rich step format from ``generate_one_sequence``.
         """
-        sequences = []
+        sequences: List[Dict] = []
 
-        successful_count = 0
-
-        while successful_count < count:
-            print(f"\n{'='*60}")
-            print(f"Generating sequence {successful_count+1}/{count}")
-            print(f"{'='*60}")
-            
+        for i in range(count):
+            print(f"\n{'=' * 60}")
+            print(f"Generating sequence {i + 1}/{count}")
+            print(f"{'=' * 60}")
             try:
-                sequence = self.generate_sequence(max_steps=max_steps)
-
-                sequence_dict = [
-                    {
-                        "entity1": action.entity1,
-                        "action": action.action,
-                        "entity2": action.entity2,
-                        "channel": action.channel
-                    }
-                    for action in sequence
-                ]
-                
-                # Validate sequence
-                label, reason = validate_one_sequence(sequence_dict)
-                if label == "valid":
-                    print("\nValid sequence: True")
-                    successful_count += 1
-                    sequences.append(
-                        {
-                            "sequence_id": successful_count,
-                            "label": "fraud",
-                            "timestamp": datetime.now().isoformat(),
-                            "actions": sequence_dict,
-                            "action_count": len(sequence),
-                        }
-                    )
-                    print(f"✓ Sequence {successful_count} is valid")
-                else:
-                    print("\nValid sequence: False")
-                
+                entry = self.generate_one_sequence(max_steps=max_steps)
+                entry["sequence_id"] = i + 1
+                entry["timestamp"] = datetime.now().isoformat()
+                sequences.append(entry)
+                print(f"✓ Sequence {i + 1} complete ({entry['evaluation']['num_steps']} steps)")
             except Exception as e:
-                print(f"✗ Error generating sequence {successful_count+1}: {e}")
-                continue
-        
+                print(f"✗ Error generating sequence {i + 1}: {e}")
+
         return sequences
 
     def save_sequences_to_file(self, sequences: List[Dict], filename: str = "sequences.json") -> None:
-        """
-        Save sequences to a JSON file with metadata
-        
-        Args:
-            sequences: List of sequence dictionaries
-            filename: Output filename
-        """
+        """Save sequences to a JSON file with metadata."""
+        total_steps = sum(
+            s.get("evaluation", {}).get("num_steps", len(s.get("sequence", [])))
+            for s in sequences
+        )
+        avg_steps = total_steps / len(sequences) if sequences else 0
+
         output = {
             "metadata": {
                 "total_sequences": len(sequences),
                 "generated_at": datetime.now().isoformat(),
-                "successful_sequences": sum(1 for s in sequences if s.get("successful", False)),
-                "total_actions": sum(s.get("action_count", 0) for s in sequences),
-                "average_actions_per_sequence": sum(s.get("action_count", 0) for s in sequences) / len(sequences) if sequences else 0
+                "total_steps": total_steps,
+                "average_steps_per_sequence": round(avg_steps, 2),
             },
-            "sequences": sequences
+            "sequences": sequences,
         }
         
         with open(filename, "w") as f:
             json.dump(output, f, indent=2)
         
         print(f"\n✓ Saved {len(sequences)} sequences to {filename}")
-        print(f"  - Successful: {output['metadata']['successful_sequences']}")
-        print(f"  - Total actions: {output['metadata']['total_actions']}")
-        print(f"  - Average actions per sequence: {output['metadata']['average_actions_per_sequence']:.2f}")
+        print(f"  - Total steps: {total_steps}")
+        print(f"  - Average steps per sequence: {avg_steps:.2f}")
 
     
 
@@ -814,18 +934,16 @@ def main():
     )
     args = parser.parse_args()
 
-    SequenceBuilder = Neo4jSequenceBuilder()
+    builder = Neo4jSequenceBuilder()
     
     try:
-        # sequences = SequenceBuilder.generate_multiple_sequences(count=1, max_steps=10)
-        # args.output.parent.mkdir(parents=True, exist_ok=True)
-        # SequenceBuilder.save_sequences_to_file(sequences, filename=str(args.output))
+        result = builder.generate_one_sequence(max_steps=10)
+        print(json.dumps({"0": result}, indent=2))
 
-        sequence = SequenceBuilder.generate_one_sequence(max_steps=10)
-        print(sequence)
-        
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        builder.save_sequences_to_file([result], filename=str(args.output))
     finally:
-        SequenceBuilder.close()
+        builder.close()
 
 if __name__ == "__main__":
     main()
